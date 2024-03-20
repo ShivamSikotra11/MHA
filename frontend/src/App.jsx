@@ -1,10 +1,21 @@
 import React from "react";
-import AxiosAPI from "./AxiosAPI.jsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import "./index.css";
+import { GlobalStyle } from "./GlobalStyle";
+import Header from "./components/Header";
+
 const App = () => {
   return (
-    <div>
-      <AxiosAPI></AxiosAPI>
-    </div>
+    <>
+      <GlobalStyle />
+      <Header />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+        </Routes>
+      </Router>
+    </>
   );
 };
 
