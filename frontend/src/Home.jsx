@@ -1,18 +1,17 @@
 import React from "react";
 import HeroSection from "./components/Home/HeroSection";
 import Photos from "./components/Home/Photos";
-import Causes from "./components/Home/Causes";
-import Solutions from "./components/Home/Solutions";
 import Blogs from "./components/Home/Blogs";
 import Testimonials from "./components/Home/Testimonials";
+import ConditionContent from "./components/Home/ConditionContent";
+import Header from "./components/Header";
 
 const Home = () => {
   return (
     <div className="">
       <HeroSection />
       <Photos />
-      <Causes />
-      <Solutions />
+      <ConditionContent />
       <Blogs />
       <Testimonials />
     </div>

@@ -82,7 +82,25 @@ a {
   background-color: #d9d9d9; /* Circle color */
   border-radius: 50%; /* Make it a circle */
 }
- 
+.ConditionActive{
+  width:30rem;
+  height:35rem;
+  background-color:#00668C;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the shadow as needed */
+  transition: background-color 0.6s ease, box-shadow 0.6s ease;
+} 
+.ConditionInactive{
+  width:25rem;
+  height:30rem;
+  background-color:#A9E1FF;
+} 
+.HeaderActive{
+  border-radius: 1.2rem;
+  background-color: white;
+  padding-left: 4px;
+  padding-right: 4px;
+} 
+
 
 
 `;

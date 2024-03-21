@@ -1,11 +1,40 @@
 import React from "react";
+import { useConditionContext } from "../../store/ConditionContext";
 
 const Photos = () => {
+  const { showCondition, curCondition } = useConditionContext();
+  // const showCondition = (c) => {
+  //   console.log(c);
+  // }
+  // const curCondition = "Depression";
   return (
     <div className="flex h-[40rem]  justify-evenly items-center my-4">
-      <div className=" w-[25rem] h-[30rem] bg-primary_light rounded-[3rem] "></div>
-      <div className=" w-[30rem] h-[35rem] bg-primary_dark rounded-[3rem]"></div>
-      <div className=" w-[25rem] h-[30rem] bg-primary_light rounded-[3rem] "></div>
+      <div
+        className={` ${
+          curCondition === "Depression"
+            ? "ConditionActive"
+            : "ConditionInactive"
+        } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+        onClick={() => showCondition("Depression")}
+      >
+        Depression
+      </div>
+      <div
+        className={` ${
+          curCondition === "Stress" ? "ConditionActive" : "ConditionInactive"
+        } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+        onClick={() => showCondition("Stress")}
+      >
+        Stress
+      </div>
+      <div
+        className={` ${
+          curCondition === "Anxiety" ? "ConditionActive" : "ConditionInactive"
+        } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+        onClick={() => showCondition("Anxiety")}
+      >
+        Anxiety
+      </div>
     </div>
   );
 };

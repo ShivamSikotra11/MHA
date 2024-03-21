@@ -4,15 +4,19 @@ import Home from "./Home";
 import "./index.css";
 import { GlobalStyle } from "./GlobalStyle";
 import Header from "./components/Header";
+import About from "./About";
+import Contact from "./Contact";
 
 const App = () => {
   return (
     <>
+      <Router>
       <GlobalStyle />
       <Header />
-      <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
         </Routes>
       </Router>
     </>

@@ -1,0 +1,71 @@
+[
+  {
+    "condition": "Depression",
+    "causes": [
+      "Genetics",
+      "Brain chemistry",
+      "Trauma or abuse",
+      "Medical conditions",
+      "Drug or alcohol abuse",
+      "Grief or loss",
+      "Major life changes",
+      "Social isolation"
+    ],
+    "solutions": [
+      "Therapy (counseling)",
+      "Medication (antidepressants)",
+      "Support groups",
+      "Exercise",
+      "Healthy lifestyle choices",
+      "Building a support network",
+      "Setting realistic goals",
+      "Stress management techniques"
+    ]
+  },
+  {
+    "condition": "Stress",
+    "causes": [
+      "Work pressure",
+      "Financial problems",
+      "Relationship issues",
+      "Major life changes",
+      "Health concerns",
+      "Poor time management",
+      "Overload of responsibilities",
+      "Lack of control"
+    ],
+    "solutions": [
+      "Identifying stress triggers",
+      "Time management techniques",
+      "Setting boundaries",
+      "Learning to say no",
+      "Physical activity",
+      "Mindfulness and relaxation techniques",
+      "Healthy lifestyle habits",
+      "Seeking support from friends or professionals"
+    ]
+  },
+  {
+    "condition": "Anxiety",
+    "causes": [
+      "Genetics",
+      "Brain chemistry",
+      "Personality",
+      "Trauma or stress",
+      "Medical conditions",
+      "Substance abuse",
+      "Phobias",
+      "Life experiences"
+    ],
+    "solutions": [
+      "Therapy (cognitive-behavioral therapy)",
+      "Medication (anti-anxiety medications)",
+      "Exercise",
+      "Mindfulness and meditation",
+      "Relaxation techniques",
+      "Avoiding caffeine and alcohol",
+      "Setting realistic goals",
+      "Time management"
+    ]
+  }
+]
