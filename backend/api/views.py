@@ -8,8 +8,8 @@ def index(request):
 
 def add_person(request):
   records ={
-    "first_name":"shivam",
-    "last_name":"sikotra",
+    "first_name":"Viral",
+    "last_name":"Biyawala",
   }
   per_con.insert_one(records)
   return HttpResponse("New record!")
