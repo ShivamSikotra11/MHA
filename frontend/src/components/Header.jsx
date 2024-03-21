@@ -9,6 +9,7 @@ const Header = () => {
       <NavLink
         to={"/"}
         className="left font-habibi text-[2.9rem] w-[60%] pl-12"
+        onClick={() => setState("home")}
       >
         MindCare
       </NavLink>
