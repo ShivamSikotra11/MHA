@@ -6,9 +6,12 @@ const Header = () => {
   const [state, setState] = useState("home");
   return (
     <div className="bg-primary_light flex justify-between py-2 items-center">
-      <div className="left font-habibi text-[2.9rem] w-[60%] pl-12">
+      <NavLink
+        to={"/"}
+        className="left font-habibi text-[2.9rem] w-[60%] pl-12"
+      >
         MindCare
-      </div>
+      </NavLink>
       <div className="right   text-[2.5rem] w-[40%] flex justify-between pr-4 py-1 cursor-pointer">
         <NavLink
           to={"/"}
