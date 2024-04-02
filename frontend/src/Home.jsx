@@ -8,7 +8,7 @@ import Header from "./components/Header";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className=" bg-bg ">
       <HeroSection />
       <Photos />
       <ConditionContent />

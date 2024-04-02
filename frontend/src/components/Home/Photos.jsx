@@ -3,10 +3,7 @@ import { useConditionContext } from "../../store/ConditionContext";
 
 const Photos = () => {
   const { showCondition, curCondition } = useConditionContext();
-  // const showCondition = (c) => {
-  //   console.log(c);
-  // }
-  // const curCondition = "Depression";
+  
   return (
     <div className="flex h-[40rem]  justify-evenly items-center my-4">
       <div

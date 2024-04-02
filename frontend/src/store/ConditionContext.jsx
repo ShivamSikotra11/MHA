@@ -9,6 +9,7 @@ const initialState = {
   curCondition: "Depression",
   isLoading: false,
   isError: false,
+  isFetching: false,
 };
 
 const ConditionProvider = ({ children }) => {
@@ -16,34 +17,13 @@ const ConditionProvider = ({ children }) => {
   const showCondition = (condition) => {
     dispatch({ type: "SET_API_DATA", payload: JSONdata, condition: condition });
   };
-
-  // const getConditionData = async () => {
-  //   try {
-  //     // const response = await fetch("skills.json");
-  //     // const data = await response.text();
-  //     // const trimmedData = data.trim();
-  //     // const jsonData = JSON.parse(trimmedData);
-
-  //     // const resp = await fetch("./skills.json");
-  //     // const resp = await fetch("./skills.json", {
-  //     //   headers: {
-  //     //     accept: "application/json",
-  //     //     "User-agent": "learning app",
-  //     //   },
-  //     // });
-  //     const jsonData = await resp.json();
-  //     console.log(jsonData);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getConditionData();
-  // }, []);
-
+  const AlterFetchStatus = (value) => {
+    dispatch({ type: "ALTER_FETCH", payload: value });
+  };
   return (
-    <ConditionContext.Provider value={{ ...state, showCondition }}>
+    <ConditionContext.Provider
+      value={{ ...state, showCondition, AlterFetchStatus}}
+    >
       {children}
     </ConditionContext.Provider>
   );

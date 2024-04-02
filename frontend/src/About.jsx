@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import AxiosAPI from "./AxiosAPI";
+import AddPersonForm from "./AddPersonForm";
+import { useConditionContext } from "./store/ConditionContext";
 
 const About = () => {
+  const { AlterFetchStatus } = useConditionContext();
   return (
-    <div>About</div>
-  )
-}
+    <div>
+      
+      <AxiosAPI></AxiosAPI>
+      <AddPersonForm />
+    </div>
+  );
+};
 
-export default About
+export default About;

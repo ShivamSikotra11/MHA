@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "./Button";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
-  const [state, setState] = useState("home");
+  const url = useLocation();
+
   return (
     <div className="bg-primary_light flex justify-between py-2 items-center">
       <NavLink
         to={"/"}
         className="left font-habibi text-[2.9rem] w-[60%] pl-12"
-        onClick={() => setState("home")}
       >
         MindCare
       </NavLink>
@@ -17,34 +17,31 @@ const Header = () => {
         <NavLink
           to={"/"}
           className={`font-inter cursor-pointer ${
-            state === "home" ? "HeaderActive" : ""
+            location.pathname === "/" ? "HeaderActive" : ""
           } `}
-          onClick={() => setState("home")}
         >
           Home
         </NavLink>
         <NavLink
           to={"/about"}
           className={`font-inter cursor-pointer ${
-            state === "about" ? "HeaderActive" : ""
+            location.pathname === "/about" ? "HeaderActive" : ""
           } `}
-          onClick={() => setState("about")}
         >
           About Us
         </NavLink>
         <NavLink
           to={"/contact"}
           className={`font-inter cursor-pointer ${
-            state === "contact" ? "HeaderActive" : ""
+            location.pathname === "/contact" ? "HeaderActive" : ""
           } `}
-          onClick={() => setState("contact")}
         >
           Contact Us
         </NavLink>
         {/* <div className="font-inter text-white bg-primary_dark px-14 rounded-full cursor-pointer">
           Login
         </div> */}
-        <Button value={"Login"} />
+        <Button value={"Login"} Goto={"/login"} />
       </div>
     </div>
   );

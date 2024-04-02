@@ -12,7 +12,7 @@ const Blogs = () => {
   return (
     <div className="my-10">
       <h2 className="text-center mb-4">Our Blogs For You</h2>
-      <div className="box flex justify-around">
+      <div className=" flex justify-around">
         {blogContents.map((content, index) => (
           <Blog key={index} content={content} />
         ))}

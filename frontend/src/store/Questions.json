@@ -1,0 +1,117 @@
+[
+  {
+    "id": 1,
+    "question": "What is anxiety disorder?",
+    "options": [
+      { "key": "A", "text": "Feeling sad occasionally" },
+      {
+        "key": "B",
+        "text": "A mental health disorder characterized by feelings of worry or fear"
+      },
+      { "key": "C", "text": "Experiencing temporary stress" },
+      { "key": "D", "text": "Being overly excited" }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What is depression?",
+    "options": [
+      { "key": "A", "text": "Feeling nervous in social situations" },
+      {
+        "key": "B",
+        "text": "A mental health disorder characterized by persistent sadness and loss of interest in activities"
+      },
+      { "key": "C", "text": "Being overly happy all the time" },
+      { "key": "D", "text": "Feeling tired occasionally" }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What are some common symptoms of stress?",
+    "options": [
+      { "key": "A", "text": "Increased appetite and weight gain" },
+      { "key": "B", "text": "Trouble sleeping" },
+      { "key": "C", "text": "Decreased heart rate" },
+      { "key": "D", "text": "Improved concentration" }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is the importance of self-care for mental health?",
+    "options": [
+      { "key": "A", "text": "It's not important" },
+      { "key": "B", "text": "It helps in maintaining a healthy mind and body" },
+      { "key": "C", "text": "It only benefits physical health" },
+      { "key": "D", "text": "It leads to increased stress" }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What is the meaning of mindfulness?",
+    "options": [
+      { "key": "A", "text": "Being unaware of your surroundings" },
+      { "key": "B", "text": "Being completely focused on past events" },
+      {
+        "key": "C",
+        "text": "Being aware of the present moment without judgment"
+      },
+      { "key": "D", "text": "Being overly critical of yourself" }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What are some signs of a healthy emotional state?",
+    "options": [
+      { "key": "A", "text": "Irritability and mood swings" },
+      { "key": "B", "text": "Having a sense of purpose" },
+      { "key": "C", "text": "Feeling constantly overwhelmed" },
+      { "key": "D", "text": "Avoiding social interactions" }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What is the importance of seeking help for mental health issues?",
+    "options": [
+      { "key": "A", "text": "It's not necessary" },
+      { "key": "B", "text": "It can lead to improved quality of life" },
+      { "key": "C", "text": "It only leads to dependency" },
+      { "key": "D", "text": "It's a sign of weakness" }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the role of exercise in mental health?",
+    "options": [
+      { "key": "A", "text": "It has no impact on mental health" },
+      {
+        "key": "B",
+        "text": "It can reduce symptoms of depression and anxiety"
+      },
+      { "key": "C", "text": "It only benefits physical health" },
+      { "key": "D", "text": "It increases stress levels" }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What does it mean to set boundaries for mental health?",
+    "options": [
+      { "key": "A", "text": "Avoiding all social interactions" },
+      { "key": "B", "text": "Communicating your needs and limits to others" },
+      { "key": "C", "text": "Letting others control your actions" },
+      { "key": "D", "text": "Having no personal space" }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "How does social support contribute to mental health?",
+    "options": [
+      { "key": "A", "text": "It has no impact" },
+      {
+        "key": "B",
+        "text": "It provides emotional support during difficult times"
+      },
+      { "key": "C", "text": "It leads to increased stress" },
+      { "key": "D", "text": "It worsens mental health issues" }
+    ]
+  }
+]

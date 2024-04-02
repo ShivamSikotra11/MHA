@@ -7,7 +7,8 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Irish Grover", system-ui;
+  // font-family: "Irish Grover", system-ui;
+  font-family: "Lexend", sans-serif;
 }
 
 
@@ -20,9 +21,8 @@ html {
 
 body {
   overflow-x: hidden;
-   scrollbar-color: rgb(98 84 243);
-    scrollbar-width: thin;
-  background-color:#F2FAFF;
+  scrollbar-color: rgb(98 84 243);
+  scrollbar-width: thin;
 }
 
 body::-webkit-scrollbar {
@@ -42,7 +42,6 @@ body::-webkit-scrollbar-thumb {
 }
 
  
-
 h1 {
   font-size: 6rem;
   font-weight: 900;
@@ -97,10 +96,18 @@ a {
 .HeaderActive{
   border-radius: 1.2rem;
   background-color: white;
-  padding-left: 4px;
-  padding-right: 4px;
+  // padding-left: 4px;
+  // padding-right: 4px;
+  padding:0 2rem;
 } 
+.postbox{
+  transition:0.5s ease-in-out;
 
-
-
+}
+.postbox:hover{
+  -webkit-box-shadow: 0px 0px 33px 0px rgba(0,102,140,0.49);
+  -moz-box-shadow: 0px 0px 33px 0px rgba(0,102,140,0.49);
+  box-shadow: 0px 0px 33px 0px rgba(0,102,140,0.49);
+  cursor:pointer;
+} 
 `;

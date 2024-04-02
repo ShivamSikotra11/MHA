@@ -4,11 +4,15 @@ const ConditionReducer = (state, action) => {
       return { ...state, isLoading: true };
     case "API_ERROR":
       return { ...state, isLoading: false, isError: true };
+    case "ALTER_FETCH":
+      return { ...state, isFetching: action.payload };
     case "SET_API_DATA":
       return {
         ...state,
-        curCondition:action.condition,
-        ConditionData: action.payload.find(data => data.condition === action.condition)
+        curCondition: action.condition,
+        ConditionData: action.payload.find(
+          (data) => data.condition === action.condition
+        ),
       };
     default:
       return state;

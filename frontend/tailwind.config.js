@@ -5,12 +5,13 @@ module.exports = {
     extend: {
       colors: {
         heading: "rgb(24 24 29)",
+        primary_elight: "#EBF8FF",
         primary_light: "#A9E1FF",
         primary_dark: "#00668C",
         text: "#004660",
         white: "#fff",
         black: "#212529",
-        gray: "#D9D9D9",
+        gray: "rgba(0,0,0,0.6)",
         helper: "#8490ff",
         bg: "#F2FAFF",
         footer_bg: "#0a1435",
