@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./styles/login.css";
 import styled from "styled-components";
+import axios from "axios";
 
 const Login = () => {
   const handleEyeClick = (e) => {
@@ -32,6 +33,31 @@ const Login = () => {
     }
   };
 
+  const user_name = useRef(null);
+  const user_password = useRef(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // AlterFetchStatus(true);
+      const userData = {
+        name: user_name.current.value,
+        password: user_password.current.value,
+      };
+      const response = await axios.post(
+        "http://localhost:8000/api/login/",
+        userData
+      );
+      console.log("New record added successfully:", response.data.data);
+      // setFormData(newFormData);
+      user_name.current.value = "";
+      user_password.current.value = "";
+      // AlterFetchStatus(false);
+    } catch (error) {
+      console.error("Error adding new record:", error);
+    }
+  };
+
   return (
     <div className="bg-[rgba(169,225,255,1)] " onLoad={handleFlashMessages}>
       <div className="container2">
@@ -58,11 +84,16 @@ const Login = () => {
                 </div>
               </div>
               <div className="login-details">
-                <form action="/login" method="POST">
-                  {" "}
+                <form onSubmit={handleSubmit}>
                   {/* Updated form action */}
                   <div className="ip username">
-                    <input type="text" name="user_id" id="user_id" required />
+                    <input
+                      type="text"
+                      name="user_id"
+                      id="user_id"
+                      ref={user_name}
+                      required
+                    />
                     <label htmlFor="user_id">User ID</label>
                   </div>
                   <div className="ip password">
@@ -70,6 +101,7 @@ const Login = () => {
                       type="password"
                       name="password"
                       id="password"
+                      ref={user_password}
                       required
                     />
                     <label htmlFor="password">Password</label>

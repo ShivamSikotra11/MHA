@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import per_con
+from .models import per_con, user_model
 from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -35,3 +35,19 @@ def get_all_person(request):
       parsed_persons.append(person)
       
   return JsonResponse(parsed_persons, safe=False)
+
+@csrf_exempt
+def get_logged(request):
+  if request.method == 'POST':
+    # user = user_model.find()
+    data = json.loads(request.body)
+    username = data.get('name', '')
+    password = data.get('password', '')
+    user = user_model.find_one({'user_name': username, 'user_password': password})
+    user['_id'] = str(user['_id'])
+    if user:
+      return JsonResponse({'message': 'Successfully logged in','data':user},safe=False, status=200)
+    else:
+      return JsonResponse({'error': 'Invalid credentials'}, status=400)
+  else:
+    return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
