@@ -15,10 +15,11 @@ import Quiz from "./Quiz";
 import Login from "./Login";
 import OtpForm from "./otp";
 import Interaction from "./Interaction";
+import RegisterPage from "./Register";
 
 const AppWithHeader = () => {
   const location = useLocation();
-  const ExcludeHeaderPages = ["/otp", "/login"];
+  const ExcludeHeaderPages = ["/otp", "/login","/register"];
   const shouldRenderHeader = !ExcludeHeaderPages.some((page) =>
     location.pathname.includes(page)
   );
@@ -31,6 +32,7 @@ const AppWithHeader = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/otp" element={<OtpForm />} />
         <Route path="/interaction" element={<Interaction />} />
       </Routes>

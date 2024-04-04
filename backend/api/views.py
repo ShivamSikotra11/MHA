@@ -44,10 +44,24 @@ def get_logged(request):
     username = data.get('name', '')
     password = data.get('password', '')
     user = user_model.find_one({'user_name': username, 'user_password': password})
-    user['_id'] = str(user['_id'])
     if user:
+      user['_id'] = str(user['_id'])
+      send_email_to_user(request,user['user_email'])
       return JsonResponse({'message': 'Successfully logged in','data':user},safe=False, status=200)
     else:
       return JsonResponse({'error': 'Invalid credentials'}, status=400)
   else:
     return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+  
+# views.py
+
+from django.core.mail import send_mail
+
+def send_email_to_user(request,email):
+    subject = 'Welcome to our website!'
+    message = 'Thank you for signing up. We hope you enjoy our services.'
+    email_from = 'lifesaver102023@gmail.com'
+    recipient_list = [email, ]  # Replace with the end user's email
+    
+    send_mail(subject, message, email_from, recipient_list)
+    return HttpResponse("Mail Sent!!!")
