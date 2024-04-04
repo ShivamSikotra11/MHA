@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import pymongo
+from security import EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,11 +32,7 @@ ALLOWED_HOSTS = ["127.0.0.1","localhost"]
 # settings.py
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True  # or False if not using TLS
-EMAIL_HOST_USER = 'lifesaver102023@gmail.com'
-EMAIL_HOST_PASSWORD = 'aouojaqtpwhlzoiy'
+
 
 
 

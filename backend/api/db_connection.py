@@ -1,12 +1,10 @@
+from security import uri
+
 MONGODB_DATABASE_NAME = "mha"
 
 
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-
-# uri = "mongodb+srv://viral:Viral123@mha.bxx8y7j.mongodb.net/?retryWrites=true&w=majority&appName=mha"
-uri = "mongodb+srv://viral:Viral123@mha.bxx8y7j.mongodb.net/?retryWrites=true&w=majority"
-
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))

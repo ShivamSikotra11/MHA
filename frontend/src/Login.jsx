@@ -173,7 +173,20 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Handle form submission
+      // AlterFetchStatus(true);
+      const userData = {
+        name: user_name.current.value,
+        password: user_password.current.value,
+      };
+      const response = await axios.post(
+        "http://localhost:8000/api/login/",
+        userData
+      );
+      console.log("New record added successfully:", response.data.data);
+      // setFormData(newFormData);
+      user_name.current.value = "";
+      user_password.current.value = "";
+      // AlterFetchStatus(false);
     } catch (error) {
       console.error("Error adding new record:", error);
     }
