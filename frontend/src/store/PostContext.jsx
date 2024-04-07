@@ -62,6 +62,9 @@ const PostProvider = ({ children }) => {
       console.error("Error adding new record:", error);
     }
   };
+  const AlterCreatePost = async (postObject) => {
+    dispatch({ type: "TOGGLE_CREATE_POST" });
+  };
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
@@ -82,6 +85,7 @@ const PostProvider = ({ children }) => {
         getNameAcronym,
         getLogOut,
         handleCreatePost,
+        AlterCreatePost
       }}
     >
       {children}
