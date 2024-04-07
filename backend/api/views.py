@@ -110,6 +110,7 @@ def get_register(request):
 @csrf_exempt
 def add_post(request):
     if request.method == 'POST':
+        print("hi")
         data = json.loads(request.body)
 
         email = data.get('email')

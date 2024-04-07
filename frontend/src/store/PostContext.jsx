@@ -51,13 +51,14 @@ const PostProvider = ({ children }) => {
   };
 
   const handleCreatePost = async (postObject) => {
+    // console.log(postObject);
     try {
       const response = await axios.post(
         "http://localhost:8000/api/add_post/",
         postObject
       );
       dispatch({ type: "TOGGLE_CREATE_POST" });
-      console.log(`Post Successfuly done for ${postObject.email}!`);
+      // console.log(`Post Successfuly done for ${postObject.email}!`);
     } catch (error) {
       console.error("Error adding new record:", error);
     }

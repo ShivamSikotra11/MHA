@@ -3,11 +3,12 @@ import React, { useRef } from "react";
 import { usePostContext } from "../../store/PostContext";
 
 const CreatePost = () => {
-  const { handleCreatePost , AlterCreatePost } = usePostContext();
+  const { handleCreatePost , AlterCreatePost, curUser } = usePostContext();
   const titleRef = useRef();
   const contentRef = useRef();
 
-  const handleCreatePostFunction = () => {
+  const handleCreatePostFunction = (e) => {
+    e.preventDefault();
     const currentDate = new Date(); 
     const currTimestamp = currentDate.toLocaleString();
     const postObject = {
@@ -28,20 +29,22 @@ const CreatePost = () => {
           type="text"
           className="w-full font-habibi font-medium  rounded-xl p-2 outline-none border-none mb-8 bg-primary_elight"
           placeholder={"Enter The Title Here"}
+          ref={titleRef}
         />
         <textarea
           className="w-full font-habibi font-medium rounded-xl p-2 outline-none border-none resize-none custom-scrollbar text-primary_dark text-3xl bg-primary_elight"
           placeholder={"Enter The Text Here"}
           style={{ maxWidth: "100%", width: "100%", height: "30rem" }}
+          ref={contentRef}
         />
         <div className="post-btns  mt-8 flex justify-end gap-x-[3rem] ">
         
           <div
         className={`font-inter text-black text-[2rem] bg-[#A9E1FF] px-12  rounded-full cursor-pointer inline-block`} onClick={()=>AlterCreatePost()}
         >Cancel</div>
-          <div
+          <button
         className={`font-inter text-white text-[2rem] bg-primary_dark px-12  rounded-full cursor-pointer inline-block`} type="submit"
-        >Post</div>
+        >Post</button>
         </div>
       </form>
     </div>
