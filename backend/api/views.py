@@ -143,7 +143,8 @@ async def fetch_posts():
             "heading": "$user_posts.heading",
             "timestamp": "$user_posts.timestamp",
             "_id": 0  # Exclude the _id field
-        }}
+        }},
+        {"$sort": {"timestamp": -1}}
     ]
     result = list(posts.aggregate(pipeline))
     return result
