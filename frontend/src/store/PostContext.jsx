@@ -33,8 +33,10 @@ const PostProvider = ({ children }) => {
         "http://localhost:8000/api/login/",
         userData
       );
-      dispatch({ type: "SET_CURRENT_USER", payload: userData });
+      userData.name = response.data.data.user_name;
+      dispatch({ type: "SET_CURRENT_USER", payload: userData});
       localStorage.setItem("userData", JSON.stringify(userData));
+      // console.log(response.data.data.user_name)
       redirect("/");
     } catch (error) {
       dispatch({ type: "ALTER_LOGIN_FETCHING" });

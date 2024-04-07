@@ -43,15 +43,15 @@ def get_logged(request):
   if request.method == 'POST':
     # user = user_model.find()
     data = json.loads(request.body)
-    username = data.get('name', '')
+    user_email = data.get('email', '')
     password = data.get('password', '')
-    user = user_model.find_one({'user_name': username, 'user_password': password})
+    user = user_model.find_one({'user_email': user_email, 'user_password': password})
     if user:
       user['_id'] = str(user['_id'])
-      send_email_to_user(request,user['user_email'])
+      # send_email_to_user(request,user['user_email'])
       return JsonResponse({'message': 'Successfully logged in','data':user},safe=False, status=200)
     else:
-      return JsonResponse({'error': 'Invalid credentials'}, status=400)
+      return JsonResponse({'error': 'Invalid credentials','message':'incorrect'}, status=400)
   else:
     return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
   

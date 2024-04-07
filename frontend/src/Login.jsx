@@ -19,8 +19,9 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const userData = {
-      name: user_name.current.value,
+      email: user_name.current.value,
       password: user_password.current.value,
+      name: "",
     };
     handleLoginSubmit(redirect, userData);
   };

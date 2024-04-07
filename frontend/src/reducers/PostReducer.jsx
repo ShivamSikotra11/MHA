@@ -13,7 +13,7 @@ const PostReducer = (state, action) => {
     case "SET_CURRENT_USER":
       return {
         ...state,
-        curUser:action.payload,
+        curUser: action.payload,
         loggedIn:true,
         isLoginFetching: false
       };
