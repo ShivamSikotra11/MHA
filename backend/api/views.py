@@ -1,6 +1,6 @@
 from django.core.mail import send_mail
 from django.shortcuts import render
-from .models import per_con, user_model
+from .models import per_con, user_model, posts
 from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -106,3 +106,28 @@ def get_register(request):
     except Exception as e:
         # Handle any exceptions, and return appropriate response
         return JsonResponse({'success': False, 'error': str(e)})
+      
+@csrf_exempt
+def add_post(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        email = data.get('email')
+        post = data.get('post')
+        # Check if the email exists in the collection
+        existing_user = posts.find_one({"user_email": email})
+
+        if existing_user:
+            # If user exists, append the post to the user's posts array
+            posts.update_one({"user_email": email}, {"$push": {"user_posts": post}})
+            return JsonResponse({'success':True, 'message':"Post added successfully."})
+        else:
+            # If user doesn't exist, create a new document with the post
+            new_document = {
+                "user_email": email,
+                "user_posts": [post]
+            }
+            posts.insert_one(new_document)
+            return JsonResponse({'success':True, 'message':"New Post added successfully."})
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)

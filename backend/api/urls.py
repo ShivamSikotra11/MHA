@@ -7,5 +7,6 @@ urlpatterns = [
   path('show/',views.get_all_person),
   path('login/',views.get_logged),
   path('mail/',views.send_email_to_user),
-  path('register/',views.get_register),
+  path('register/',views.get_register), 
+  path('add_post/',views.add_post),
 ]
