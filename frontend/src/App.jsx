@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import Home from "./Home";
 import "./styles/index.css";
@@ -16,13 +17,25 @@ import Login from "./Login";
 import OtpForm from "./otp";
 import Interaction from "./Interaction";
 import RegisterPage from "./Register";
+import { usePostContext } from "./store/PostContext";
 
 const AppWithHeader = () => {
   const location = useLocation();
-  const ExcludeHeaderPages = ["/otp", "/login","/register"];
+  const redirect = useNavigate();
+  const { loggedIn } = usePostContext();
+  const ExcludeHeaderPages = ["/otp", "/login", "/register"];
   const shouldRenderHeader = !ExcludeHeaderPages.some((page) =>
     location.pathname.includes(page)
   );
+  const AbortedRoutes=["/login","/register"]
+
+  useEffect(() => {
+    // If user is  logged in and trying to access /login, redirect to /
+    if (loggedIn && (AbortedRoutes.includes(location.pathname) )) {
+      redirect("/");
+    }
+  }, [loggedIn, location.pathname]);
+
   return (
     <>
       {shouldRenderHeader && <Header />}

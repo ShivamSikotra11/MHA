@@ -90,8 +90,11 @@ const RegisterPage = () => {
       );
       console.log("user registered successfully:", response.data);
       // setFormData(newFormData);
-      firstNameRef.current.value = "";
-      lastNameRef.current.value = "";
+      name.current.value = "";
+      emailid.current.value = "";
+      city.current.value = "";
+      mobileno.current.value = "";
+      password.current.value = "";
       // AlterFetchStatus(false);
     } catch (error) {
       console.error("Error adding new record:", error);
@@ -172,7 +175,7 @@ const RegisterPage = () => {
                   />
                   <label htmlFor="password">Password</label>
                   <i
-                    className="fa-solid fa-eye-slash"
+                    className={`fa-solid ${passwordVisible ? "fa-eye" : "fa-eye-slash"}`}
                     style={{ color: "#00668c" }}
                     onClick={handlePasswordVisibility}
                   ></i>
