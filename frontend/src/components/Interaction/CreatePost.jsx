@@ -22,17 +22,17 @@ const CreatePost = () => {
     handleCreatePost(postObject);
   }
   return (
-    <div className="w-[40rem] border-2 shadow-2xl shadow-black-900/50 border-primary_dark bg-primary_light2 p-8 rounded-[2rem] ">
+    <div className="w-[45rem] border-2 shadow-2xl shadow-black-900/50 border-primary_dark bg-primary_light2 p-8 rounded-[2rem] ">
       <p className="font-inter text-4xl  mb-8">Create Post</p>
       <form onSubmit={handleCreatePostFunction} > 
         <input
           type="text"
-          className="w-full font-habibi font-medium  rounded-xl p-2 outline-none border-none mb-8 bg-primary_elight"
+          className="w-full font-habibi font-medium px-8 py-2  rounded-xl p-2 outline-none border-none mb-8 bg-primary_elight"
           placeholder={"Enter The Title Here"}
           ref={titleRef}
         />
         <textarea
-          className="w-full font-habibi font-medium rounded-xl p-2 outline-none border-none resize-none custom-scrollbar text-primary_dark text-3xl bg-primary_elight"
+          className="w-full font-habibi font-medium rounded-xl px-8 py-2 outline-none border-none resize-none custom-scrollbar text-primary_dark text-3xl bg-primary_elight text-justify"
           placeholder={"Enter The Text Here"}
           style={{ maxWidth: "100%", width: "100%", height: "30rem" }}
           ref={contentRef}

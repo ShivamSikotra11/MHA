@@ -11,7 +11,7 @@ const UserStats = () => {
     uniqueEmails.add(item.user_email);
   });
 
-console.log("Number of unique emails:", uniqueEmails.size);
+// console.log("Number of unique emails:", uniqueEmails.size);
   return (
     <div className="font-inter  bg-primary_elight mb-8">
       <div className="border-b-2 border-primary_dark text-4xl p-4 font-inter">

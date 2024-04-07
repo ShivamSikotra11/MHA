@@ -24,7 +24,7 @@ const UserForum = () => {
         <div className="all-posts grid grid-cols-2 grid-rows-3    bg-primary_elight  gap-8  p-8">
           {allPosts.map((post) => (
             <Post
-              key={post.timestamp}
+              key={post.timestamp+'_'+post.user_email.substr(0,post.user_email.indexOf('@'))}
               post={post}
               onClick={() => setShowPost(post)}
             />
