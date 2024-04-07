@@ -7,11 +7,12 @@ import axios from "axios";
 const PostContext = createContext("");
 
 const initialState = {
-  showPost: PostJSON[0],
+  showPost: {},
   isLoginFetching: false,
   curUser: JSON.parse(localStorage.getItem("userData")) || {},
   loggedIn: false,
   createPost: false,
+  allPosts:[],
 };
 
 const PostProvider = ({ children }) => {
@@ -19,6 +20,16 @@ const PostProvider = ({ children }) => {
 
   const setShowPost = (id) => {
     dispatch({ type: "SET_SHOW_POST", payload: PostJSON,id:id });
+  };
+  const getAllPost = async () => {
+    console.log(1);
+    // try {
+    //   const response = axios.get("http://127.0.0.1:8000/api/show_all_posts/");
+    //   dispatch({ "type": "SET_ALL_POSTS", payload: response.data.posts });
+    // }
+    // catch(error) {
+    //   console.error("Error fetching posts:", error);
+    // }
   };
 
   function getNameAcronym(sentence) {
@@ -66,6 +77,7 @@ const PostProvider = ({ children }) => {
   const AlterCreatePost = async (postObject) => {
     dispatch({ type: "TOGGLE_CREATE_POST" });
   };
+  
 
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
@@ -86,7 +98,7 @@ const PostProvider = ({ children }) => {
         getNameAcronym,
         getLogOut,
         handleCreatePost,
-        AlterCreatePost
+        AlterCreatePost,getAllPost
       }}
     >
       {children}

@@ -28,6 +28,11 @@ const PostReducer = (state, action) => {
         ...state,
         createPost: !state.createPost,
       };
+    case "SET_ALL_POSTS":
+      return {
+        ...state,
+        allPosts:action.payload,
+      };
     default:
       return state;
   }
