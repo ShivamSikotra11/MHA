@@ -3,10 +3,10 @@ import React, { useRef } from "react";
 import { usePostContext } from "../../store/PostContext";
 
 const CreatePost = () => {
-  const { handleCreatePost } = usePostContext();
+  const { handleCreatePost , AlterCreatePost } = usePostContext();
   const titleRef = useRef();
   const contentRef = useRef();
-  
+
   const handleCreatePostFunction = () => {
     const currentDate = new Date(); 
     const currTimestamp = currentDate.toLocaleString();
@@ -37,7 +37,7 @@ const CreatePost = () => {
         <div className="post-btns  mt-8 flex justify-end gap-x-[3rem] ">
         
           <div
-        className={`font-inter text-black text-[2rem] bg-[#A9E1FF] px-12  rounded-full cursor-pointer inline-block`} onClick={()=>handleCreatePost()}
+        className={`font-inter text-black text-[2rem] bg-[#A9E1FF] px-12  rounded-full cursor-pointer inline-block`} onClick={()=>AlterCreatePost()}
         >Cancel</div>
           <div
         className={`font-inter text-white text-[2rem] bg-primary_dark px-12  rounded-full cursor-pointer inline-block`} type="submit"
