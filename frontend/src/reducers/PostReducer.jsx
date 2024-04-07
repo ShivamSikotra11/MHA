@@ -23,6 +23,11 @@ const PostReducer = (state, action) => {
         loggedIn:false,
         curUser:{},
       };
+    case "TOGGLE_CREATE_POST":
+      return {
+        ...state,
+        createPost: !state.createPost,
+      };
     default:
       return state;
   }

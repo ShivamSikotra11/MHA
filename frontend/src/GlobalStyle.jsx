@@ -40,7 +40,19 @@ body::-webkit-scrollbar-thumb {
     border-radius: 9px;
     background-clip: content-box;
 }
+ 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; 
+}
 
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #00668C; 
+  border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #A9E1FF;
+}
  
 h1 {
   font-size: 6rem;
@@ -102,7 +114,6 @@ a {
 } 
 .postbox{
   transition:0.5s ease-in-out;
-
 }
 .postbox:hover{
   -webkit-box-shadow: 0px 0px 33px 0px rgba(0,102,140,0.49);

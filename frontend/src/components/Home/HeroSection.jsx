@@ -4,7 +4,7 @@ import Button from "../Button";
 import { usePostContext } from "../../store/PostContext";
 
 const HeroSection = () => {
-  const { curUser } = usePostContext();
+  const { curUser , loggedIn } = usePostContext();
 
   return (
     <Wrapper>
@@ -18,7 +18,10 @@ const HeroSection = () => {
             Join our supportive community for guidance and
             understanding.Together, we'll navigate your mental health journey
           </div>
-          <Button value={"Get Started"} Goto={"/interaction"} />
+          {
+            !loggedIn &&
+          <Button value={"Get Started"} Goto={"/register"} />
+          }
         </div>
       </div>
     </Wrapper>

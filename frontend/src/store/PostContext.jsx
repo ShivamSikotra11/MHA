@@ -11,6 +11,7 @@ const initialState = {
   isLoginFetching: false,
   curUser: JSON.parse(localStorage.getItem("userData")) || {},
   loggedIn: false,
+  createPost: false,
 };
 
 const PostProvider = ({ children }) => {
@@ -49,6 +50,19 @@ const PostProvider = ({ children }) => {
     localStorage.removeItem("userData");
   };
 
+  const handleCreatePost = async (postObject) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/add_post/",
+        postObject
+      );
+      dispatch({ type: "TOGGLE_CREATE_POST" });
+      console.log(`Post Successfuly done for ${postObject.email}!`);
+    } catch (error) {
+      console.error("Error adding new record:", error);
+    }
+  };
+
   useEffect(() => {
     const storedUserData = localStorage.getItem("userData");
     if (storedUserData) {
@@ -67,6 +81,7 @@ const PostProvider = ({ children }) => {
         handleLoginSubmit,
         getNameAcronym,
         getLogOut,
+        handleCreatePost,
       }}
     >
       {children}

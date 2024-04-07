@@ -13,7 +13,15 @@ const Header = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
-
+  document.addEventListener('click', (event) => {
+    if (!event.target.classList.contains('profile-circle')) {
+      setDropdownOpen(false);
+    }
+  });
+  document.addEventListener('visibilitychange', () => {
+    setDropdownOpen(false);
+  });
+  
   return (
     <Wrapper>
       <div className="bg-primary_light flex justify-between py-2 items-center">
@@ -56,6 +64,9 @@ const Header = () => {
                   </p>
                   <NavLink to={"/quiz"}>
                     <p className="dd-item">Get Quiz Now</p>
+                  </NavLink>
+                  <NavLink to={"/interaction"}>
+                    <p className="dd-item">Get Interact</p>
                   </NavLink>
                 </div>
               )}

@@ -7,6 +7,7 @@ module.exports = {
         heading: "rgb(24 24 29)",
         primary_elight: "#EBF8FF",
         primary_light: "#A9E1FF",
+        primary_light2: "#DAF2FF",
         primary_dark: "#00668C",
         text: "#004660",
         white: "#fff",

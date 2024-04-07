@@ -18,20 +18,23 @@ import OtpForm from "./otp";
 import Interaction from "./Interaction";
 import RegisterPage from "./Register";
 import { usePostContext } from "./store/PostContext";
+import PageNotFound from "./PageNotFound";
 
 const AppWithHeader = () => {
   const location = useLocation();
   const redirect = useNavigate();
   const { loggedIn } = usePostContext();
-  const ExcludeHeaderPages = ["/otp", "/login", "/register"];
+  const ExcludeHeaderPages = ["/otp", "/login", "/register","/interaction"];
   const shouldRenderHeader = !ExcludeHeaderPages.some((page) =>
     location.pathname.includes(page)
   );
   const AbortedRoutes=["/login","/register"]
 
   useEffect(() => {
-    // If user is  logged in and trying to access /login, redirect to /
     if (loggedIn && (AbortedRoutes.includes(location.pathname) )) {
+      redirect("/");
+    }
+    if (!loggedIn && location.pathname=='/quiz' ) {
       redirect("/");
     }
   }, [loggedIn, location.pathname]);
@@ -48,6 +51,7 @@ const AppWithHeader = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/otp" element={<OtpForm />} />
         <Route path="/interaction" element={<Interaction />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

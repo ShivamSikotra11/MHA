@@ -176,10 +176,7 @@
   outline: none;
   /* border: 2px solid red; */
 }
-input::selection {
-  /* color:yellow; */
-  background-color: #fdcfcf;
-}
+
 input[type="text"] {
   color: #00668c;
   font-size: var(--text-md);
@@ -236,10 +233,7 @@ form .password i {
     font-size: 1.65rem;
   }
 }
-
-label::selection {
-  background-color: rgba(255, 40, 40, 0.682);
-}
+ 
 
 form .btns {
   /* border: 2px solid black; */

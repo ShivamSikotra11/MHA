@@ -92,9 +92,9 @@ const Login = () => {
                       onClick={handlePasswordVisibility}
                     ></i>
                   </div>
-                  <div className={styles["forget-password"]}>
+                  {/* <div className={styles["forget-password"]}>
                     <a href="{{url_for('forget')}}">Forget Password?</a>
-                  </div>
+                  </div> */}
                   <div className="flex justify-center">
                     {isLoginFetching && <Loader />}
                   </div>
