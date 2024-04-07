@@ -5,6 +5,7 @@ from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.views.decorators.http import require_POST
+import asyncio
 
 # Create your views here.
 def index(request):
@@ -132,3 +133,21 @@ def add_post(request):
             return JsonResponse({'success':True, 'message':"New Post added successfully."})
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+  
+async def fetch_posts():
+    pipeline = [
+        {"$unwind": "$user_posts"},
+        {"$project": {
+            "user_email": 1,
+            "content": "$user_posts.content",
+            "heading": "$user_posts.heading",
+            "timestamp": "$user_posts.timestamp",
+            "_id": 0  # Exclude the _id field
+        }}
+    ]
+    result = list(posts.aggregate(pipeline))
+    return result
+
+async def show_all_posts(request):
+    result = await fetch_posts()
+    return JsonResponse(result, safe=False)

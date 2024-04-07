@@ -9,4 +9,5 @@ urlpatterns = [
   path('mail/',views.send_email_to_user),
   path('register/',views.get_register), 
   path('add_post/',views.add_post),
+  path('show_all_posts/',views.show_all_posts),
 ]

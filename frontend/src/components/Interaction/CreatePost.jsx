@@ -10,7 +10,7 @@ const CreatePost = () => {
   const handleCreatePostFunction = (e) => {
     e.preventDefault();
     const currentDate = new Date(); 
-    const currTimestamp = currentDate.toLocaleString();
+    const currTimestamp = currentDate.getTime();
     const postObject = {
       email: curUser.email,
       post: {

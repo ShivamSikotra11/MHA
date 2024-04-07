@@ -19,17 +19,18 @@ const PostProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const setShowPost = (id) => {
-    dispatch({ type: "SET_SHOW_POST", payload: PostJSON,id:id });
+    dispatch({ type: "SET_SHOW_POST", id:id });
   };
+
   const getAllPost = async () => {
-    console.log(1);
-    // try {
-    //   const response = axios.get("http://127.0.0.1:8000/api/show_all_posts/");
-    //   dispatch({ "type": "SET_ALL_POSTS", payload: response.data.posts });
-    // }
-    // catch(error) {
-    //   console.error("Error fetching posts:", error);
-    // }
+    // console.log(1);
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/show_all_posts/");
+      dispatch({ "type": "SET_ALL_POSTS", payload: response.data });
+    }
+    catch(error) {
+      console.error("Error fetching posts:", error);
+    }
   };
 
   function getNameAcronym(sentence) {

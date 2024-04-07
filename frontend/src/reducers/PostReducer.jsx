@@ -3,7 +3,7 @@ const PostReducer = (state, action) => {
     case "SET_SHOW_POST":
       return {
         ...state,
-        showPost: action.payload.find((post) => post.id === action.id),
+        showPost: state.allPosts.find((post) => post.timestamp === action.id),
       };
     case "ALTER_LOGIN_FETCHING":
       return {
