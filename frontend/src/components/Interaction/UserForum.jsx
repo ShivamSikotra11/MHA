@@ -4,13 +4,13 @@ import Post from "./Post";
 import { usePostContext } from "../../store/PostContext";
 
 const UserForum = () => {
-  const { handleCreatePost } = usePostContext();
+  const { AlterCreatePost } = usePostContext();
   return (
     <div>
       <div className="flex justify-between px-4  items-center">
         <span className="font-inter text-4xl">User Forum</span>
         <div
-          className={`font-inter text-white text-4xl bg-primary_dark px-14 py-2  rounded-lg cursor-pointer inline-block`} onClick={()=>handleCreatePost()}
+          className={`font-inter text-white text-4xl bg-primary_dark px-14 py-2  rounded-lg cursor-pointer inline-block`} onClick={()=>AlterCreatePost()}
         >
           Start New Topic
         </div>
