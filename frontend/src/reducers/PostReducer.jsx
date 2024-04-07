@@ -3,7 +3,8 @@ const PostReducer = (state, action) => {
     case "SET_SHOW_POST":
       return {
         ...state,
-        showPost: state.allPosts.find((post) => post.timestamp === action.id),
+        showPost: state.allPosts.find(
+          (post) => post.timestamp + '_' + post.user_email.substr(0, post.user_email.indexOf('@')) === action.id),
       };
     case "ALTER_LOGIN_FETCHING":
       return {
