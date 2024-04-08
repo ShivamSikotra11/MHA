@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./styles/register.css";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { usePostContext } from "./store/PostContext";
+
 const RegisterPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [flashMessage, setFlashMessage] = useState("");
+  const redirect = useNavigate();
+  const {getLogIn} = usePostContext()
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -27,46 +31,7 @@ const RegisterPage = () => {
   //   }
   // };
 
-  // const fetchCities = () => {
-  //   fetch("/get_cities_json")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const cities = data["cities"];
-  //       const resultBox = document.getElementById("OptionsCity");
-  //       const inputBox = document.getElementById("CitytextBox");
-  //       const rBHTML = resultBox.innerHTML;
-  //       inputBox.onkeyup = function () {
-  //         let result = [];
-  //         let input = inputBox.value;
-  //         if (input.length) {
-  //           result = cities.filter((keyword) => {
-  //             return keyword.toLowerCase().startsWith(input.toLowerCase());
-  //           });
-  //         }
-  //         display(result);
-  //         if (!result.length) {
-  //           resultBox.innerHTML = "";
-  //         }
-  //         if (!input.length) {
-  //           resultBox.innerHTML = rBHTML;
-  //         }
-  //       };
-
-  //       const display = (result) => {
-  //         resultBox.innerHTML = "";
-  //         const content = result.map((div) => {
-  //           return "<div onclick=showCity(this.innerHTML)>" + div + "</div>";
-  //         });
-  //         resultBox.innerHTML = content.join("");
-  //       };
-  //     })
-  //     .catch((error) => console.error("Error:", error));
-  // };
-
-  // useEffect(() => {
-  //   fetchCities();
-  // }, []);
-
+ 
   const name = useRef(null);
   const emailid = useRef(null);
   const city = useRef(null);
@@ -76,7 +41,6 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // AlterFetchStatus(true);
       const userRegisterData = {
         name: name.current.value,
         emailid: emailid.current.value,
@@ -88,14 +52,9 @@ const RegisterPage = () => {
         "http://localhost:8000/api/register/",
         userRegisterData
       );
-      console.log("user registered successfully:", response.data);
-      // setFormData(newFormData);
-      name.current.value = "";
-      emailid.current.value = "";
-      city.current.value = "";
-      mobileno.current.value = "";
-      password.current.value = "";
-      // AlterFetchStatus(false);
+      getLogIn({name: name.current.value,email: emailid.current.value,password: password.current.value,})
+      // console.log("user registered successfully:", response.data);
+      redirect("/");
     } catch (error) {
       console.error("Error adding new record:", error);
     }

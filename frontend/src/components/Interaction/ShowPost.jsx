@@ -5,7 +5,8 @@ const ShowPost = () => {
   const { showPost } = usePostContext();
   // console.log(showPost);
   return (
-    <div className=" bg-primary_elight postbox">
+    <div className=" bg-primary_elight postbox ">
+      {/* max-h-[50rem] overflow-y-scroll custom-scrollbar   */}
       <div className="border-b-2 border-primary_dark text-4xl p-4 font-inter">
         Post
       </div>

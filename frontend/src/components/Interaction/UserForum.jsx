@@ -20,8 +20,8 @@ const UserForum = () => {
         </div>
       </div>
 
-      <div className="all-posts-container overflow-y-auto max-h-[48rem] mt-8  custom-scrollbar ">
-        <div className="all-posts grid grid-cols-2 grid-rows-3    bg-primary_elight  gap-8  p-8">
+      <div className="all-posts-container overflow-y-auto max-h-[35rem] mt-8  custom-scrollbar ">
+        <div className="all-posts  grid   bg-primary_elight  gap-8  p-8">
           {allPosts.map((post) => (
             <Post
               key={post.timestamp+'_'+post.user_email.substr(0,post.user_email.indexOf('@'))}

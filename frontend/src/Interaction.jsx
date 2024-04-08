@@ -96,7 +96,7 @@ const Interaction = () => {
       <Header/>
       <div className="img-container flex items-center justify-center text-[6rem] text-primary_dark ">
         <div className="content capitalize font-inter">
-          Interact with other user
+          Interact with other users
         </div>
       </div>
       <div className="grid grid-cols-6 p-4 ">
@@ -123,6 +123,14 @@ const Interaction = () => {
 
 const Wrapper = styled.section`
   position: relative;
+    .img-container {
+    background: url("hills.jpg");
+    // width: 100%;
+    height: 20vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 `;
 
 const Overlay = styled.div`

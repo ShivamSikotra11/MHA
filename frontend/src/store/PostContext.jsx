@@ -57,6 +57,10 @@ const PostProvider = ({ children }) => {
     }
   };
 
+  const getLogIn = (userData) => {
+    dispatch({ type: "SET_CURRENT_USER", payload: userData});
+    localStorage.setItem("userData", JSON.stringify(userData));
+  };
   const getLogOut = () => {
     dispatch({ type: "LOG_OUT_USER" });
     localStorage.removeItem("userData");
@@ -99,7 +103,9 @@ const PostProvider = ({ children }) => {
         getNameAcronym,
         getLogOut,
         handleCreatePost,
-        AlterCreatePost,getAllPost
+        AlterCreatePost,
+        getAllPost,
+        getLogIn,
       }}
     >
       {children}
