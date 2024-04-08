@@ -46,13 +46,17 @@ def get_logged(request):
     data = json.loads(request.body)
     user_email = data.get('email', '')
     password = data.get('password', '')
-    user = user_model.find_one({'user_email': user_email, 'user_password': password})
-    if user:
-      user['_id'] = str(user['_id'])
-      # send_email_to_user(request,user['user_email'])
-      return JsonResponse({'message': 'Successfully logged in','data':user},safe=False, status=200)
+    user_check = user_model.find_one({'user_email': user_email})
+    if user_check:
+      user = user_model.find_one({'user_email': user_email, 'user_password': password})
+      if user:
+        user['_id'] = str(user['_id'])
+        # send_email_to_user(request,user['user_email'])
+        return JsonResponse({'message': 'Successfully logged in','data':user},safe=False, status=200)
+      else:
+        return JsonResponse({'error': 'Invalid credentials','message':'Incorrect'}, status=400)
     else:
-      return JsonResponse({'error': 'Invalid credentials','message':'incorrect'}, status=400)
+      return JsonResponse({'error': 'Invalid credentials','message':'No_user'}, status=400)
   else:
     return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
   
@@ -97,6 +101,11 @@ def get_register(request):
         
         if name and emailid and city and mobileno and password:
           user_model.insert_one(records)
+          # new_document = {
+          #       "user_email": emailid,
+          #       "user_posts": []
+          #   }
+          # posts.insert_one(new_document)
         else:
           return JsonResponse({'error': 'Missing data'}, status=400)
         

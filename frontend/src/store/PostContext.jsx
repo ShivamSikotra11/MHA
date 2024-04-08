@@ -26,6 +26,7 @@ const PostProvider = ({ children }) => {
     // console.log(1);
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/show_all_posts/");
+      console.log(response.data);
       dispatch({ "type": "SET_ALL_POSTS", payload: response.data });
     }
     catch(error) {
