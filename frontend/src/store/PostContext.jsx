@@ -9,7 +9,9 @@ const PostContext = createContext("");
 const initialState = {
   showPost: {},
   isLoginFetching: false,
-  curUser: JSON.parse(localStorage.getItem("userData")) || {},
+  curUser: {},
+  isNewPostPosted: false,
+  //  JSON.parse(localStorage.getItem("userData")) ||
   loggedIn: false,
   createPost: false,
   allPosts:[],
@@ -23,10 +25,8 @@ const PostProvider = ({ children }) => {
   };
 
   const getAllPost = async () => {
-    // console.log(1);
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/show_all_posts/");
-      console.log(response.data);
       dispatch({ "type": "SET_ALL_POSTS", payload: response.data });
     }
     catch(error) {
@@ -62,26 +62,32 @@ const PostProvider = ({ children }) => {
     dispatch({ type: "SET_CURRENT_USER", payload: userData});
     localStorage.setItem("userData", JSON.stringify(userData));
   };
+
   const getLogOut = () => {
     dispatch({ type: "LOG_OUT_USER" });
     localStorage.removeItem("userData");
   };
 
   const handleCreatePost = async (postObject) => {
-    // console.log(postObject);
     try {
+      dispatch({ type: "TOGGLE_NEW_POST_POSTED" });
       const response = await axios.post(
         "http://localhost:8000/api/add_post/",
         postObject
       );
       dispatch({ type: "TOGGLE_CREATE_POST" });
+      dispatch({ type: "TOGGLE_NEW_POST_POSTED" });
       // console.log(`Post Successfuly done for ${postObject.email}!`);
     } catch (error) {
       console.error("Error adding new record:", error);
     }
   };
+
   const AlterCreatePost = async (postObject) => {
     dispatch({ type: "TOGGLE_CREATE_POST" });
+  };
+  const AlterIsNewPostPosted = async (postObject) => {
+    dispatch({ type: "TOGGLE_NEW_POST_POSTED" });
   };
   
 

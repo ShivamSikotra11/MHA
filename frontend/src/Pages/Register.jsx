@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./styles/register.css";
+import "../styles/register.css";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
-import { usePostContext } from "./store/PostContext";
+import { usePostContext } from "../store/PostContext";
 
 const RegisterPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [flashMessage, setFlashMessage] = useState("");
   const redirect = useNavigate();
-  const {getLogIn} = usePostContext()
+  const { getLogIn } = usePostContext();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -31,7 +31,6 @@ const RegisterPage = () => {
   //   }
   // };
 
- 
   const name = useRef(null);
   const emailid = useRef(null);
   const city = useRef(null);
@@ -52,7 +51,11 @@ const RegisterPage = () => {
         "http://localhost:8000/api/register/",
         userRegisterData
       );
-      getLogIn({name: name.current.value,email: emailid.current.value,password: password.current.value,})
+      getLogIn({
+        name: name.current.value,
+        email: emailid.current.value,
+        password: password.current.value,
+      });
       // console.log("user registered successfully:", response.data);
       redirect("/");
     } catch (error) {
@@ -134,7 +137,9 @@ const RegisterPage = () => {
                   />
                   <label htmlFor="password">Password</label>
                   <i
-                    className={`fa-solid ${passwordVisible ? "fa-eye" : "fa-eye-slash"}`}
+                    className={`fa-solid ${
+                      passwordVisible ? "fa-eye" : "fa-eye-slash"
+                    }`}
                     style={{ color: "#00668c" }}
                     onClick={handlePasswordVisibility}
                   ></i>

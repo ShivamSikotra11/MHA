@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import { useConditionContext } from "./store/ConditionContext";
+import { useConditionContext } from "../store/ConditionContext";
 
 const AddPerson = () => {
   const [formData, setFormData] = useState({ first_name: "", last_name: "" });
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
-  const {AlterFetchStatus} = useConditionContext();
+  const { AlterFetchStatus } = useConditionContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

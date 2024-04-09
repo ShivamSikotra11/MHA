@@ -4,10 +4,10 @@ import Post from "./Post";
 import { usePostContext } from "../../store/PostContext";
 
 const UserForum = () => {
-  const { AlterCreatePost, allPosts, getAllPost, setShowPost } = usePostContext();
+  const { AlterCreatePost, allPosts, getAllPost, setShowPost,isNewPostPosted } = usePostContext();
   useEffect(() => {
     getAllPost();
-  }, []);
+  }, [isNewPostPosted]);
   return (
     <div>
       <div className="flex justify-between px-4  items-center">

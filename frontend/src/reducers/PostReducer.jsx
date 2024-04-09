@@ -29,6 +29,11 @@ const PostReducer = (state, action) => {
         ...state,
         createPost: !state.createPost,
       };
+    case "TOGGLE_NEW_POST_POSTED":
+      return {
+        ...state,
+        isNewPostPosted: !state.isNewPostPosted,
+      };
     case "SET_ALL_POSTS":
       return {
         ...state,

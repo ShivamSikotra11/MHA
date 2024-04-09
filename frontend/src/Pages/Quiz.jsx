@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import QuizBox from "./components/Quiz/QuizBox";
-import PaginatedItems from "./components/Quiz/PaginatedItems";
+import QuizBox from "../components/Quiz/QuizBox";
+import PaginatedItems from "../components/Quiz/PaginatedItems";
 
 const Quiz = () => {
   return (

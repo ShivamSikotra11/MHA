@@ -24,12 +24,12 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useConditionContext } from "./store/ConditionContext";
+import { useConditionContext } from "../store/ConditionContext";
 
 const AxiosAPI = () => {
   const url = "http://127.0.0.1:8000/api/show/";
-  const [data, setData] = useState([]);
-  const {isFetching} = useConditionContext();
+  const [data, setData] = useState([]);As
+  const { isFetching } = useConditionContext();
   const getData = async (url) => {
     try {
       const res = await axios.get(url);

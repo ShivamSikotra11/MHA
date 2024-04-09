@@ -6,35 +6,31 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import Home from "./Home";
+import Home from "./Pages/Home";
 import "./styles/index.css";
-import { GlobalStyle } from "./GlobalStyle";
+import { GlobalStyle } from "./styles/GlobalStyle";
 import Header from "./components/Header";
-import About from "./About";
-import Contact from "./Contact";
-import Quiz from "./Quiz";
-import Login from "./Login";
-import OtpForm from "./otp";
-import Interaction from "./Interaction";
-import RegisterPage from "./Register";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import Quiz from "./Pages/Quiz";
+import Login from "./Pages/Login";
+import OtpForm from "./Pages/otp";
+import Interaction from "./Pages/Interaction";
+import RegisterPage from "./Pages/Register";
 import { usePostContext } from "./store/PostContext";
-import PageNotFound from "./PageNotFound";
+import PageNotFound from "./Pages/PageNotFound";
 
 const AppWithHeader = () => {
   const location = useLocation();
   const redirect = useNavigate();
   const { loggedIn } = usePostContext();
-  const ExcludeHeaderPages = ["/otp", "/login", "/register","/interaction"];
+  const ExcludeHeaderPages = ["/otp", "/login", "/register", "/interaction"];
   const shouldRenderHeader = !ExcludeHeaderPages.some((page) =>
     location.pathname.includes(page)
   );
-  const AbortedRoutes=["/login","/register"]
-
+  const AbortedRoutesLoggedIn = ["/login", "/register"];
   useEffect(() => {
-    if (loggedIn && (AbortedRoutes.includes(location.pathname) )) {
-      redirect("/");
-    }
-    if (!loggedIn && location.pathname=='/quiz' ) {
+    if (loggedIn && AbortedRoutesLoggedIn.includes(location.pathname)) {
       redirect("/");
     }
   }, [loggedIn, location.pathname]);

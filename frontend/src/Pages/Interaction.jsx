@@ -81,19 +81,19 @@
 
 import React from "react";
 import styled from "styled-components";
-import ShowPost from "./components/Interaction/ShowPost";
-import UserStats from "./components/Interaction/UserStats";
-import UserForum from "./components/Interaction/UserForum";
-import CreatePost from "./components/Interaction/CreatePost"; // Import the CreatePost component
-import { usePostContext } from "./store/PostContext";
-import Header from "./components/Header";
+import ShowPost from "../components/Interaction/ShowPost";
+import UserStats from "../components/Interaction/UserStats";
+import UserForum from "../components/Interaction/UserForum";
+import CreatePost from "../components/Interaction/CreatePost"; // Import the CreatePost component
+import { usePostContext } from "../store/PostContext";
+import Header from "../components/Header";
 
 const Interaction = () => {
   const { createPost } = usePostContext();
 
   return (
     <Wrapper className={createPost ? "overflow-hidden h-[100vh]" : ""}>
-      <Header/>
+      <Header />
       <div className="img-container flex items-center justify-center text-[6rem] text-primary_dark ">
         <div className="content capitalize font-inter">
           Interact with other users
@@ -123,10 +123,10 @@ const Interaction = () => {
 
 const Wrapper = styled.section`
   position: relative;
-    .img-container {
+  .img-container {
     background: url("hills.jpg");
     // width: 100%;
-    height: 20vh;
+    height: 16vh;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -145,25 +145,23 @@ const Overlay = styled.div`
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
 
-  .cp-box{
+  .cp-box {
     transform: scale(0);
     z-index: 3;
   }
-  .cp-box{
-    animation:  anim-cp 0.5s ease-in-out 1;
+  .cp-box {
+    animation: anim-cp 0.5s ease-in-out 1;
     transform: scale(1);
     transition: 0.5s;
   }
-  @keyframes anim-cp{
-    0%{
+  @keyframes anim-cp {
+    0% {
       transform: scale(0);
     }
-    100%{
+    100% {
       transform: scale(1);
     }
   }
-  
 `;
-
 
 export default Interaction;
