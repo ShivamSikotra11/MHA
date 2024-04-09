@@ -8,7 +8,7 @@ const RegisterPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [flashMessage, setFlashMessage] = useState("");
   const redirect = useNavigate();
-  const { getLogIn } = usePostContext();
+  const { getLogIn ,InvokeToast } = usePostContext();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -24,12 +24,7 @@ const RegisterPage = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  // const handleFlashMessage = () => {
-  //   const innerMsg = document.querySelector(".inner");
-  //   if (innerMsg && innerMsg.textContent !== "") {
-  //     setFlashMessage("active");
-  //   }
-  // };
+ 
 
   const name = useRef(null);
   const emailid = useRef(null);
@@ -57,6 +52,7 @@ const RegisterPage = () => {
         password: password.current.value,
       });
       // console.log("user registered successfully:", response.data);
+      InvokeToast("success","Successfully Registered")
       redirect("/");
     } catch (error) {
       console.error("Error adding new record:", error);
@@ -66,13 +62,6 @@ const RegisterPage = () => {
   return (
     <div className="container2">
       <div className="left">
-        {/* <div className={flash-messages ${flashMessage}}>
-          <div className="msg">
-            <div className="inner">
-              {messages.length > 0 && messages[messages.length - 1]}
-            </div>
-          </div>
-        </div> */}
       </div>
       <div className="right">
         <div className="login-box">

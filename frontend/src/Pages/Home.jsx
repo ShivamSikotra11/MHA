@@ -5,10 +5,12 @@ import Blogs from "../components/Home/Blogs";
 import Testimonials from "../components/Home/Testimonials";
 import ConditionContent from "../components/Home/ConditionContent";
 import Header from "../components/Header";
+import Toast from "../components/Toast";
 
 const Home = () => {
   return (
     <div className=" bg-bg ">
+      <Toast />
       <HeroSection />
       <Photos />
       <ConditionContent />

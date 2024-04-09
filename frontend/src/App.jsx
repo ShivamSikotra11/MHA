@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -23,17 +23,33 @@ import PageNotFound from "./Pages/PageNotFound";
 const AppWithHeader = () => {
   const location = useLocation();
   const redirect = useNavigate();
-  const { loggedIn } = usePostContext();
+  const { loggedIn, getLogIn } = usePostContext();
   const ExcludeHeaderPages = ["/otp", "/login", "/register", "/interaction"];
   const shouldRenderHeader = !ExcludeHeaderPages.some((page) =>
     location.pathname.includes(page)
   );
   const AbortedRoutesLoggedIn = ["/login", "/register"];
+  const AbortedRoutesLoggedOut = ["/quiz", "/interaction"];
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    if (loggedIn && AbortedRoutesLoggedIn.includes(location.pathname)) {
-      redirect("/");
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      getLogIn(JSON.parse(storedUserData), false);
     }
-  }, [loggedIn, location.pathname]);
+    setLoading(false);
+  }, []); 
+
+  useEffect(() => {
+    if (!loading) {
+      if (loggedIn && AbortedRoutesLoggedIn.includes(location.pathname)) {
+        redirect("/");
+      }
+      if (!loggedIn && AbortedRoutesLoggedOut.includes(location.pathname)) {
+        redirect("/");
+      }
+    }
+  }, [loggedIn, location.pathname, loading]);
 
   return (
     <>

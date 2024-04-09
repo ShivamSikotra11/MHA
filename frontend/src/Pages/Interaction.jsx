@@ -87,6 +87,7 @@ import UserForum from "../components/Interaction/UserForum";
 import CreatePost from "../components/Interaction/CreatePost"; // Import the CreatePost component
 import { usePostContext } from "../store/PostContext";
 import Header from "../components/Header";
+import Toast from "../components/Toast";
 
 const Interaction = () => {
   const { createPost } = usePostContext();
@@ -94,6 +95,7 @@ const Interaction = () => {
   return (
     <Wrapper className={createPost ? "overflow-hidden h-[100vh]" : ""}>
       <Header />
+      <Toast/>
       <div className="img-container flex items-center justify-center text-[6rem] text-primary_dark ">
         <div className="content capitalize font-inter">
           Interact with other users

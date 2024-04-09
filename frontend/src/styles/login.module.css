@@ -339,7 +339,7 @@ input[type="radio"]:disabled {
   /* border: 2px solid black; */
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 
 .log-in-btn button {

@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styles from "../styles/login.module.css"; // Import CSS module
 import { usePostContext } from "../store/PostContext";
 import Loader from "../components/Loader";
+import Toast from "../components/Toast";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -31,6 +32,7 @@ const Login = () => {
       className={styles["bg-[rgba(169,225,255,1)]"]}
       // onLoad={handleFlashMessages}
     >
+      <Toast/>
       <div className={styles.container2}>
         <div className={styles.left}>
           <div className={styles["flash-messages"]}>
@@ -47,7 +49,7 @@ const Login = () => {
           <div className={styles["login-box"]}>
             <div
               className={`${styles.box} 
-            ${isLoginFetching ? "h-[40rem]" : "h-[37rem]"}
+            ${isLoginFetching ? "h-[38rem]" : "h-[34rem]"}
             `}
             >
               <div className={styles.header}>
