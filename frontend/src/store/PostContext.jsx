@@ -26,14 +26,14 @@ const PostProvider = ({ children }) => {
   const InvokeToast = (type, text) => {
     dispatch({ type: "SET_TOAST", payload: { type: type, text: text } })
   };
-  const ClearToast = () => {
+  const clearToast = () => {
     dispatch({ type: "CLEAR_TOAST" });
   };
 
   useEffect(() => {
     if (state.toastActive) {
       setTimeout(() => {
-        ClearToast();
+        clearToast();
       }, 5000); // Toast duration in milliseconds (5 seconds)
     }
   }, [state.toastActive]);
@@ -130,7 +130,8 @@ const PostProvider = ({ children }) => {
         AlterCreatePost,
         getAllPost,
         getLogIn,
-        InvokeToast
+        InvokeToast,
+        clearToast
       }}
     >
       {children}

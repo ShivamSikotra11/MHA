@@ -10,4 +10,5 @@ urlpatterns = [
   path('register/',views.get_register), 
   path('add_post/',views.add_post),
   path('show_all_posts/',views.show_all_posts),
+  path('cal_score/',views.score),
 ]

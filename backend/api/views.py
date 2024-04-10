@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.views.decorators.http import require_POST
 import asyncio
+import numpy as np
 
 # Create your views here.
 def index(request):
@@ -120,7 +121,7 @@ def get_register(request):
 @csrf_exempt
 def add_post(request):
     if request.method == 'POST':
-        print("hi")
+        # print("hi")
         data = json.loads(request.body)
 
         email = data.get('email')
@@ -161,3 +162,29 @@ async def fetch_posts():
 async def show_all_posts(request):
     result = await fetch_posts()
     return JsonResponse(result, safe=False)
+
+@csrf_exempt
+def score(request):
+    if request.method == 'POST':
+      # Define weight lists for stress, depression, and anxiety levels
+      stress_weights = [0.5, 0.6, 0.7, 0.8, 0.9, 0.1, 0.11, 0.12, 0.13, 0.14]  # Adjust as needed
+      depression_weights = [0.4, 0.5, 0.8, 0.9, 0.11, 0.12, 0.6, 0.7, 0.13, 0.14]  # Adjust as needed
+      anxiety_weights = [0.3, 0.8, 0.9, 0.1, 0.11, 0.12, 0.4, 0.5, 0.6, 0.7]  # Adjust as needed
+
+      data = json.loads(request.body)
+
+      user_answers = data.get('answer')
+
+      # Calculate Scores
+      stress_score = np.mean(np.multiply(user_answers, stress_weights))
+      depression_score = np.mean(np.multiply(user_answers, depression_weights))
+      anxiety_score = np.mean(np.multiply(user_answers, anxiety_weights))
+      
+      print("Stress Score:", stress_score)
+      print("Depression Score:", depression_score)
+      print("Anxiety Score:", anxiety_score)
+
+      # Return Recommendations
+      return HttpResponse({'ss': stress_score,'ds':depression_score,'as':anxiety_score})
+    else:
+      return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
