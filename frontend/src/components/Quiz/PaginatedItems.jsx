@@ -3,9 +3,13 @@ import ReactPaginate from "react-paginate";
 import "../../styles/quiz.css"; // Import your custom CSS file
 import QuizBox from "./QuizBox";
 import Questions from "../../store/Questions.json";
+import QuestionsEnglish from "../../JSON/QuesEnglish.json";
+import QuestionsHindi from "../../JSON/QuesHindi.json";
+import QuestionsGujarati from "../../JSON/QuesGujarati.json";
 // console.log(items);
 // const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const items = Questions;
+// const items = Questions;
+const items = QuestionsGujarati;
 function Items({ currentItems }) {
   return (
     <div className="">

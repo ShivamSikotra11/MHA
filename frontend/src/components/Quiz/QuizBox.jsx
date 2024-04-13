@@ -23,8 +23,9 @@ const QuizBox = ({ qn = QuestionsJSON[0] }) => {
       <div className="col-start-4 flex justify-center items-center">
         <ButtonDiv value={"End Quiz"} />
       </div>
+        <div className="font-inter text-4xl my-8 border">Question {qn.id} of 10</div>
+        <div className="font-inter col-start-4 text-4xl my-8 border">Question {qn.id} of 10</div>
       <div className="col-start-1  col-span-3">
-        <div className="font-inter text-4xl my-8">Question {qn.id} of 10</div>
 
         <div className="question font-inter text-4xl my-8">{qn.question}</div>
 

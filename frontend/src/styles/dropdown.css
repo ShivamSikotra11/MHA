@@ -1,0 +1,28 @@
+.custom-dropdown {
+  cursor: pointer;
+  /* border:2px solid darkblue; */
+  border:2px solid darkblue;
+  border-radius: 1rem;
+}
+.myControlClassName{
+  cursor: pointer;
+  border-radius: 1rem;
+  outline:none;
+  /* border:3px; */
+  /* border:noen */
+}
+.myMenuClassName {
+  border:2px solid darkblue;
+  /* Add your custom styles for the dropdown menu here */
+}
+
+.myArrowClassName {
+  /* Add your custom styles for the dropdown arrow here */
+}
+.myControlClassName {
+  border: none;
+}
+
+.myMenuClassName {
+  border: none;
+}

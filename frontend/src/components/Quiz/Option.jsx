@@ -6,7 +6,7 @@ const Option = ({ option, isSelected, checkOption }) => {
       className={`w-full text-3xl font-inter rounded-3xl p-6 py-3  cursor-pointer ${
         isSelected ? "bg-primary_dark text-white" : "bg-primary_light"
       } hover:bg-primary_dark hover:text-white`}
-      onClick={() => checkOption(option.key)}
+      onClick={() => checkOption(option.weightage )}
     >
       {option.text}
     </div>

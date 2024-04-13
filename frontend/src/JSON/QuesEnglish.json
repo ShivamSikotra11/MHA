@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "question": "How would you rate your overall sleep quality?",
+    "options": [
+      {
+        "key": "A",
+        "text": "High",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Medium",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Low",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "How often do you experience feelings of stress?",
+    "options": [
+      {
+        "key": "A",
+        "text": "High",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Medium",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Low",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "On average, how many hours of sleep do you get per night?",
+    "options": [
+      {
+        "key": "A",
+        "text": "More than 7 hours",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "5-7 hours",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Less than 5 hours",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "How frequently do you feel anxious or worried?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Often",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Sometimes",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Rarely",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "How would you rate your level of social support?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Strong",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Moderate",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Weak",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Do you experience mood swings or sudden changes in emotions?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Frequently",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Occasionally",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Rarely",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "How often do you engage in physical activity or exercise?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Regularly",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Sometimes",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Rarely",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "How often do you feel overwhelmed by your responsibilities?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Often",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Sometimes",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Rarely",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "How satisfied are you with your current work or academic environment?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Very satisfied",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Moderately satisfied",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "Not satisfied",
+        "weightage": 1
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Do you feel comfortable talking about your feelings and emotions with others?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Yes, always",
+        "weightage": 3
+      },
+      {
+        "key": "B",
+        "text": "Sometimes",
+        "weightage": 2
+      },
+      {
+        "key": "C",
+        "text": "No, never",
+        "weightage": 1
+      }
+    ]
+  }
+]

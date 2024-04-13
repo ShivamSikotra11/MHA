@@ -10,32 +10,41 @@ const Options = ({ data, id }) => {
     setSelectedOption(Answers[id - 1]);
   }, [Answers, id]);
 
-  const setOption = (optionKey) => {
-    if (selectedOption === optionKey) {
+  const setOption = (optionWeightage) => {
+    if (selectedOption === optionWeightage) {
       setSelectedOption(null);
       const updatedAnswers = [...Answers];
       updatedAnswers[id - 1] = null;
       setAnswers(updatedAnswers);
     } else {
-      setSelectedOption(optionKey);
+      setSelectedOption(optionWeightage);
       const updatedAnswers = [...Answers];
-      updatedAnswers[id - 1] = optionKey;
+      updatedAnswers[id - 1] = optionWeightage;
       setAnswers(updatedAnswers);
     }
   };
-  
-
+ 
   return (
     <div className="grid  gap-9 mx-[3rem] ">
       {data.map((option, index) => (
         <Option
           key={option.key}
           option={option}
-          isSelected={selectedOption === option.key}
+          isSelected={selectedOption === option.weightage}
           checkOption={setOption}
         />
       ))}
     </div>
+    // <div className="grid  gap-9 mx-[3rem] ">
+    //   {data.map((option, index) => (
+    //     <Option
+    //       key={option.key}
+    //       option={option}
+    //       isSelected={selectedOption === option.key}
+    //       checkOption={setOption}
+    //     />
+    //   ))}
+    // </div>
   );
 };
 
