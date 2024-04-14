@@ -9,6 +9,7 @@ const PostContext = createContext("");
 const initialState = {
   showPost: {},
   isLoginFetching: false,
+  isAllPostsFetching:false,
   curUser: {},
   isNewPostPosted: false,
   //  JSON.parse(localStorage.getItem("userData")) ||
@@ -45,10 +46,12 @@ const PostProvider = ({ children }) => {
   };
   const getAllPost = async () => {
     try {
+      dispatch({ type: "ALTER_ALL_POSTS_FETCHING" });
       const response = await axios.get(
         "http://127.0.0.1:8000/api/show_all_posts/"
       );
       dispatch({ type: "SET_ALL_POSTS", payload: response.data });
+      dispatch({ type: "ALTER_ALL_POSTS_FETCHING" });
     } catch (error) {
       console.error("Error fetching posts:", error);
     }

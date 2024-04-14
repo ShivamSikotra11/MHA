@@ -7,8 +7,6 @@ import ProfileCircle from "../components/ProfileCircle";
 import CreatePost from "../components/Interaction/CreatePost";
 import Toast from "../components/Toast";
 import { usePostContext } from "../store/PostContext";
-import "../styles/dropdown.css"
-import "react-dropdown/style.css";
 import Tabs from "../components/Tabs";
 
 const options = ["one", "two", "three"];

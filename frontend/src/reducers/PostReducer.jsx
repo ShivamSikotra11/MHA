@@ -39,6 +39,11 @@ const PostReducer = (state, action) => {
         ...state,
         isNewPostPosted: !state.isNewPostPosted,
       };
+    case "ALTER_ALL_POSTS_FETCHING":
+      return {
+        ...state,
+        isAllPostsFetching:!state.isAllPostsFetching,
+      };
     case "SET_ALL_POSTS":
       return {
         ...state,

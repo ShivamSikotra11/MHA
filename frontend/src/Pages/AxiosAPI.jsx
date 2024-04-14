@@ -27,7 +27,7 @@ import axios from "axios";
 import { useConditionContext } from "../store/ConditionContext";
 
 const AxiosAPI = () => {
-  const url = "http://127.0.0.1:8000/api/show/";
+  const url = "https://django-hello-world-ln1d2k5uw-viralbiyawalas-projects.vercel.app/show/";
   const [data, setData] = useState([]);
   const { isFetching } = useConditionContext();
   const getData = async (url) => {

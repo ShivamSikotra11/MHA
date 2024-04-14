@@ -58,10 +58,13 @@ const Header = () => {
             <div className="relative" onClick={toggleDropdown}>
               <ProfileCircle value={getNameAcronym(curUser.name)} />
               {dropdownOpen && (
-                <div className="absolute top-18 right-0 bg-white  shadow-md rounded-md border-2 border-primary_dark w-[22rem] ">
+                <div className="absolute top-18 right-0 bg-white  shadow-md rounded-md border-2 border-primary_dark w-[22rem] "  >
                   <p className="dd-item" onClick={getLogOut}>
                     Log Out
                   </p>
+                  <NavLink to={"/profile"}>
+                    <p className="dd-item">Profile</p>
+                  </NavLink>
                   <NavLink to={"/quiz"}>
                     <p className="dd-item">Get Quiz Now</p>
                   </NavLink>
