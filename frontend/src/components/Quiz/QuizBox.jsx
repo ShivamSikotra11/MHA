@@ -1,7 +1,6 @@
 import React from "react";
 import Options from "./Options";
 import QuesCount from "./QuesCount";
-import QuestionsJSON from "../../store/Questions.json";
 import StopWatch from "./StopWatch";
 import { CiClock2 } from "react-icons/ci";
 import { useQuizContext } from "../../store/QuizContext";
@@ -11,7 +10,7 @@ import Toast from "../Toast";
 import { useNavigate } from "react-router-dom";
 import Tabs from "../Tabs";
 
-const QuizBox = ({ qn = QuestionsJSON[0] }) => {
+const QuizBox = ({ qn}) => {
   const redirect = useNavigate();
   const { Answers, setAnswers, handleSubmitQuiz } = useQuizContext();
   const { InvokeToast } = usePostContext(); 
@@ -27,7 +26,8 @@ const QuizBox = ({ qn = QuestionsJSON[0] }) => {
     else
     {  
       handleSubmitQuiz();
-      // redirect("/");
+      InvokeToast("success", "Quiz successfully submitted");
+      redirect("/");
     }
   }
   return (

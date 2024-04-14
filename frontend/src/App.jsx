@@ -164,6 +164,7 @@ const AppWithHeader = () => {
     }
   }, [loggedIn, location.pathname, loading]);
 
+ 
   return (
     <>
       {shouldRenderHeader && <Header />}

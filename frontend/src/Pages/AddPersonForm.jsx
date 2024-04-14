@@ -1,13 +1,15 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useConditionContext } from "../store/ConditionContext";
+import { useMainContext } from "../store/MainContext";
 
 const AddPerson = () => {
   const [formData, setFormData] = useState({ first_name: "", last_name: "" });
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const { AlterFetchStatus } = useConditionContext();
-
+  const { url } = useMainContext();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -17,7 +19,7 @@ const AddPerson = () => {
         last_name: lastNameRef.current.value,
       };
       const response = await axios.post(
-        "http://localhost:8000/api/add/",
+        `${url}add/`, // `http://localhost:8000/api/add
         newFormData
       );
       console.log("New record added successfully:", response.data);

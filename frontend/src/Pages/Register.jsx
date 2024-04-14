@@ -3,12 +3,14 @@ import "../styles/register.css";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { usePostContext } from "../store/PostContext";
+import { useMainContext } from "../store/MainContext";
 
 const RegisterPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [flashMessage, setFlashMessage] = useState("");
   const redirect = useNavigate();
   const { getLogIn ,InvokeToast } = usePostContext();
+  const { url } = useMainContext();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -43,7 +45,7 @@ const RegisterPage = () => {
         password: password.current.value,
       };
       const response = await axios.post(
-        "http://localhost:8000/api/register/",
+        `${url}register/`,
         userRegisterData
       );
       getLogIn({

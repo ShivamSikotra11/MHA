@@ -53,7 +53,7 @@ const ProfileDetails = () => {
 
         <div className="  flex space-x-[22rem] max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/2 max-[615px]:w-full focus">
-            <input type="date" name="DOB" className="date" value="" required />
+            <input type="date" name="DOB" className="date"  required />
             <label htmlFor="">Date of Birth</label>
             <span>Date of Birth</span>
           </div>

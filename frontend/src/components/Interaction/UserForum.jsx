@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PostsJson from "../../store/Posts.json";
 import Post from "./Post";
 import { usePostContext } from "../../store/PostContext";
 

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
 import reducer from "../reducers/PostReducer";
-import PostJSON from "./Posts.json";
 import { createContext } from "react";
 import axios from "axios";
+import { useMainContext } from "./MainContext";
 
 const PostContext = createContext("");
 
@@ -22,7 +22,7 @@ const initialState = {
 
 const PostProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+  const { url } = useMainContext();
   //Toast Logic
   const InvokeToast = (type, text) => {
     dispatch({ type: "SET_TOAST", payload: { type: type, text: text } })
@@ -48,7 +48,7 @@ const PostProvider = ({ children }) => {
     try {
       dispatch({ type: "ALTER_ALL_POSTS_FETCHING" });
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/show_all_posts/"
+        `${url}show_all_posts/`
       );
       dispatch({ type: "SET_ALL_POSTS", payload: response.data });
       dispatch({ type: "ALTER_ALL_POSTS_FETCHING" });
@@ -67,7 +67,7 @@ const PostProvider = ({ children }) => {
     try {
       dispatch({ type: "TOGGLE_NEW_POST_POSTED" });
       const response = await axios.post(
-        "http://localhost:8000/api/add_post/",
+        `${url}add_post/`,
         postObject
       );
       dispatch({ type: "TOGGLE_CREATE_POST" });
@@ -88,7 +88,7 @@ const PostProvider = ({ children }) => {
     dispatch({ type: "ALTER_LOGIN_FETCHING" });
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/login/",
+        `${url}login/`,
         userData
       );
       InvokeToast("success", "Successfully Logged in");

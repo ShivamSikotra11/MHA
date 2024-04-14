@@ -1,9 +1,8 @@
 import React from "react";
-import PostsJson from "../../store/Posts.json";
 import { usePostContext } from "../../store/PostContext";
 const ShowPost = () => {
   const { showPost } = usePostContext();
-  // console.log(showPost);
+  
   return (
     <div className=" bg-primary_elight postbox ">
       {/* max-h-[50rem] overflow-y-scroll custom-scrollbar   */}

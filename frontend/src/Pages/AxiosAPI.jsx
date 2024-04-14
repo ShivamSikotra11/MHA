@@ -25,14 +25,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useConditionContext } from "../store/ConditionContext";
+import { useMainContext } from "../store/MainContext";
 
 const AxiosAPI = () => {
-  const url = "https://django-hello-world-ln1d2k5uw-viralbiyawalas-projects.vercel.app/show/";
+  const {url} = useMainContext();
   const [data, setData] = useState([]);
   const { isFetching } = useConditionContext();
   const getData = async (url) => {
     try {
-      const res = await axios.get(url);
+      const res = await axios.get(
+        `${url}show/`
+      );
       setData(res.data);
     } catch (error) {
       console.error("Error fetching products:", error);

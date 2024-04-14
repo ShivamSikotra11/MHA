@@ -8,11 +8,14 @@ import CreatePost from "../components/Interaction/CreatePost";
 import Toast from "../components/Toast";
 import { usePostContext } from "../store/PostContext";
 import Tabs from "../components/Tabs";
+import { useMainContext } from "../store/MainContext";
 
 const options = ["one", "two", "three"];
 const Contact = () => {
   const { InvokeToast } = usePostContext();
   const defaultOption = options[0];
+  const { url } = useMainContext();
+  console.log(url);
   return (
 
     <div className="h-[100vh] w-[100vw] flex justify-center items-center">

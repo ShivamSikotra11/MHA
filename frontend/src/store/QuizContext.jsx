@@ -4,6 +4,7 @@ import QuestionsEnglish from "../JSON/QuesEnglish.json";
 import QuestionsHindi from "../JSON/QuesHindi.json";
 import QuestionsGujarati from "../JSON/QuesGujarati.json";
 import axios from "axios";
+import { useMainContext } from "./MainContext";
 const QuizContext = createContext();
 const initialState = {
   curLang:"English",
@@ -13,12 +14,17 @@ const QuizProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [Answers, setAnswers] = useState(Array(10).fill(null));
   const [submitted, setSubmitted] = useState(Array(10).fill(false));
+  const { url } = useMainContext();
+
   const handleSubmitQuiz = async () => {
     try {
       const data= {
         answer:Answers,
       };
-      const res = await axios.post("http://localhost:8000/api/cal_score/", data);
+      const res = await axios.post(
+        `${url}cal_score/`,
+        data  
+      );
   
       console.log(res);
     }

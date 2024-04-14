@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "../styles/login.module.css"; // Import CSS module
 import { usePostContext } from "../store/PostContext";

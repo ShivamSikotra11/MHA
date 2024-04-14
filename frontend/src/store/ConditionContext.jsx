@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
 import reducer from "../reducers/ConditionReducer";
-import JSONdata from "./conditionsData.json";
+import JSONdata from "../JSON/conditionsData.json";
 
 const ConditionContext = createContext("");
 
