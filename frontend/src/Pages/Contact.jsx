@@ -11,6 +11,7 @@ import Dropdown from "react-dropdown";
 import DropDown from "../components/DropDown";
 import "../styles/dropdown.css"
 import "react-dropdown/style.css";
+import Tabs from "../components/Tabs";
 
 const options = ["one", "two", "three"];
 const Contact = () => {
@@ -20,7 +21,8 @@ const Contact = () => {
 
     <div className="h-[100vh] w-[100vw] flex justify-center items-center">
       {/* <DropDown></DropDown> */}
-      <Dropdown   
+      <Tabs></Tabs>
+      {/* <Dropdown   
         options={options}
  
         placeholder="Select an option"
@@ -28,7 +30,7 @@ const Contact = () => {
         controlClassName='myControlClassName'
         menuClassName='myMenuClassName'
         arrowClassName='myArrowClassName'
-        /> 
+        />  */}
       {/* <Dropdown
         options={options}
         // onChange={this._onSelect}

@@ -88,7 +88,7 @@ const PostProvider = ({ children }) => {
         "http://localhost:8000/api/login/",
         userData
       );
-      InvokeToast("success","Successfully Logged in")
+      InvokeToast("success", "Successfully Logged in");
       userData.name = response.data.data.user_name;
       dispatch({ type: "SET_CURRENT_USER", payload: userData });
       localStorage.setItem("userData", JSON.stringify(userData));

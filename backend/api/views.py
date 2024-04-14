@@ -180,11 +180,11 @@ def score(request):
       depression_score = np.mean(np.multiply(user_answers, depression_weights))
       anxiety_score = np.mean(np.multiply(user_answers, anxiety_weights))
       
-      print("Stress Score:", stress_score)
-      print("Depression Score:", depression_score)
-      print("Anxiety Score:", anxiety_score)
-
+      # print("Stress Score:", stress_score)
+      # print("Depression Score:", depression_score)
+      # print("Anxiety Score:", anxiety_score)
+      scores=[stress_score,depression_score,anxiety_score]
       # Return Recommendations
-      return HttpResponse({'ss': stress_score,'ds':depression_score,'as':anxiety_score})
+      return JsonResponse({'success':True, 'message':"Scores calculated successfully.",'data':scores})
     else:
       return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import "../../styles/quiz.css"; // Import your custom CSS file
+import "../../styles/quiz.css"; 
 import QuizBox from "./QuizBox";
-import Questions from "../../store/Questions.json";
 import QuestionsEnglish from "../../JSON/QuesEnglish.json";
 import QuestionsHindi from "../../JSON/QuesHindi.json";
 import QuestionsGujarati from "../../JSON/QuesGujarati.json";
-// console.log(items);
-// const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-// const items = Questions;
-const items = QuestionsGujarati;
+import { useQuizContext } from "../../store/QuizContext";
+import { usePostContext } from "../../store/PostContext";
+
 function Items({ currentItems }) {
   return (
     <div className="">
@@ -22,6 +20,29 @@ function Items({ currentItems }) {
 }
 
 function PaginatedItems({ itemsPerPage = 1 }) {
+  const { curLang } = useQuizContext();
+  const [items, setItems] = useState(QuestionsEnglish);
+  const { Answers } = usePostContext(); 
+  
+  useEffect(() => {
+    // Update the items based on the current language
+    switch (curLang) {
+      case "English":
+        setItems(QuestionsEnglish);
+        break;
+      case "Hindi":
+        setItems(QuestionsHindi);
+        break;
+      case "Gujarati":
+        setItems(QuestionsGujarati);
+        break;
+      default:
+        setItems(QuestionsEnglish); 
+        break;
+    }
+  }, [curLang]);
+
+
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = items.slice(itemOffset, endOffset);
@@ -33,7 +54,7 @@ function PaginatedItems({ itemsPerPage = 1 }) {
   };
 
   return (
-    <div className="inline-block rounded-3xl  bg-primary_elight  border pb-8 w-[70%] ">
+    <div className="inline-block rounded-3xl bg-primary_elight border pb-8 w-[70%]">
       <Items currentItems={currentItems} />
       <ReactPaginate
         breakLabel="..."
@@ -53,6 +74,7 @@ function PaginatedItems({ itemsPerPage = 1 }) {
         breakLinkClassName="page-link"
         previousLinkClassName="page-link"
         nextLinkClassName="page-link"
+        
       />
     </div>
   );

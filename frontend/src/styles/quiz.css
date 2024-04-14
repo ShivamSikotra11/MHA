@@ -38,3 +38,10 @@
   pointer-events: none;
   background-color: #a9e1ff3c;
 }
+.red-bg {
+  background-color: #EBF8FF;
+}
+
+.blue-bg {
+  background-color: #a9e1ff;
+}

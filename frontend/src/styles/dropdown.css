@@ -4,6 +4,10 @@
   border:2px solid darkblue;
   border-radius: 1rem;
 }
+.Dropdown-control {
+  border: none;
+  border-radius: unset;
+}
 .myControlClassName{
   cursor: pointer;
   border-radius: 1rem;
