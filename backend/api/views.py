@@ -162,6 +162,36 @@ async def fetch_posts():
 async def show_all_posts(request):
     result = await fetch_posts()
     return JsonResponse(result, safe=False)
+  
+
+@csrf_exempt
+def show_user_posts(request):
+    data = json.loads(request.body)
+    email = data.get('email')
+    result = posts.find_one({"user_email": email})['user_posts']
+    print(result)
+    return JsonResponse(result, safe=False)
+  
+@csrf_exempt
+@require_POST
+def delete_user_post(request):
+    data = json.loads(request.body)
+    email = data.get('email')
+    timestamp = data.get('timestamp')
+    
+    result = posts.update_one(
+        { "user_email": email },
+        { "$pull": { "user_posts": { "timestamp": timestamp } } }
+    )
+    
+    # Check if the deletion was successful
+    if result.modified_count == 1:
+        response = {"message": "success"}
+    else:
+        response = {"message": "failed"}
+    
+    return JsonResponse(response, safe=False)
+
 
 @csrf_exempt
 def score(request):

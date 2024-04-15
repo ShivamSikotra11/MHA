@@ -11,4 +11,6 @@ urlpatterns = [
   path('add_post/',views.add_post),
   path('show_all_posts/',views.show_all_posts),
   path('cal_score/',views.score),
+  path('get_user_posts/',views.show_user_posts),
+  path('delete_post/',views.delete_user_post),
 ]

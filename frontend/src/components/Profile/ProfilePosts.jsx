@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import { usePostContext } from "../../store/PostContext";
 import ProfilePost from "./ProfilePost";
 import Loader from "../Loader";
+import { useMainContext } from "../../store/MainContext";
 
 const ProfilePosts = () => {
-  const { isAllPostsFetching, allPosts, getAllPost } = usePostContext();
+  const { isuserPostsFetching, userPosts, getUserAllPosts } = useMainContext();
+  // const { isuserPostDeleted } = usePostContext();
+  const { isuserPostDeleted } = useMainContext();
+
   useEffect(() => {
-    getAllPost();
-  }, []);
+    getUserAllPosts();
+  }, [isuserPostDeleted]);
 
   return (
     <div>
@@ -15,16 +19,12 @@ const ProfilePosts = () => {
         Posts
       </p>
       <div className="flex border border-primary_dark  rounded-xl justify-center p-4">
-        {isAllPostsFetching ? <Loader />: (
-          <div className="all-posts-container overflow-y-auto max-h-[35rem]  custom-scrollbar  ">
+        {isuserPostsFetching ? <Loader />: (
+          <div className="all-posts-container overflow-y-auto max-h-[35rem]  custom-scrollbar  w-full">
             <div className="all-posts  grid   gap-8  p-8">
-              {allPosts.map((post) => (
+              {[...userPosts].reverse().map((post,index) => (
                 <ProfilePost
-                  key={
-                    post.timestamp +
-                    "_" +
-                    post.user_email.substr(0, post.user_email.indexOf("@"))
-                  }
+                  key={index}
                   post={post}
                 />
               ))}

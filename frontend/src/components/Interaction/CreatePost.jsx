@@ -30,12 +30,13 @@ const CreatePost = () => {
           className="w-full font-habibi font-medium px-8 py-2  rounded-xl p-2 outline-none border-none mb-8 bg-primary_elight"
           placeholder={"Enter The Title Here"}
           ref={titleRef}
+          required
         />
         <textarea
           className="w-full font-habibi font-medium rounded-xl px-8 py-2 outline-none border-none resize-none custom-scrollbar text-primary_dark text-3xl bg-primary_elight text-justify"
           placeholder={"Enter The Text Here"}
           style={{ maxWidth: "100%", width: "100%", height: "30rem" }}
-          ref={contentRef}
+          ref={contentRef} required
         />
         <div className="post-btns  mt-8 flex justify-end gap-x-[3rem] ">
         

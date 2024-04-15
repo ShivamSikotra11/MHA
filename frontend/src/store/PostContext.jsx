@@ -18,6 +18,7 @@ const initialState = {
   allPosts: [],
   toastActive:false,
   toastData:{type:"success", text:"op"},
+  isuserPostDeleted:false,
 };
 
 const PostProvider = ({ children }) => {
@@ -57,12 +58,7 @@ const PostProvider = ({ children }) => {
     }
   };
 
-  function getNameAcronym(sentence) {
-    const words = sentence.split(" ");
-    const newWord = words.reduce((acc, word) => acc + word.charAt(0), "");
-    return newWord.substring(0, 2);
-  }
-  
+
   const handleCreatePost = async (postObject) => {
     try {
       dispatch({ type: "TOGGLE_NEW_POST_POSTED" });
@@ -72,8 +68,7 @@ const PostProvider = ({ children }) => {
       );
       dispatch({ type: "TOGGLE_CREATE_POST" });
       dispatch({ type: "TOGGLE_NEW_POST_POSTED" });
-      InvokeToast("success","Post Created Successfully")
-
+      InvokeToast("success", "Post Created Successfully");
     } catch (error) {
       console.error("Error adding new record:", error);
     }
@@ -84,6 +79,12 @@ const PostProvider = ({ children }) => {
   };
 
   // Login/LogOut Logic
+  function getNameAcronym(sentence="") {
+    const words = sentence.split(" ");
+    const newWord = words.reduce((acc, word) => acc + word.charAt(0), "");
+    return newWord.substring(0, 2);
+  }
+  
   const handleLoginSubmit = async (redirect, userData) => {
     dispatch({ type: "ALTER_LOGIN_FETCHING" });
     try {
@@ -120,6 +121,23 @@ const PostProvider = ({ children }) => {
   };
 
 
+  // Extra deletePost Function (All related to this in MainContext)
+  const deleteUserPost = async (timestamp) => {
+    console.log("Func cc",timestamp,url);
+    try {
+      dispatch({ type: "ALTER_USER_POST_DELETED" });
+      const response = await axios.post(
+        `${state.url}delete_post/`,
+        {email: JSON.parse(localStorage.getItem("userData")).email,timestamp:timestamp}
+      );
+      // InvokeToast("success", "Post Deleted Successfully");
+      dispatch({ type: "ALTER_USER_POST_DELETED" });
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
+  
+
 
   return (
     <PostContext.Provider
@@ -134,7 +152,8 @@ const PostProvider = ({ children }) => {
         getAllPost,
         getLogIn,
         InvokeToast,
-        clearToast
+        clearToast,
+        deleteUserPost
       }}
     >
       {children}

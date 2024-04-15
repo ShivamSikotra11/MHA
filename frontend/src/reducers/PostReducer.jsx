@@ -1,16 +1,5 @@
 const PostReducer = (state, action) => {
   switch (action.type) {
-    case "SET_SHOW_POST":
-      return {
-        ...state,
-        showPost: state.allPosts.find(
-          (post) =>
-            post.timestamp +
-              "_" +
-              post.user_email.substr(0, post.user_email.indexOf("@")) ===
-            action.id
-        ),
-      };
     case "ALTER_LOGIN_FETCHING":
       return {
         ...state,
@@ -29,6 +18,17 @@ const PostReducer = (state, action) => {
         loggedIn: false,
         curUser: {},
       };
+    case "SET_SHOW_POST":
+      return {
+        ...state,
+        showPost: state.allPosts.find(
+          (post) =>
+            post.timestamp +
+              "_" +
+              post.user_email.substr(0, post.user_email.indexOf("@")) ===
+            action.id
+        ),
+      };
     case "TOGGLE_CREATE_POST":
       return {
         ...state,
@@ -42,7 +42,7 @@ const PostReducer = (state, action) => {
     case "ALTER_ALL_POSTS_FETCHING":
       return {
         ...state,
-        isAllPostsFetching:!state.isAllPostsFetching,
+        isAllPostsFetching: !state.isAllPostsFetching,
       };
     case "SET_ALL_POSTS":
       return {
@@ -60,6 +60,11 @@ const PostReducer = (state, action) => {
         ...state,
         toastData: {},
         toastActive: false,
+      };
+    case "ALTER_USER_POST_DELETED":
+      return {
+        ...state,
+        isuserPostDeleted: !state.isuserPostDeleted,
       };
     default:
       return state;

@@ -13,9 +13,11 @@ const initialState = {
 const QuizProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [Answers, setAnswers] = useState(Array(10).fill(null));
-  const [submitted, setSubmitted] = useState(Array(10).fill(false));
   const { url } = useMainContext();
-
+  const clearAnswers = () =>{
+    setAnswers(Array(10).fill(null));
+    dispatch({type:"SET_LANGUAGE", payload: "English" })
+  }
   const handleSubmitQuiz = async () => {
     try {
       const data= {
@@ -26,7 +28,7 @@ const QuizProvider = ({ children }) => {
         data  
       );
   
-      console.log(res);
+      // console.log(res);
     }
     catch (e) {
       console.log(`Error occured ${e}`);
@@ -36,7 +38,7 @@ const QuizProvider = ({ children }) => {
     dispatch({type:"SET_LANGUAGE", payload: lang })
   }
   return (
-    <QuizContext.Provider value={{ ...state,Answers,setAnswers,submitted, setSubmitted,handleSubmitQuiz,changeLang }}>
+    <QuizContext.Provider value={{ ...state,Answers,setAnswers, handleSubmitQuiz,changeLang,clearAnswers }}>
       {children}
     </QuizContext.Provider>
   );

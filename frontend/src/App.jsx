@@ -138,7 +138,7 @@ const AppWithHeader = () => {
   // Define excluded routes and routes based on authentication status
   const ExcludeHeaderPages = ["/otp", "/login", "/register", "/interaction"];
   const AbortedRoutesLoggedIn = ["/login", "/register"];
-  const AbortedRoutesLoggedOut = ["/quiz", "/interaction"];
+  const AbortedRoutesLoggedOut = ["/quiz", "/interaction","/profile"];
   const shouldRenderHeader = !ExcludeHeaderPages.some((page) => location.pathname.includes(page));
 
   const [loading, setLoading] = useState(true);

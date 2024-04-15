@@ -1,8 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import ButtonDiv from "../ButtonDiv";
 
 const ProfileDetails = () => {
+
+  const fnameRef = useRef();
+  const mnameRef = useRef();
+  const lnameRef = useRef();
+  const dobRef = useRef();
+  const genderRef = useRef();
+  const mobileRef = useRef();
+  const emailRef = useRef();
+  const addressRef = useRef();
+  const cityRef = useRef();
+
   useEffect(() => {
     const ips = document.querySelectorAll(".input");
     ips.forEach((ip) => {
@@ -33,19 +44,19 @@ const ProfileDetails = () => {
 
         <div className="name flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/3 max-[615px]:w-full">
-            <input type="text" name="Fname" className="input" required />
+            <input type="text" name="Fname" className="input" ref={fnameRef} required />
             <label htmlFor="">First Name</label>
             <span>First Name</span>
           </div>
 
           <div className="input-container w-1/3 max-[615px]:w-full">
-            <input type="text" name="Mname" className="input" required />
+            <input type="text" name="Mname" className="input" ref={mnameRef} required />
             <label htmlFor="">Middle Name</label>
             <span>Middle Name</span>
           </div>
 
           <div className="input-container w-1/3 max-[615px]:w-full">
-            <input type="text" name="Lname" className="input" required />
+            <input type="text" name="Lname" className="input" ref={lnameRef} required />
             <label htmlFor="">Last Name</label>
             <span>Last Name</span>
           </div>
@@ -53,12 +64,12 @@ const ProfileDetails = () => {
 
         <div className="  flex space-x-[22rem] max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/2 max-[615px]:w-full focus">
-            <input type="date" name="DOB" className="date"  required />
+            <input type="date" name="DOB" className="date" ref={dobRef}  required />
             <label htmlFor="">Date of Birth</label>
             <span>Date of Birth</span>
           </div>
           <div className="input-container w-1/2 max-[615px]:w-full">
-            <input type="text" name="Lname" className="input" required />
+            <input type="text" name="Lname" className="input" ref={genderRef} required />
             <label htmlFor="">Gender</label>
             <span>Gender</span>
           </div>
@@ -66,26 +77,26 @@ const ProfileDetails = () => {
 
         <div className="dob flex space-x-[22rem] max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/2 max-[615px]:w-full">
-            <input type="text" name="Lname" className="input" required />
+            <input type="text" name="Lname" className="input" ref={mobileRef} required />
             <label htmlFor="">Mobile </label>
             <span>Mobile </span>
           </div>
           <div className="input-container w-1/2 max-[615px]:w-full">
-            <input type="text" name="Lname" className="input" required />
+            <input type="text" name="Lname" className="input" ref={emailRef} required />
             <label htmlFor="">E-Mail</label>
             <span>E-Mail</span>
           </div>
         </div>
 
         <div className="input-container textarea">
-          <textarea name="address" className="input" required></textarea>
+          <textarea name="address" className="input" ref={addressRef} required></textarea>
           <label htmlFor="">Address</label>
           <span>Address</span>
         </div>
 
         <div className="space-x-[22rem] flex" >
           <div className="input-container w-1/2 max-[615px]:w-full">
-              <input type="text" name="Lname" className="input" required />
+              <input type="text" name="Lname" className="input" ref={cityRef}required />
               <label htmlFor="">City</label>
               <span>City</span>
             </div>
