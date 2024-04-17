@@ -21,7 +21,7 @@ const ProfilePosts = () => {
 
   return (
     <div>
-      <p className="text-black font-inter text-5xl font-semibold mb-5 ">
+      <p className="text-black font-inter text-5xl font-semibold mb-5 max-[440px]:text-4xl">
         Posts
       </p>
       <div className="flex rounded-xl justify-center p-4">

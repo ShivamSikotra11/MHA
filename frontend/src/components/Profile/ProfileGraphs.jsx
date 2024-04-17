@@ -74,7 +74,7 @@ const ProfileGraphs = () => {
         borderWidth: 1,
         style: {
           color: '#333333',
-          fontSize: '14px'  // Customize the tooltip font size here
+          fontSize: '16px'  // Customize the tooltip font size here
         }
       }
     });
@@ -90,12 +90,12 @@ const ProfileGraphs = () => {
   return (
 
     <Wrapper className="" >
-      <p className="text-black font-inter text-5xl font-semibold">Graphs</p>
-      <div class="chart-container">
-          <div class="chart-item" id="sleepChart"></div>
-          <div class="chart-item" id="stressChart"></div>
-          <div class="chart-item" id="depressionChart"></div>
-          <div class="chart-item" id="anxietyChart"></div>
+      <p className="text-black font-inter text-5xl font-semibold max-[440px]:text-4xl">Graphs</p>
+      <div className="chart-container">
+          <div className="chart-item" id="sleepChart"></div>
+          <div className="chart-item" id="stressChart"></div>
+          <div className="chart-item" id="depressionChart"></div>
+          <div className="chart-item" id="anxietyChart"></div>
       </div>
     </Wrapper>
   )
@@ -121,6 +121,16 @@ const Wrapper = styled.section`
 @media screen and (max-width: 768px) {
   .chart-item {
       width: 100%;
+  }
+}
+@media screen and (max-width: 490px) {
+  .chart-item {
+      height:40rem;
+  }
+}
+@media screen and (max-width: 380px) {
+  .chart-item {
+      height:35rem;
   }
 }
 `;

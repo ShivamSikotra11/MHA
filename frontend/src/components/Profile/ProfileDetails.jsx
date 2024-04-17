@@ -42,7 +42,7 @@ const ProfileDetails = () => {
 
   return (
     <Wrapper className="   ">
-      <p className="text-black font-inter text-5xl font-semibold mb-4">Details</p>
+      <p className="text-black font-inter text-5xl font-semibold mb-4 max-[440px]:text-4xl">Details</p>
       <form className="details-box px-[3rem]" onSubmit={updateProfileData}>
       <div className="name flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/3 max-[615px]:w-full focus">
@@ -155,7 +155,7 @@ const ProfileDetails = () => {
         </div>
 
 
-        <div className="space-x-[22rem] flex">
+        <div className="space-x-[2rem] flex  max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/2 max-[615px]:w-full focus">
             <input
               type="text"
@@ -168,7 +168,7 @@ const ProfileDetails = () => {
             <label htmlFor="">City</label>
             <span>City</span>
           </div>
-          <div className="invisible  input-container w-1/2 max-[615px]:w-full focus">
+          <div className="invisible  input-container w-1/2 max-[615px]:hidden focus">
             <input type="text" name="Lname" className="input" />
             <label htmlFor="">City</label>
             <span>City</span>
