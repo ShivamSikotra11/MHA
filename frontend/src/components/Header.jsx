@@ -54,7 +54,7 @@ const Header = () => {
             Contact Us
           </NavLink>
 
-          {curUser.hasOwnProperty("name") ? (
+          {(curUser && curUser.hasOwnProperty("name")) ? (
             <div className="relative" onClick={toggleDropdown}>
               <ProfileCircle value={getNameAcronym(curUser.name)} />
               {dropdownOpen && (

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Loader = () => {
+const Loader = ({ width = "40px" }) => {
   return (
-    <Wrapper>
+    <Wrapper width={width}>
       <div className="loader"></div>
     </Wrapper>
   );
@@ -12,7 +12,7 @@ const Loader = () => {
 const Wrapper = styled.section`
   /* HTML: <div class="loader"></div> */
   .loader {
-    width: 40px;
+    width: ${(props) => props.width};
     aspect-ratio: 1;
     border-radius: 50%;
     border: 5px solid #00668c;

@@ -1,5 +1,17 @@
 const MainReducer = (state, action) => {
   switch (action.type) {
+    case "SET_TOAST":
+      return {
+        ...state,
+        toastActive: true,
+        toastData: action.payload,
+      };
+    case "CLEAR_TOAST":
+      return {
+        ...state,
+        toastData: {},
+        toastActive: false,
+      };
     case "ALTER_USER_POSTS_FETCHING":
       return {
         ...state,
@@ -15,17 +27,10 @@ const MainReducer = (state, action) => {
         ...state,
         userPosts: action.payload,
       };
-    case "SET_TOAST":
+    case "ALTER_USER_PROFILE_UPDATING":
       return {
         ...state,
-        toastActive: true,
-        toastData: action.payload,
-      };
-    case "CLEAR_TOAST":
-      return {
-        ...state,
-        toastData: {},
-        toastActive: false,
+        isuserProfileUpdating: !state.isuserProfileUpdating,
       };
     default:
       return state;

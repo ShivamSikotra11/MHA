@@ -29,6 +29,11 @@ const PostReducer = (state, action) => {
             action.id
         ),
       };
+    case "CLEAR_SHOW_POST":
+      return {
+        ...state,
+        showPost: {},
+      };
     case "TOGGLE_CREATE_POST":
       return {
         ...state,

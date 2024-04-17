@@ -118,6 +118,7 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 // Context
 import { usePostContext } from "./store/PostContext";
 import Profile from "./Pages/Profile";
+import { useMainContext } from "./store/MainContext";
 
 const AppWithHeader = () => {
   // Initialize AOS and refresh
@@ -133,7 +134,8 @@ const AppWithHeader = () => {
 
   const location = useLocation();
   const redirect = useNavigate();
-  const { loggedIn, getLogIn } = usePostContext();
+  const { loggedIn, getLogIn , getUserName,curUser } = usePostContext();
+  const { isuserProfileUpdating } = useMainContext();
 
   // Define excluded routes and routes based on authentication status
   const ExcludeHeaderPages = ["/otp", "/login", "/register", "/interaction"];
@@ -148,10 +150,12 @@ const AppWithHeader = () => {
     const storedUserData = localStorage.getItem("userData");
     if (storedUserData) {
       getLogIn(JSON.parse(storedUserData), false);
+      getUserName(JSON.parse(storedUserData));
     }
     setLoading(false);
-  }, []); 
+  }, [isuserProfileUpdating]); 
 
+  
   useEffect(() => {
     // Redirect based on authentication status
     if (!loading) {

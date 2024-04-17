@@ -1,120 +1,191 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ButtonDiv from "../ButtonDiv";
+import { useMainContext } from "../../store/MainContext"; 
 
 const ProfileDetails = () => {
-
-  const fnameRef = useRef();
-  const mnameRef = useRef();
-  const lnameRef = useRef();
-  const dobRef = useRef();
-  const genderRef = useRef();
-  const mobileRef = useRef();
-  const emailRef = useRef();
-  const addressRef = useRef();
-  const cityRef = useRef();
+  const { formData, setFormData, getProfileData, updateProfileData } = useMainContext();
 
   useEffect(() => {
-    const ips = document.querySelectorAll(".input");
-    ips.forEach((ip) => {
-      ip.addEventListener("focus", (e) => {
-        e.target.parentNode.classList.add("focus");
-      });
-
-      if (ip.value !== "") {
-        ip.parentNode.classList.add("focus");
-      }
-
-      ip.addEventListener("blur", (e) => {
-        if (e.target.value === "") {
-          e.target.parentNode.classList.remove("focus");
-        }
-      });
-
-      ip.addEventListener("input", (e) => {
-        e.target.parentNode.classList.add("focus");
-      });
-    });
+    getProfileData();
   }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  // useEffect(() => {
+  //   const ips = document.querySelectorAll(".input");
+  //   ips.forEach((ip) => {
+  //     ip.addEventListener("focus", (e) => {
+  //       e.target.parentNode.classList.add("focus");
+  //     });
+
+  //     if (ip.value !== "") {
+  //       ip.parentNode.classList.add("focus");
+  //     }
+
+  //     ip.addEventListener("blur", (e) => {
+  //       if (e.target.value === "") {
+  //         e.target.parentNode.classList.remove("focus");
+  //       }
+  //     });
+
+  //     ip.addEventListener("input", (e) => {
+  //       e.target.parentNode.classList.add("focus");
+  //     });
+  //   });
+  // }, []);
 
   return (
     <Wrapper className="   ">
       <p className="text-black font-inter text-5xl font-semibold">Details</p>
-      <div className="details-box px-[3rem]">
-
-        <div className="name flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
-          <div className="input-container w-1/3 max-[615px]:w-full">
-            <input type="text" name="Fname" className="input" ref={fnameRef} required />
+      <form className="details-box px-[3rem]" onSubmit={updateProfileData}>
+      <div className="name flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
+          <div className="input-container w-1/3 max-[615px]:w-full focus">
+            <input
+              type="text"
+              name="fname"
+              className="input"
+              value={formData.fname}
+              onChange={handleChange}
+              required
+            />
             <label htmlFor="">First Name</label>
             <span>First Name</span>
           </div>
 
-          <div className="input-container w-1/3 max-[615px]:w-full">
-            <input type="text" name="Mname" className="input" ref={mnameRef} required />
+          <div className="input-container w-1/3 max-[615px]:w-full focus">
+            <input
+              type="text"
+              name="mname"
+              className="input"
+              value={formData.mname}
+              onChange={handleChange}
+              required
+            />
             <label htmlFor="">Middle Name</label>
             <span>Middle Name</span>
           </div>
 
-          <div className="input-container w-1/3 max-[615px]:w-full">
-            <input type="text" name="Lname" className="input" ref={lnameRef} required />
+          <div className="input-container w-1/3 max-[615px]:w-full focus">
+            <input
+              type="text"
+              name="lname"
+              className="input"
+              value={formData.lname}
+              onChange={handleChange}
+              required
+            />
             <label htmlFor="">Last Name</label>
             <span>Last Name</span>
           </div>
         </div>
 
-        <div className="  flex space-x-[22rem] max-[614px]:flex-col max-[614px]:space-x-0">
+        <div className="dob flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/2 max-[615px]:w-full focus">
-            <input type="date" name="DOB" className="date" ref={dobRef}  required />
+            <input
+              type="date"
+              name="dob"
+              className="date"
+              value={formData.dob}
+              onChange={handleChange}
+              required
+            />
             <label htmlFor="">Date of Birth</label>
             <span>Date of Birth</span>
           </div>
-          <div className="input-container w-1/2 max-[615px]:w-full">
-            <input type="text" name="Lname" className="input" ref={genderRef} required />
+          
+          <div className="input-container w-1/2 max-[615px]:w-full focus">
+            <input
+              type="text"
+              name="gender"
+              className="input"
+              value={formData.gender}
+              onChange={handleChange}
+              required
+            />
             <label htmlFor="">Gender</label>
             <span>Gender</span>
           </div>
         </div>
 
-        <div className="dob flex space-x-[22rem] max-[614px]:flex-col max-[614px]:space-x-0">
-          <div className="input-container w-1/2 max-[615px]:w-full">
-            <input type="text" name="Lname" className="input" ref={mobileRef} required />
-            <label htmlFor="">Mobile </label>
-            <span>Mobile </span>
+        <div className="contact flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
+          <div className="input-container w-1/2 max-[615px]:w-full focus">
+            <input
+              type="text"
+              name="mobile"
+              className="input"
+              value={formData.mobile}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="">Mobile</label>
+            <span>Mobile</span>
           </div>
-          <div className="input-container w-1/2 max-[615px]:w-full">
-            <input type="text" name="Lname" className="input" ref={emailRef} required />
-            <label htmlFor="">E-Mail</label>
-            <span>E-Mail</span>
+
+          <div className="input-container w-1/2 max-[615px]:w-full focus">
+            <input
+              type="email"
+              name="email"
+              className="input"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              readOnly
+            />
+            <label htmlFor="">Email</label>
+            <span>Email</span>
           </div>
         </div>
 
-        <div className="input-container textarea">
-          <textarea name="address" className="input" ref={addressRef} required></textarea>
+        <div className="address input-container focus">
+          <textarea
+            name="address"
+            className="input"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          ></textarea>
           <label htmlFor="">Address</label>
           <span>Address</span>
         </div>
 
-        <div className="space-x-[22rem] flex" >
-          <div className="input-container w-1/2 max-[615px]:w-full">
-              <input type="text" name="Lname" className="input" ref={cityRef}required />
-              <label htmlFor="">City</label>
-              <span>City</span>
-            </div>
-          <div className="invisible  input-container w-1/2 max-[615px]:w-full">
-              <input type="text" name="Lname" className="input" required />
-              <label htmlFor="">City</label>
-              <span>City</span>
-            </div>
+
+        <div className="space-x-[22rem] flex">
+          <div className="input-container w-1/2 max-[615px]:w-full focus">
+            <input
+              type="text"
+              name="city"
+              className="input"
+              value={formData.city}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor="">City</label>
+            <span>City</span>
+          </div>
+          <div className="invisible  input-container w-1/2 max-[615px]:w-full focus">
+            <input type="text" name="Lname" className="input" />
+            <label htmlFor="">City</label>
+            <span>City</span>
+          </div>
         </div>
-        <ButtonDiv value="Update" />
-      </div>
+        <button type="submit">
+          {/* Submit */}
+          <ButtonDiv value="Update" />
+        </button>
+      </form>
     </Wrapper>
   );
 };
 const Wrapper = styled.section`
-.invisible{
-  visibility: hidden;
-}
+  .invisible {
+    visibility: hidden;
+  }
   .input-container {
     position: relative;
     margin: 1rem 0;
@@ -184,6 +255,7 @@ const Wrapper = styled.section`
     z-index: 500;
     transition: 0.5s;
     /* background-color: red; */
+    // border: 2px solid red;
   }
   .input-container span::before,
   .input-container span::after {
@@ -193,10 +265,10 @@ const Wrapper = styled.section`
     opacity: 0;
     transition: 0.3s;
     height: 5px;
-    background-color: #fff;
+    background-color: #EBF8FF;
     top: 50%;
     transform: translateY(-50%);
-    /* border: 2px solid black; */
+    border: 2px solid #EBF8FF;
   }
   .input-container span::before {
     left: 50%;

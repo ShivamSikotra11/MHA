@@ -59,10 +59,116 @@ def get_logged(request):
     else:
       return JsonResponse({'error': 'Invalid credentials','message':'No_user'}, status=400)
   else:
+    return JsonResponse({'error': 'Only POST requests are allowed'}, status=405) 
+  
+@csrf_exempt
+def get_profile(request):
+  if request.method == 'POST':
+    # user = user_model.find()
+    data = json.loads(request.body)
+    user_email = data.get('email', '')
+    password = data.get('password', '')
+    user_check = user_model.find_one({'user_email': user_email})
+    if user_check:
+      user = user_model.find_one({'user_email': user_email, 'user_password': password})
+      if user:
+        user['_id'] = str(user['_id'])
+        # send_email_to_user(request,user['user_email'])
+        return JsonResponse({'message': 'Successfully logged in','data':user},safe=False, status=200)
+      else:
+        return JsonResponse({'error': 'Invalid credentials','message':'Incorrect'}, status=400)
+    else:
+      return JsonResponse({'error': 'Invalid credentials','message':'No_user'}, status=400)
+  else:
     return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
   
-# views.py
+# @csrf_exempt
+# def get_name(request):
+#   if request.method == 'POST':
+#     data = json.loads(request.body)
+#     user_email = data.get('email')
+#     password = data.get('password')
+#     user_check = user_model.find_one({'user_email': user_email})
+#     print(user_email)
+#     if user_check:
+#       user = user_model.find_one({'user_email': user_email, 'user_password': password})
+#       if user:
+#         user['_id'] = str(user['_id'])
+#         print(user["user_name"])
+#         return JsonResponse({'message': 'Successfully logged in','data':user["user_name"]},safe=False, status=200)
+#       else:
+#         # print(1)
+#         return JsonResponse({'error': 'Invalid credentials','message':'Incorrect'}, status=400)
+#     else:
+#       # print(2)
+#       return JsonResponse({'error': 'Invalid credentials','message':'No_user'}, status=400)
+#   else:
+#     return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
+@csrf_exempt
+def get_name(request):
+  if request.method == 'POST':
+    data = json.loads(request.body)
+    user_email = data.get('email')
+    password = data.get('password')
+    user_check = user_model.find_one({'user_email': user_email})
+    print(user_email)
+    if user_check:
+      user = user_model.find_one({'user_email': user_email, 'user_password': password})
+      if user:
+        user['_id'] = str(user['_id'])
+        print(user["user_name"])
+        return JsonResponse({'message': 'Successfully logged in','data': {
+                        'name': user["user_name"],
+                        'city': user.get("city", "")  # Get the city from the user object, default to empty string if not found
+                    }},safe=False, status=200)
+      else:
+        # print(1)
+        return JsonResponse({'error': 'Invalid credentials','message':'Incorrect'}, status=400)
+    else:
+      # print(2)
+      return JsonResponse({'error': 'Invalid credentials','message':'No_user'}, status=400)
+  else:
+    return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+  
+@csrf_exempt
+def update_profile(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        name = data.get('user_name')
+        emailid = data.get('user_email')
+        city = data.get('city')
+        mobileno = data.get('mobile_no')
+        password = data.get('user_password')
+        dob = data.get('dob')
+        gender = data.get('gender')
+        address = data.get('address')
+        
+        records = {
+            'user_name': name,
+            'city': city,
+            'mobile_no': mobileno,
+            'dob': dob,
+            'gender': gender,
+            'address': address
+        }
+
+        user_check = user_model.find_one({'user_email': emailid})
+        if user_check:
+            user = user_model.find_one({'user_email': emailid, 'user_password': password})
+            if user:
+                user['_id'] = str(user['_id'])
+                user_model.update_one({'user_email': emailid, 'user_password': password}, {'$set': records})
+                return JsonResponse({'message': 'updated', 'data': user}, safe=False, status=200)
+            else:
+                print(1)
+                return JsonResponse({'error': 'Invalid credentials', 'message': 'Incorrect'}, status=400)
+        else:
+            print(2)
+            return JsonResponse({'error': 'Invalid credentials', 'message': 'No_user'}, status=400)
+    else:
+        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
 def send_email_to_user(request,email):
     subject = 'Welcome to our website!'

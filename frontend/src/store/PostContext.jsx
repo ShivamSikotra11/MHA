@@ -45,6 +45,9 @@ const PostProvider = ({ children }) => {
   const setShowPost = (id) => {
     dispatch({ type: "SET_SHOW_POST", id: id });
   };
+  const clearShowPost = () => {
+    dispatch({ type: "CLEAR_SHOW_POST" });
+  };
   const getAllPost = async () => {
     try {
       dispatch({ type: "ALTER_ALL_POSTS_FETCHING" });
@@ -82,7 +85,22 @@ const PostProvider = ({ children }) => {
   function getNameAcronym(sentence="") {
     const words = sentence.split(" ");
     const newWord = words.reduce((acc, word) => acc + word.charAt(0), "");
-    return newWord.substring(0, 2);
+    return newWord.substring(0, 2).toUpperCase();
+  }
+
+  const getUserName = async (userData) => {
+    try {
+      const res = await axios.post(`${url}get_name/`, userData);
+      const name = res.data.data.name;
+      const city = res.data.data.city;
+      userData.name = name;
+      userData.city = city;
+      getLogIn(userData);
+    }
+    catch (e) {
+      console.log(e);
+    }
+    // console.log(res.data.data.user_name);
   }
   
   const handleLoginSubmit = async (redirect, userData) => {
@@ -96,7 +114,7 @@ const PostProvider = ({ children }) => {
       userData.name = response.data.data.user_name;
       dispatch({ type: "SET_CURRENT_USER", payload: userData });
       localStorage.setItem("userData", JSON.stringify(userData));
-      // console.log(response.data.data.user_name)
+      getUserName(userData);
       redirect("/");
     } catch (error) {
       dispatch({ type: "ALTER_LOGIN_FETCHING" });
@@ -144,6 +162,7 @@ const PostProvider = ({ children }) => {
       value={{
         ...state,
         setShowPost,
+        clearShowPost,
         handleLoginSubmit,
         getNameAcronym,
         getLogOut,
@@ -153,7 +172,8 @@ const PostProvider = ({ children }) => {
         getLogIn,
         InvokeToast,
         clearToast,
-        deleteUserPost
+        deleteUserPost,
+        getUserName,
       }}
     >
       {children}
