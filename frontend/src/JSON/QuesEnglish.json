@@ -6,17 +6,17 @@
       {
         "key": "A",
         "text": "High",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
         "key": "B",
         "text": "Medium",
-        "weightage": 2
+        "weightage": 0.25
       },
       {
         "key": "C",
         "text": "Low",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },

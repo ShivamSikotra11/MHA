@@ -42,7 +42,7 @@ const ProfileDetails = () => {
 
   return (
     <Wrapper className="   ">
-      <p className="text-black font-inter text-5xl font-semibold">Details</p>
+      <p className="text-black font-inter text-5xl font-semibold mb-4">Details</p>
       <form className="details-box px-[3rem]" onSubmit={updateProfileData}>
       <div className="name flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/3 max-[615px]:w-full focus">

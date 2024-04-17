@@ -380,7 +380,7 @@ def score(request):
         stress_poses = yoga_poses['stress'][stress_pose_index]
         depression_poses = yoga_poses['depression'][depression_pose_index]
         anxiety_poses = yoga_poses['anxiety'][anxiety_pose_index]
-
+        # print(stress_score,)
         # Return Recommendations
         return JsonResponse({'success': True, 'message': "Yoga poses selected successfully.",
                              'data': {'stress_poses': stress_poses, 'depression_poses': depression_poses,

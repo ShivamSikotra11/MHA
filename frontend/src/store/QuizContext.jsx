@@ -28,7 +28,7 @@ const QuizProvider = ({ children }) => {
         data  
       );
   
-      // console.log(res);
+      console.log(res);
     }
     catch (e) {
       console.log(`Error occured ${e}`);
