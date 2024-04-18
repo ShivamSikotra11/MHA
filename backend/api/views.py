@@ -6,7 +6,11 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.views.decorators.http import require_POST
 import asyncio
+import pickle
 import numpy as np
+import neattext.functions as nfx
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # Create your views here.
 
@@ -184,16 +188,56 @@ def update_profile(request):
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
-
 def send_email_to_user(request, email):
-    subject = 'Welcome to our website!'
-    message = 'Thank you for signing up. We hope you enjoy our services.'
+    user_name = '[User\'s Name]'
+    relative_name = '[Relative\'s Name]'
+
+    subject = f'Concern for {email}\'s Well-being'
+    message = f'''Dear {email},
+    
+We have noticed a concerning post from {email} on our platform. We are reaching out to you as a caring individual in their life to make you aware of the situation. If you could please check on them and offer your support, it would be greatly appreciated.
+
+We know that {email}'s well-being is important to you, and if our involvement can make any difference, then we are so grateful. Thank you for being there for {email} during this challenging time.
+
+Sincerely,
+[Your Organization's Name]'''
+
     email_from = 'lifesaver102023@gmail.com'
     recipient_list = [email, ]
 
     send_mail(subject, message, email_from, recipient_list)
     return HttpResponse("Mail Sent!!!")
 
+
+def ngo_support(request, email):
+    user_details = {
+        'name': '[User\'s Name]',
+        'mobile_number': '[User\'s Mobile Number]',
+        'email': email
+    }
+
+    subject = 'Urgent Concern for a User\'s Well-being'
+    message = f'''Dear [NGO's Name],
+    
+We have identified a post on our platform that raises serious concerns about the user's mental health and safety. We are reaching out to seek your immediate intervention and support.
+
+User Details:
+Name: {user_details['name']}
+Mobile No.: {user_details['mobile_number']}
+Email: {user_details['email']}
+
+Given the gravity of the situation, we kindly request your assistance in connecting with the user to ensure their safety and well-being. Your expertise and resources could be invaluable in providing the necessary support and guidance during this critical time.
+
+Thank you for your prompt attention to this matter.
+
+Sincerely,
+[Your Organization's Name]'''
+
+    email_from = 'lifesaver102023@gmail.com'
+    recipient_list = [email, ]
+
+    send_mail(subject, message, email_from, recipient_list)
+    return HttpResponse("Mail Sent!!!")
 
 @csrf_exempt
 @require_POST
@@ -240,6 +284,16 @@ def add_post(request):
         post = data.get('post')
         # Check if the email exists in the collection
         existing_user = posts.find_one({"user_email": email})
+        cleaned_text,_ = clean_text_2(post["content"])
+        test_text_seq_2 = tokenizer.texts_to_sequences(cleaned_text)
+        test_text_pad_2 = pad_sequences(test_text_seq_2, maxlen=300)
+        test_predictions_2 = model.predict(test_text_pad_2)
+        test_classes_2 = (test_predictions_2 > 0.45).astype("int32").ravel()
+        # predicted_class_2 = lbl_target.inverse_transform(test_classes_2)
+        print(test_predictions_2[0])
+        if test_classes_2==1:
+            send_email_to_user(request,email)
+            # ngo_support(request,email)
 
         if existing_user:
             # If user exists, append the post to the user's posts array
@@ -313,18 +367,15 @@ def delete_user_post(request):
 def score(request):
     if request.method == 'POST':
         # Define weight lists for stress, depression, and anxiety levels
-        stress_weights = [0.9, 0.8, 0.7, 0.85, 0.6, 0.75, 0.5,
-                          0.4, 0.3, 0.65]  # Adjusted based on our discussion
-        # Adjusted based on our discussion
-        depression_weights = [0.7, 0.4, 0.6, 0.6, 0.3, 0.8, 0.7, 0.2, 0.4, 0.8]
-        sleep_weights = [0.8, 0.3, 0.6, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        anxiety_weights = [0.6, 0.3, 0.5, 0.5, 0.4, 0.6, 0.6,
-                           0.8, 0.6, 0.7]  # Adjusted based on our discussion
+        sleep_weights = [1, 0.4, 0.8, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        stress_weights = [0.9, 1, 0.7, 0.4, 0.65, 0.3, 0.6, 0.85, 0.75, 0.4]
+        depression_weights = [0.8, 0.4, 0.7, 0.2, 0.8, 0.55, 0.3, 0.6, 0.8, 0.9]
+        anxiety_weights = [0.7, 0.4, 0.6, 1, 0.7, 0.6, 0.4, 0.5, 0.9, 0.6]  # Adjusted based on our discussion
 
         # Define bins range for stress, depression, and anxiety
-        stress_bins = [0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]
-        depression_bins = [0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]
-        anxiety_bins = [0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]
+        stress_bins = [0.65, 0.42, 0.32, 0.24, 0.17, 0.1, 0.05, 0.0]
+        depression_bins = [0.65, 0.45, 0.35, 0.26, 0.18, 0.1, 0.0]
+        anxiety_bins = [0.65, 0.45, 0.34, 0.23, 0.13, 0.07, 0.0]
 
         data = json.loads(request.body)
 
@@ -337,8 +388,8 @@ def score(request):
         depression_score = np.mean(np.multiply(
             user_answers, depression_weights))
         anxiety_score = np.mean(np.multiply(user_answers, anxiety_weights))
-        sleep_score = np.mean(np.multiply(user_answers, sleep_weights))
-
+        sleep_score = 1 - np.mean(np.multiply(user_answers, sleep_weights))
+               
         # Select best yoga poses based on scores
         def select_poses(score, bins):
             for i in range(len(bins) - 1):
@@ -352,31 +403,31 @@ def score(request):
 
         # Define lists of yoga poses
         yoga_poses = {
-            'stress': ['Legs-Up-The-Wall Pose (Viparita Karani)',
-                       'Downward-Facing Dog (Adho Mukha Svanasana)',
-                       'Reclining Bound Angle Pose (Supta Baddha Konasana)',
-                       'Child\'s Pose (Balasana)',
-                       'Cat-Cow Stretch (Marjaryasana-Bitilasana)',
-                       'Seated Forward Bend (Paschimottanasana)',
-                       'Extended Puppy Pose (Uttana Shishosana)',
-                       'Corpse Pose (Savasana)'],
+            'stress': ['Legs_Up_The_Wall_Pose',
+                       'Corpse',
+                       'Child_Pose',
+                       'Cat_Pose',
+                       'Cat_cow_pose',
+                       'Seated_forward_bend',
+                       'standing_forward_bend',
+                       'Malasan'],
 
-            'depression': ['Bridge Pose (Setu Bandhasana)',
-                           'Cobra Pose (Bhujangasana)',
-                           'Hero Pose (Virasana)',
-                           'Camel Pose (Ustrasana)',
-                           'Lotus Pose (Padmasana)',
-                           'Pigeon Pose (Eka Pada Rajakapotasana)',
-                           'Mountain Pose (Tadasana)'],
+            'depression': ['bridge_pose',
+                           'Camel_pose',
+                           'easy_pose',
+                           'sholder_stand',
+                           'tree_pose',
+                           'plow_pose',
+                           'Meditation'],
 
             'anxiety': [
-                'Eagle Pose (Garudasana)',
-                'Child\'s Pose (Balasana)',
-                'Extended Puppy Pose (Uttana Shishosana)',
-                'Legs-Up-The-Wall Pose (Viparita Karani)',
-                'Downward-Facing Dog (Adho Mukha Svanasana)',
-                'Cat-Cow Stretch (Marjaryasana-Bitilasana)',
-                'Seated Forward Bend (Paschimottanasana)'
+                'big_toe_pose',
+                'bond_angle_pose',
+                'extended_puppy_pose',
+                'extended_triangle_pose',
+                'Fish_pose',
+                'bow_pose',
+                'Meditation'
             ]
         }
 
@@ -401,7 +452,6 @@ def score(request):
             { "user_email": user_email },  # Specify the user ID to update
             { "$push": { "scores": score_data } }
         )
-        # user_model['scores'].append({ 'Month': user_date, 'sleepScore': sleep_score, 'stressScore': stress_score, 'depressionScore': depression_score, 'anxietyScore': anxiety_score, 'stress_poses': stress_poses, 'depression_poses': depression_poses,'anxiety_poses': anxiety_poses  })
 
         # Return Recommendations
         return JsonResponse({'success': True, 'message': "Yoga poses selected successfully.",
@@ -409,3 +459,31 @@ def score(request):
                                       'anxiety_poses': anxiety_poses, 'stress_score': stress_score, 'depression_score': depression_score, 'anxiety_score': anxiety_score}})
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
+
+
+def load_files():
+    global model, tokenizer, lbl_target
+    # Load the model
+    model = load_model("suicide_detection_model.h5")
+    
+    # Load the tokenizer
+    with open('tokenizer.pickle', 'rb') as handle:
+        tokenizer = pickle.load(handle)
+    
+    # Load the label encoder
+    with open('label_encoder.pickle', 'rb') as handle:
+        lbl_target = pickle.load(handle)
+
+# Load files only once during app initialization
+load_files()
+
+def clean_text_2(text):
+    text_length=[]
+    cleaned_text=[]
+    sent=text.lower()
+    sent=nfx.remove_special_characters(sent)
+    sent=nfx.remove_stopwords(sent)
+    text_length.append(len(sent.split()))
+    cleaned_text.append(sent)
+    return cleaned_text,text_length
+
