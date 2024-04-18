@@ -6,32 +6,33 @@ const Photos = () => {
   
   return (
     <div className="flex h-[40rem]  justify-evenly items-center my-4">
-      <div
+      <img
         className={` ${
           curCondition === "Depression"
-            ? "ConditionActive"
-            : "ConditionInactive"
-        } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+            ? "ConditionActive "
+            : "ConditionInactive border border-primary_dark"
+          } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+          src="depression.jpg"
         onClick={() => showCondition("Depression")}
-      >
-        Depression
-      </div>
-      <div
+      />
+      <img
         className={` ${
-          curCondition === "Stress" ? "ConditionActive" : "ConditionInactive"
-        } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+          curCondition === "Stress"
+            ? "ConditionActive "
+            : "ConditionInactive border border-primary_dark"
+          } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+          src="stress.jpg"
         onClick={() => showCondition("Stress")}
-      >
-        Stress
-      </div>
-      <div
+      />
+      <img
         className={` ${
-          curCondition === "Anxiety" ? "ConditionActive" : "ConditionInactive"
-        } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+          curCondition === "Anxiety"
+            ? "ConditionActive "
+            : "ConditionInactive border border-primary_dark"
+          } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+          src="anxiety.jpg"
         onClick={() => showCondition("Anxiety")}
-      >
-        Anxiety
-      </div>
+      />
     </div>
   );
 };

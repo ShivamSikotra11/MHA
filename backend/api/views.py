@@ -317,6 +317,7 @@ def score(request):
                           0.4, 0.3, 0.65]  # Adjusted based on our discussion
         # Adjusted based on our discussion
         depression_weights = [0.7, 0.4, 0.6, 0.6, 0.3, 0.8, 0.7, 0.2, 0.4, 0.8]
+        sleep_weights = [0.8, 0.3, 0.6, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
         anxiety_weights = [0.6, 0.3, 0.5, 0.5, 0.4, 0.6, 0.6,
                            0.8, 0.6, 0.7]  # Adjusted based on our discussion
 
@@ -328,12 +329,15 @@ def score(request):
         data = json.loads(request.body)
 
         user_answers = data.get('answer')
+        user_date = data.get('date')
+        user_email = data.get('email')
 
         # Calculate Scores
         stress_score = np.mean(np.multiply(user_answers, stress_weights))
         depression_score = np.mean(np.multiply(
             user_answers, depression_weights))
         anxiety_score = np.mean(np.multiply(user_answers, anxiety_weights))
+        sleep_score = np.mean(np.multiply(user_answers, sleep_weights))
 
         # Select best yoga poses based on scores
         def select_poses(score, bins):
@@ -380,7 +384,25 @@ def score(request):
         stress_poses = yoga_poses['stress'][stress_pose_index]
         depression_poses = yoga_poses['depression'][depression_pose_index]
         anxiety_poses = yoga_poses['anxiety'][anxiety_pose_index]
-        # print(stress_score,)
+
+        score_data = {
+            "Month": user_date,
+            "sleepScore": sleep_score,
+            "stressScore": stress_score,
+            "depressionScore": depression_score,
+            "anxietyScore": anxiety_score,
+            "stress_poses": stress_poses,
+            "depression_poses": depression_poses,
+            "anxiety_poses": anxiety_poses
+        }
+
+# Update the user document with the new score data
+        user_model.update_one(
+            { "user_email": user_email },  # Specify the user ID to update
+            { "$push": { "scores": score_data } }
+        )
+        # user_model['scores'].append({ 'Month': user_date, 'sleepScore': sleep_score, 'stressScore': stress_score, 'depressionScore': depression_score, 'anxietyScore': anxiety_score, 'stress_poses': stress_poses, 'depression_poses': depression_poses,'anxiety_poses': anxiety_poses  })
+
         # Return Recommendations
         return JsonResponse({'success': True, 'message': "Yoga poses selected successfully.",
                              'data': {'stress_poses': stress_poses, 'depression_poses': depression_poses,

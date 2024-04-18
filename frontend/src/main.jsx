@@ -10,13 +10,13 @@ import MainProvider from "./store/MainContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <MainProvider>
-      <ConditionProvider>
-        <QuizProvider>
-          <PostProvider>
+      <PostProvider>
+        <ConditionProvider>
+          <QuizProvider>
             <App />
-          </PostProvider>
-        </QuizProvider>
-      </ConditionProvider>
+          </QuizProvider>
+        </ConditionProvider>
+      </PostProvider>
     </MainProvider>
   </React.StrictMode>
 );

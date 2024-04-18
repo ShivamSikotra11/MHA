@@ -82,17 +82,7 @@ a {
 }
 
  
-.testimonial::before {
-  content: "";
-  position: absolute;
-  top: -22%;
-  left: 50%; /* Position horizontally centered */
-  transform: translate(-50%); /* Center horizontally */
-  width: 20rem; /* Diameter of the circle */
-  height: 20rem; /* Diameter of the circle */
-  background-color: #d9d9d9; /* Circle color */
-  border-radius: 50%; /* Make it a circle */
-}
+
 .ConditionActive{
   width:30rem;
   height:35rem;

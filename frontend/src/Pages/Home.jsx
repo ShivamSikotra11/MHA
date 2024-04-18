@@ -12,9 +12,9 @@ const Home = () => {
     <div className=" bg-bg ">
       <Toast />
       <HeroSection />
+      <Blogs />
       <Photos />
       <ConditionContent />
-      <Blogs />
       <Testimonials />
     </div>
   );

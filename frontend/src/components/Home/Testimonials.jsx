@@ -1,15 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import TestimonialJSON from "../../JSON/Testimonial.json";
+import Testimonial from "./Testimonial";
 
 const Testimonials = () => {
   return (
     <Wrapper>
       <div className=" mb-10 h-[80rem] placeholder:  relative my-10 mt-20 ">
         <div className="testimonial-container"></div>
-        <div className="absolute top-[40%]   w-full">
+        <div className="absolute top-[45%]   w-full">
           <div className="flex justify-evenly ">
-            <div className="w-[45rem] h-[45rem] bg-primary_light rounded-[3rem] relative testimonial"></div>
-            <div className="w-[45rem] h-[45rem] bg-primary_light rounded-[3rem] relative testimonial"></div>
+            {TestimonialJSON.map((testimonial, index) => (
+              <Testimonial key={index} testimonial={testimonial} />
+            ))}
+            {/* <div className="w-[45rem] h-[45rem] bg-primary_light rounded-[3rem] relative testimonial"></div>
+            <div className="w-[45rem] h-[45rem] bg-primary_light rounded-[3rem] relative testimonial"></div> */}
           </div>
         </div>
       </div>
