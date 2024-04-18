@@ -27,17 +27,17 @@
       {
         "key": "A",
         "text": "High",
-        "weightage": 3
+        "weightage": 0.99
       },
       {
         "key": "B",
         "text": "Medium",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
         "key": "C",
         "text": "Low",
-        "weightage": 1
+        "weightage": 0.01
       }
     ]
   },
@@ -48,38 +48,38 @@
       {
         "key": "A",
         "text": "More than 7 hours",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
         "key": "B",
         "text": "5-7 hours",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
         "key": "C",
         "text": "Less than 5 hours",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },
   {
     "id": 4,
-    "question": "How frequently do you feel anxious or worried?",
+    "question": "How frequently do you feel worried?",
     "options": [
       {
         "key": "A",
         "text": "Often",
-        "weightage": 3
+        "weightage": 0.99
       },
       {
         "key": "B",
         "text": "Sometimes",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
         "key": "C",
         "text": "Rarely",
-        "weightage": 1
+        "weightage": 0.10
       }
     ]
   },
@@ -90,17 +90,17 @@
       {
         "key": "A",
         "text": "Strong",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
         "key": "B",
         "text": "Moderate",
-        "weightage": 2
+        "weightage": 0.25
       },
       {
         "key": "C",
         "text": "Weak",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },
@@ -111,17 +111,17 @@
       {
         "key": "A",
         "text": "Frequently",
-        "weightage": 3
+        "weightage": 0.99
       },
       {
         "key": "B",
         "text": "Occasionally",
-        "weightage": 2
+        "weightage": 0.35
       },
       {
         "key": "C",
         "text": "Rarely",
-        "weightage": 1
+        "weightage": 0.01
       }
     ]
   },
@@ -132,17 +132,17 @@
       {
         "key": "A",
         "text": "Regularly",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
         "key": "B",
         "text": "Sometimes",
-        "weightage": 2
+        "weightage": 0.25
       },
       {
         "key": "C",
         "text": "Rarely",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },
@@ -153,17 +153,17 @@
       {
         "key": "A",
         "text": "Often",
-        "weightage": 3
+        "weightage": 0.99
       },
       {
         "key": "B",
         "text": "Sometimes",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
         "key": "C",
         "text": "Rarely",
-        "weightage": 1
+        "weightage": 0.01
       }
     ]
   },
@@ -174,17 +174,17 @@
       {
         "key": "A",
         "text": "Very satisfied",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
         "key": "B",
         "text": "Moderately satisfied",
-        "weightage": 2
+        "weightage": 0.50
       },
       {
         "key": "C",
         "text": "Not satisfied",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },
@@ -195,17 +195,17 @@
       {
         "key": "A",
         "text": "Yes, always",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
         "key": "B",
         "text": "Sometimes",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
         "key": "C",
         "text": "No, never",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   }
