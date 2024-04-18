@@ -26,21 +26,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const Testimonial = () => {
-  const data = {
-    name: "Alexandra Smith",
-    designation: "Psychologist",
-    text:
-      "I've seen firsthand how this website empowers individuals to take control of their mental health. The quiz is insightful, and the personalized recommendations make a real difference.",
-    image: "anxiety.jpg",
-  };
+const Testimonial = ({data}) => {
   return (
     <Wrapper imageUrl={data.image}>
-      <div className="w-[45rem] h-[40rem] bg-primary_light rounded-[3rem] relative testimonial pt-[14rem] px-[2rem] pb-[2rem] ">
+      <div className="w-[45rem] h-[43rem] bg-primary_light rounded-[3rem] relative testimonial pt-[14rem] px-[2rem] pb-[2rem] ">
         {/* <div className="circle  ">
           <img src={data.image} className="object-cover rounded-full" alt="" />
         </div> */}
-        {/* <svg height="35px" className="border" fill="#00668C" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        {/* <svg height="35px" className="border " fill="#00668C" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                    viewBox="0 0 32 32" xml:space="preserve">
                   <g>
                     <g id="right_x5F_quote">
@@ -50,10 +43,12 @@ const Testimonial = () => {
                       </g>
                     </g>
                   </g>
-                </svg> */}
+        </svg> */}
+        
         <div className="  flex flex-col justify-between h-full  p-4 ">
-          <p className="text-4xl text-center" >{data.text}</p>
-          <div className="border ">
+        
+          <p className="text-4xl text-justify " >{data.text}</p>
+          <div className="">
             <p className="text-3xl   font-semibold" >{data.name }</p>
             <p className="text-3xl  " >{data.designation }</p>
           </div>
