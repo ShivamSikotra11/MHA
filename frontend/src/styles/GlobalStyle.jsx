@@ -108,6 +108,20 @@ a {
   height:30rem;
   background-color:#A9E1FF;
 } 
+.ConditionActiveSmall{
+  // width:13rem;
+  // height:35rem;
+  background-color:#00668C;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the shadow as needed */
+  transition: background-color 0.6s ease, box-shadow 0.6s ease;
+} 
+.ConditionInactiveSmall{
+  // width:13rem;
+
+  // width:25rem;
+  // height:30rem;
+  background-color:#A9E1FF;
+} 
 .HeaderActive{
   border-radius: 1.2rem;
   background-color: white;

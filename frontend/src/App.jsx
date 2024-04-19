@@ -120,6 +120,7 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 import { usePostContext } from "./store/PostContext";
 import Profile from "./Pages/Profile";
 import { useMainContext } from "./store/MainContext";
+import { useQuizContext } from "./store/QuizContext";
 
 const AppWithHeader = () => {
   // Initialize AOS and refresh
@@ -137,7 +138,7 @@ const AppWithHeader = () => {
   const redirect = useNavigate();
   const { loggedIn, getLogIn , getUserName,curUser } = usePostContext();
   const { isuserProfileUpdating } = useMainContext();
-
+  const { isQuizSubmitted } = useQuizContext();
   // Define excluded routes and routes based on authentication status
   const ExcludeHeaderPages = ["/otp", "/login", "/register", "/interaction"];
   const AbortedRoutesLoggedIn = ["/login", "/register"];
@@ -154,7 +155,7 @@ const AppWithHeader = () => {
       getUserName(JSON.parse(storedUserData));
     }
     setLoading(false);
-  }, [isuserProfileUpdating]); 
+  }, [isuserProfileUpdating,isQuizSubmitted]); 
 
   
   useEffect(() => {

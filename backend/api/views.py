@@ -131,11 +131,16 @@ def get_name(request):
                 {'user_email': user_email, 'user_password': password})
             if user:
                 user['_id'] = str(user['_id'])
-                print(user["user_name"])
+                # print(user["user_name"])
+                if "scores" in user_model.find_one({'user_email': user_email}):
+                    user_scores = user_model.find_one({'user_email': user_email}, {"scores": { "$slice": -1 } })["scores"]
+                    user_poses = np.array(user_scores).tolist()
+                else:
+                    user_poses = []
                 return JsonResponse({'message': 'Successfully logged in', 'data': {
                     'name': user["user_name"],
                     # Get the city from the user object, default to empty string if not found
-                    'city': user.get("city", "")
+                    'city': user.get("city", ""),'poses':user_poses
                 }}, safe=False, status=200)
             else:
                 # print(1)
@@ -188,12 +193,14 @@ def update_profile(request):
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
-def send_email_to_user(request, email):
-    user_name = '[User\'s Name]'
-    relative_name = '[Relative\'s Name]'
+def send_email_to_user(request, email, password):
+    user = user_model.find_one({'user_email': email,'user_password': password})
+    user_name = user['user_name']
+    ngo_name = 'Mental Health Support Foundation'
+    # relative_name = '[Relative\'s Name]'
 
-    subject = f'Concern for {email}\'s Well-being'
-    message = f'''Dear {email},
+    subject = f'Concern for {user_name}\'s Well-being'
+    message = f'''Dear {ngo_name},
     
 We have noticed a concerning post from {email} on our platform. We are reaching out to you as a caring individual in their life to make you aware of the situation. If you could please check on them and offer your support, it would be greatly appreciated.
 
@@ -209,15 +216,16 @@ Sincerely,
     return HttpResponse("Mail Sent!!!")
 
 
-def ngo_support(request, email):
+def ngo_support(request, email, password):
+    user = user_model.find_one({'user_email': email,'user_password': password})
     user_details = {
-        'name': '[User\'s Name]',
-        'mobile_number': '[User\'s Mobile Number]',
+        'name': user['user_name'],
+        'mobile_number': user['mobile_no'],
         'email': email
     }
 
-    subject = 'Urgent Concern for a User\'s Well-being'
-    message = f'''Dear [NGO's Name],
+    subject = f'''Urgent Concern for a {user_details['name']}\'s Well-being'''
+    message = f'''Dear Mental Health Support Foundation Team,
     
 We have identified a post on our platform that raises serious concerns about the user's mental health and safety. We are reaching out to seek your immediate intervention and support.
 
@@ -231,10 +239,10 @@ Given the gravity of the situation, we kindly request your assistance in connect
 Thank you for your prompt attention to this matter.
 
 Sincerely,
-[Your Organization's Name]'''
+MindCare Support Team'''
 
     email_from = 'lifesaver102023@gmail.com'
-    recipient_list = [email, ]
+    recipient_list = ['svspbs567@gmail.com', ]
 
     send_mail(subject, message, email_from, recipient_list)
     return HttpResponse("Mail Sent!!!")
@@ -279,7 +287,7 @@ def add_post(request):
     if request.method == 'POST':
         # print("hi")
         data = json.loads(request.body)
-
+        password = data.get('password')
         email = data.get('email')
         post = data.get('post')
         # Check if the email exists in the collection
@@ -292,8 +300,8 @@ def add_post(request):
         # # predicted_class_2 = lbl_target.inverse_transform(test_classes_2)
         # print(test_predictions_2[0])
         # if test_classes_2==1:
-        #     send_email_to_user(request,email)
-        #     # ngo_support(request,email)
+        #     send_email_to_user(request,email,password)
+        #     # ngo_support(request,email,password)
 
         if existing_user:
             # If user exists, append the post to the user's posts array

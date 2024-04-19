@@ -14,7 +14,7 @@ const HeroSection = () => {
             You are Not Alone, We are With You{" "}
             {curUser.hasOwnProperty("name") ? `, ${curUser.name}` : ""}
           </div>
-          <div className="box-content mb-4 text-[2.7rem] max-[870px]:text-[2rem]  text-center" >
+          <div className="box-content mb-4 text-[2.7rem] max-[870px]:text-[2rem]  text-center max-[590px]:hidden" >
             Join our supportive community for guidance and
             understanding.Together, we'll navigate your mental health journey
           </div>

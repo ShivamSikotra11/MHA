@@ -9,6 +9,7 @@ import { usePostContext } from "./PostContext";
 const QuizContext = createContext();
 const initialState = {
   curLang: "English",
+  isQuizSubmitted: false,
 };
 
 const QuizProvider = ({ children }) => {
@@ -28,7 +29,7 @@ const QuizProvider = ({ children }) => {
 
     // Format date as dd/mm/yyyy
     let date = `${day}/${month}/${year}`;
-
+    dispatch({ type: "ALTER_QUIZ_SUBMISSION" });
     try {
       const data = {
         answer: Answers,
@@ -36,7 +37,8 @@ const QuizProvider = ({ children }) => {
         email: curUser.email,
       };
       const res = await axios.post(`${url}cal_score/`, data);
-
+      dispatch({ type: "ALTER_QUIZ_SUBMISSION" });
+      
       console.log(res);
     } catch (e) {
       console.log(`Error occured ${e}`);

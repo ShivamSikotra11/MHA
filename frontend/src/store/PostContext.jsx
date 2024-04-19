@@ -19,6 +19,7 @@ const initialState = {
   toastActive:false,
   toastData:{type:"success", text:"op"},
   isuserPostDeleted:false,
+  poses:[],
 };
 
 const PostProvider = ({ children }) => {
@@ -96,6 +97,7 @@ const PostProvider = ({ children }) => {
       userData.name = name;
       userData.city = city;
       getLogIn(userData);
+      dispatch({type:"SET_POSES",payload:res.data.data.poses[0]})
     }
     catch (e) {
       console.log(e);

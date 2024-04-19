@@ -12,7 +12,7 @@ const Causes = ({ data }) => {
           <h2 className=" " >Causes</h2>
           <div className="flex flex-col space-y-6   pb-6">
             {causes.map((e, i) => (
-              <div className="text-justify" >
+              <div className="text-justify" key={e.id} >
                   <span className="text-5xl font-medium">{e.heading} :-  </span>
                   <span className="text-4xl   "> {e.content} </span>
               </div>
