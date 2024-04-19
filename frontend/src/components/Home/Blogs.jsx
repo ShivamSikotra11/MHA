@@ -1,20 +1,15 @@
 import React from "react";
 import Blog from "./Blog";
-
-const blogContents = [
-  "Join our supportive community for guidance and understanding.",
-  "Explore our latest articles and stay informed.",
-  "Discover tips and tricks to enhance your skills.",
-  "Learn from industry experts and expand your knowledge.",
-];
+import ypJOSN from "../../JSON/YogaPoses.json";
+ 
 
 const Blogs = () => {
   return (
     <div className="my-10">
-      <h2 className="text-center mb-4">Our Blogs For You</h2>
-      <div className=" flex justify-around">
-        {blogContents.map((content, index) => (
-          <Blog key={index} content={content} />
+      <h2 className="text-center mb-4 font-medium">Our Blogs For You</h2>
+      <div className="flex flex-col space-y-[3rem] justify-center items-center">
+        {ypJOSN.slice(0,3).map((content, index) => (
+          <Blog key={index} data={content} index={index} />
         ))}
       </div>
     </div>

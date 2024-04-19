@@ -110,6 +110,7 @@ import Interaction from "./Pages/Interaction";
 import RegisterPage from "./Pages/Register";
 import PageNotFound from "./Pages/PageNotFound";
 import Header from "./components/Header";
+import Loader from "./components/Loader";
 
 // Styles
 import "./styles/index.css";
@@ -168,6 +169,9 @@ const AppWithHeader = () => {
     }
   }, [loggedIn, location.pathname, loading]);
 
+  if (loading) {
+    return <div className="h-[100vh] w-[100vw] flex justify-center items-center " ><Loader width={"50px"} /></div>
+  }
  
   return (
     <>

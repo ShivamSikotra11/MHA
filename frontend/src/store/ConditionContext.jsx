@@ -6,7 +6,7 @@ const ConditionContext = createContext("");
 
 const initialState = {
   ConditionData: JSONdata[0],
-  curCondition: "Depression",
+  curCondition: "Stress",
   isLoading: false,
   isError: false,
   isFetching: false,

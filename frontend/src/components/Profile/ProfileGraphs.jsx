@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import Highcharts from "highcharts";
+import HighchartsAccessibility from "highcharts/modules/accessibility"; // Import Highcharts Accessibility module
 import HighchartsReact from "highcharts-react-official";
 import styled from "styled-components";
+
+// Initialize Highcharts Accessibility module
+HighchartsAccessibility(Highcharts);
 
 const ProfileGraphs = () => {
   const data = [

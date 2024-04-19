@@ -6,7 +6,7 @@ import Testimonial from "./Testimonial";
 const Testimonials = () => {
   return (
     <Wrapper>
-      <div className="  mb-10 h-[80rem] max-h-[100rem] placeholder:  relative my-10 mt-20 ">
+      <div className="   mb-10 h-[80rem] max-h-[100rem] placeholder:  relative my-10 mt-20 ">
         <div className="testimonial-container"></div>
         <div className="absolute top-[45%]   w-full">
           <div className="flex justify-evenly ">
@@ -23,11 +23,7 @@ const Testimonials = () => {
 };
 const Wrapper = styled.section`
   .testimonial-container {
-    background: linear-gradient(
-        rgba(256, 256, 256, 0.6),
-        rgba(256, 256, 256, 0.5)
-      ),
-      url("hero.jpg");
+    background: url("hero.jpg");
     height: 90vh;
     background-position: center;
     background-size: cover;

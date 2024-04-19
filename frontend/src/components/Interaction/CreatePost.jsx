@@ -6,13 +6,14 @@ const CreatePost = () => {
   const { handleCreatePost , AlterCreatePost, curUser } = usePostContext();
   const titleRef = useRef();
   const contentRef = useRef();
-
+// pip install -r requirements.txt,2.16.1
   const handleCreatePostFunction = (e) => {
     e.preventDefault();
     const currentDate = new Date(); 
     const currTimestamp = currentDate.getTime();
     const postObject = {
       email: curUser.email,
+      password: curUser.password,
       post: {
         heading:titleRef.current.value,
         content: contentRef.current.value,

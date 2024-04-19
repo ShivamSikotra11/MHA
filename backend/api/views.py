@@ -9,8 +9,8 @@ import asyncio
 import pickle
 import numpy as np
 import neattext.functions as nfx
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+# from tensorflow.keras.models import load_model
+# from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # Create your views here.
 
@@ -284,16 +284,16 @@ def add_post(request):
         post = data.get('post')
         # Check if the email exists in the collection
         existing_user = posts.find_one({"user_email": email})
-        cleaned_text,_ = clean_text_2(post["content"])
-        test_text_seq_2 = tokenizer.texts_to_sequences(cleaned_text)
-        test_text_pad_2 = pad_sequences(test_text_seq_2, maxlen=300)
-        test_predictions_2 = model.predict(test_text_pad_2)
-        test_classes_2 = (test_predictions_2 > 0.45).astype("int32").ravel()
-        # predicted_class_2 = lbl_target.inverse_transform(test_classes_2)
-        print(test_predictions_2[0])
-        if test_classes_2==1:
-            send_email_to_user(request,email)
-            # ngo_support(request,email)
+        # cleaned_text,_ = clean_text_2(post["content"])
+        # test_text_seq_2 = tokenizer.texts_to_sequences(cleaned_text)
+        # test_text_pad_2 = pad_sequences(test_text_seq_2, maxlen=300)
+        # test_predictions_2 = model.predict(test_text_pad_2)
+        # test_classes_2 = (test_predictions_2 > 0.45).astype("int32").ravel()
+        # # predicted_class_2 = lbl_target.inverse_transform(test_classes_2)
+        # print(test_predictions_2[0])
+        # if test_classes_2==1:
+        #     send_email_to_user(request,email)
+        #     # ngo_support(request,email)
 
         if existing_user:
             # If user exists, append the post to the user's posts array
@@ -475,7 +475,7 @@ def load_files():
         lbl_target = pickle.load(handle)
 
 # Load files only once during app initialization
-load_files()
+# load_files()
 
 def clean_text_2(text):
     text_length=[]

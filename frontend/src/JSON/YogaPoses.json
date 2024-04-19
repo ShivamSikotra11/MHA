@@ -1,0 +1,169 @@
+[
+  {
+    "id": 1,
+    "category": "Yoga",
+    "name": "Viparita Karani",
+    "description": "Legs-Up-The-Wall Pose — Viparita Karani (Vip-pah-REE-tah-kah-rahn-ee) — is a deeply restorative posture that can be used as an alternative to Shoulder Stand. Legs-Up-The-Wall Pose is best when practiced with blankets underneath the neck and with a wall or other tall, flat, upright object for leg support. .",
+    "url": "https://www.artofliving.org/us-en/legs-up-the-wall-pose-viparita-karani",
+    "image": "Legs_Up_The_Wall_Pose"
+  },
+  {
+    "id": 2,
+    "category": "Yoga",
+    "name": "Shavasana",
+    "description": "The asana is pronounced as sha-vah-sa-na “Sava” – Corpse; “Asana” – Pose. The Sanskrit word “Shava” mean corpse hence this is the Corpse. Also known as the “mrta-asana“.",
+    "url": "https://www.artofliving.org/in-en/yoga/yoga-poses/savasana-corpse-pose",
+    "image": "Corpse"
+  },
+  {
+    "id": 3,
+    "category": "Yoga",
+    "name": "Shishuasana",
+    "description": "Sit on your heels. Keeping your hips on the heels, bend forward, and lower your forehead to the floor. Keep the arms alongside your body with hands on the floor, palms facing up. If this is not comfortable, you can place one fist on top of another and rest your forehead on them.",
+    "url": "https://www.artofliving.org/in-en/yoga/yoga-poses/shishuasana-child-pose",
+    "image": "Child_Pose"
+  },
+  {
+    "id": 4,
+    "category": "Yoga",
+    "name": "Marjariasana",
+    "description": "Cat Pose — Marjariasana (Mar-jar-YA-SUN-aa) — is a gentle backbend that loosens up the spine, stretches the back of the torso, and releases tension in the neck. The posture gets its name from the Sanskrit words marjari, meaning cat, and asana, meaning pose.",
+    "url": "https://www.artofliving.org/us-en/yoga/poses/marjariasana",
+    "image": "Cat_Pose"
+  },
+  {
+    "id": 5,
+    "category": "Yoga",
+    "name": "Bitilasana",
+    "description": "Cow Pose — Bitilasana (Bit-ill-Ah-SUN-aa) — is a gentle backbend that loosens up the spine, stretches the front of the torso, and releases tension in the neck. The posture gets its name from the Sanskrit words bitila, meaning cow, and asana, meaning pose.",
+    "url": "https://www.artofliving.org/us-en/yoga/poses/marjariasana",
+    "image": "Cat_cow_pose"
+  },
+  {
+    "id": 6,
+    "category": "Yoga",
+    "name": "Paschimottanasana",
+    "description": "Seated Forward Bend  — Paschimottanasana (Posh-ee-moh-tan-AA-SUN-aa) — Seated Forward Bend can be an active or passive posture, depending on the level of practitioner. The pose provides a full-body stretch, especially in the hamstrings. Seated Forward Bend gets its name from the Sanskrit words paschim, meaning west, uttana, meaning head, and stretch, and asana meaning pose.",
+    "url": "https://www.artofliving.org/us-en/seated-forward-bend-paschimottanasana",
+    "image": "Seated_forward_bend"
+  },
+  {
+    "id": 7,
+    "category": "Yoga",
+    "name": "Uttanasana",
+    "description": "Standing Forward Bend — Uttanasana (OOT-un-AA-SUN-aa) — is a posture that stretches entire body and can be adjusted to increase or decrease levels of intensity in the hamstrings. The pose gets its name from the Sanskrit words, Ut, meaning intensity, tan, meaning to stretch or extend, and asana, meaning pose",
+    "url": "https://www.artofliving.org/us-en/standing-forward-bend-uttanasana",
+    "image": "standing_forward_bend"
+  },
+  {
+    "id": 8,
+    "category": "Yoga",
+    "name": "Malasana",
+    "description": "Malasana combines the Sanskrit words “Mala” and “asana,” which both mean a garland or necklace. The three asanas that prepare you for malasana are tadasana, naukasana and padhastasana. After doing malasana, we can do any yoga asana except chakrasana, halasana and plank. In addition, there are some variations of malasana, which involve use of a chair or a wall for support.",
+    "url": "https://pharmeasy.in/blog/health-fitness-benefits-of-malasana-and-how-to-do-it/",
+    "image": "Malasan"
+  },
+  {
+    "id": 9,
+    "category": "Yoga",
+    "name": "Setu Bandhasana",
+    "description": "Setu-Bridge, Bandha – Bind, Lock; Asana – Pose, Posture.This asana is pronounced as SAY-tuh-bun-DHAHS-ana.The pose resembles a bridge, hence the name.",
+    "url": "https://www.artofliving.org/in-en/yoga/yoga-poses/setu-bandhasana-bridge-pose",
+    "image": "bridge_pose"
+  },
+  {
+    "id": 10,
+    "category": "Yoga",
+    "name": "Ustrasana",
+    "description": "Camel Pose or Ustrasana is a chest-opening backbend that is energizing and beneficial. It is a wonderful addition to your sequence since it prevents slouching and eases lower back stiffness. The camel pose yoga allows spine extension without supporting body weight with your arm, unlike chakrasana (wheel pose). The wheel pose is a total body stretch backbend posture that requires more stamina and determination. The camel pose is friendlier and more accessible to yoga learners, especially beginners.",
+    "url": "https://pharmeasy.in/blog/health-fitness-benefits-of-ustrasana-and-how-to-do-it/",
+    "image": "Camel_pose"
+  },
+  {
+    "id": 11,
+    "category": "Yoga",
+    "name": "Easy Pose",
+    "description": "Easy Pose— Sukhasana (Soo-kaah-SUN-ah) — is a foundational posture used for seated meditation in lieu of Lotus Pose. The name Easy Pose can be misleading, as this posture requires hip flexibility and back strength in order to hold the pose for longer periods of time. For those with tight hips and/or those used to sitting in chairs, Easy Pose may require extra practice and warm up. It gets its name from the Sanskrit words, Sukha, meaning easy, and asana, meaning posture.",
+    "url": "https://www.artofliving.org/us-en/easy-pose-sukhasana",
+    "image": "easy_pose"
+  },
+  {
+    "id": 12,
+    "category": "Yoga",
+    "name": "Sarvangasana",
+    "description": "Sarvangasana or shoulder stand is a yoga pose wherein the whole body is balanced on the shoulders. ‘Sarv’ means all, ‘anga’ means part of a body, and ‘asana’ is posture. As the name indicates, Sarvangasana influences the functioning of all parts of your body. This asana is highly beneficial in maintaining the mental and physical health and is also referred as ‘Queen of asanas’. The asana is pronounced as sar-vong-ah-sa-na",
+    "image": "sholder_stand"
+  },
+  {
+    "id": 13,
+    "category": "Yoga",
+    "name": "Vrikshasana",
+    "description": "Vriksha – Tree; Asana – Posture or Pose.The asana is pronounced as vrik-shah-sa-na.The Sanskrit word”vriksha” means tree. Standing straight on the left leg, bend the right leg and place the right foot on the root of the left thigh.Stand thus like a tree on the ground. This is called “vriksha-asana.”",
+    "url": "https://www.artofliving.org/in-en/yoga/yoga-poses/vrikshasana-the-tree-pose",
+    "image": "tree_pose"
+  },
+  {
+    "id": 14,
+    "category": "Yoga",
+    "name": "Halasana",
+    "description": "Hal = plow, Asana = posture or pose.This yoga pose gets its name from the “plow”– a popular farming tool commonly used in Indian agriculture to prepare the soil for sowing crops. Like its namesake, this pose prepares the ‘field’ of the body and mind for deep rejuvenation. Halasana is pronounced as hull-ah-sa-na.Parsva Halasana is an advanced variation of the Halasana.",
+    "url": "https://www.artofliving.org/in-en/yoga/yoga-poses/halasana-plow-pose",
+    "image": "plow_pose"
+  },
+  {
+    "id": 15,
+    "category": "Meditation",
+    "name": "Meditation",
+    "description": "Meditation is a practice in which an individual uses a technique – such as mindfulness, or focusing the mind on a particular object, thought, or activity – to train attention and awareness, and achieve a mentally clear and emotionally calm and stable state.",
+    "url": "https://en.wikipedia.org/wiki/Meditation",
+    "image": "Meditation"
+  },
+  {
+    "id": 16,
+    "category": "Yoga",
+    "name": "Padangusthasana",
+    "description": "Standing yoga posture of Ashtanga yoga; the name comes from the Sanskrit words “pada”, meaning foot and “angustha”, meaning big toe and “asana”, which means yoga or posture.",
+    "url": "https://pharmeasy.in/blog/health-fitness-benefits-of-padangusthasana-and-how-to-do-it/",
+    "image": "big_toe_pose"
+  },
+  {
+    "id": 17,
+    "category": "Yoga",
+    "name": "Baddha Konasana",
+    "description": "Baddha Konasana (Sanskrit: बद्धकोणासन; IAST: baddhakoṇāsana), Bound Angle Pose, Butterfly Pose, or Cobbler's Pose (after the typical sitting position of Indian cobblers when they work), and historically called Bhadrasana, Throne Pose,is a seated asana in hatha yoga and modern yoga as exercise. If the knees rest on the floor, it is suitable as a meditation seat.",
+    "url": "https://en.wikipedia.org/wiki/Baddha_Konasana",
+    "image": "bond_angle_pose"
+  },
+  {
+    "id": 18,
+    "category": "Yoga",
+    "name": "Uttana Shishosana",
+    "description": "Gives a deep stretch to the spine. With the knees on the floor and hips lifted, the yogi walks the hands forward and lowers the chest toward the floor.",
+    "url": "https://www.yogapedia.com/yoga-poses/extended-puppy-pose/11/11191",
+    "image": "extended_puppy_pose"
+  },
+  {
+    "id": 19,
+    "category": "Yoga",
+    "name": "Utthita Trikonasana",
+    "description": "Extended triangle pose, is great for either beginner or a more advanced yogis, and can benefit both your physical and mental health.",
+    "url": "https://www.masterclass.com/articles/utthita-trikonasana-guide",
+    "image": "extended_triangle_pose"
+  },
+  {
+    "id": 20,
+    "category": "Yoga",
+    "name": "Matsyasana",
+    "description": "Matsyasana is a popular yogic asana. In the word ‘Matsyasana’, Matsya means Fish in Sanskrit. It is named so, since the final posture that the body assumes in this asana resembles a fish.",
+    "url": "https://pharmeasy.in/blog/health-fitness-benefits-of-matsyasana-and-how-to-do-it/",
+    "image": "Fish_pose"
+  },
+  {
+    "id": 21,
+    "category": "Yoga",
+    "name": "Dhanurasana",
+    "description": "Bow Pose is a complete yoga asana as it may help to tone the back and strengthen abdominal muscles. It also helps to stretch the front part of the body, including the abdomen and chest, ankles, thighs, throat, groins and hip flexors.",
+    "url": "https://pharmeasy.in/blog/health-fitness-benefits-of-dhanurasana-and-how-to-do-it/",
+    "image": "bow_pose"
+  }
+]

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useMainContext } from "../store/MainContext";
-
+const customToastStyle = {
+  fontSize: "1.5rem", // You can adjust the font size as per your requirement
+};
 function Toast2() {
   const { toastData, toastActive, clearToast } = useMainContext(); // Add clearToast function from context
 
@@ -23,7 +25,7 @@ function Toast2() {
       progress: undefined,
       theme: "light",
       onClose: () => clearToast(),
-      toastStyle: { fontSize: "38px" }
+      style: customToastStyle,
     });
   };
 

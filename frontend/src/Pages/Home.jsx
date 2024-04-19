@@ -9,7 +9,7 @@ import Toast from "../components/Toast";
 
 const Home = () => {
   return (
-    <div className=" bg-bg ">
+  <div className=" bg-bg  ">
       <Toast />
       <HeroSection />
       <Blogs />

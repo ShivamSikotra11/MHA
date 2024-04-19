@@ -51,7 +51,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background-color: #A9E1FF;
+  // background-color: #A9E1FF;
+}
+.custom-scrollbar-horizontal::-webkit-scrollbar {
+  // width: 2px; 
+  height: 6px; 
+}
+
+.custom-scrollbar-horizontal::-webkit-scrollbar-thumb {
+  background-color: #00668C; 
+  border-radius: 6px;
+}
+
+.custom-scrollbar-horizontal::-webkit-scrollbar-track {
+  // background-color: #A9E1FF;
 }
  
 h1 {

@@ -5,22 +5,27 @@ const Causes = ({ data }) => {
   const { solutions } = data;
   return (
     <Wrapper>
-      <div className=" grid grid-cols-2    items-center my-10">
-        <div className=" text-[2.5rem] flex flex-col  justify-center ml-[16rem]">
+      <div className=" flex items-center my-10   justify-between">
+        <div className=" text-[2.5rem] flex flex-col   h-full justify-between w-1/2">
           <h2>Solutions</h2>
-          <ol className="list-decimal">
+          <div className="flex flex-col space-y-6   ">
             {solutions.map((e, i) => (
-              <li key={i}>{e}</li>
+              <div className="" >
+              <span className="text-5xl font-medium">{e.heading} :-  </span>
+              <span className="text-4xl   text-justify  "> {e.content} </span>
+          </div>
             ))}
-          </ol>
+          </div>
         </div>
-        <div className="border border-primary_dark  solutions-img w-[40rem] h-[45rem] bg-primary_dark rounded-[3rem] justify-self-center "></div>
+        
+        <div className="flex items-center" ><div className="border border-primary_dark  solutions-img w-[40rem] h-[45rem] bg-primary_dark rounded-[3rem] justify-self-center "></div></div>
       </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
+  width:80%;
   .solutions-img {
     background: url("solutions.png");
     background-position: center;

@@ -8,15 +8,6 @@ const Photos = () => {
     <div className="flex h-[40rem]  justify-evenly items-center my-4">
       <img
         className={` ${
-          curCondition === "Depression"
-            ? "ConditionActive "
-            : "ConditionInactive border border-primary_dark"
-          } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
-          src="depression.jpg"
-        onClick={() => showCondition("Depression")}
-      />
-      <img
-        className={` ${
           curCondition === "Stress"
             ? "ConditionActive "
             : "ConditionInactive border border-primary_dark"
@@ -24,6 +15,16 @@ const Photos = () => {
           src="stress.jpg"
         onClick={() => showCondition("Stress")}
       />
+      <img
+        className={` ${
+          curCondition === "Depression"
+            ? "ConditionActive "
+            : "ConditionInactive border border-primary_dark"
+          } rounded-[3rem]  cursor-pointer   flex justify-center items-center text-6xl`}
+          src="depression.jpg"
+        onClick={() => showCondition("Depression")}
+      />
+      
       <img
         className={` ${
           curCondition === "Anxiety"

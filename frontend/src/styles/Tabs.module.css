@@ -23,13 +23,19 @@
   justify-content: center;
   height: 30px;
   width: 60px;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: black;
   font-weight: 500;
   font-family: "Inter", sans-serif;
   border-radius: 99px;
   cursor: pointer;
   transition: color 0.15s ease-in;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  /* Chrome-specific styles */
+  .tab {
+    font-size: 1.5rem;
+  }
 }
 
 .notification {

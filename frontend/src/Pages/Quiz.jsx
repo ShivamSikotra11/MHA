@@ -14,7 +14,7 @@ const Quiz = () => {
       <div className="img-container flex items-center justify-center text-[6rem] text-primary_dark">
         <div className="content">Answer Simple Questions About You</div>
       </div>
-      <div className="flex justify-center mt-[5rem] ">
+      <div className="flex justify-center my-[5rem] ">
         <PaginatedItems />
       </div>
     </Wrapper>

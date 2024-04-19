@@ -1,71 +1,119 @@
 [
   {
-    "condition": "Depression",
+    "condition": "Stress",
     "causes": [
-      "Genetics",
-      "Brain chemistry",
-      "Trauma or abuse",
-      "Medical conditions",
-      "Drug or alcohol abuse",
-      "Grief or loss",
-      "Major life changes",
-      "Social isolation"
+      {
+        "heading": "Work Pressure",
+        "content": "Tight deadlines, demanding workload, or job insecurity."
+      },
+      {
+        "heading": "Relationship Issues",
+        "content": "Conflicts with family members, friends, or romantic partners."
+      },
+      {
+        "heading": "Financial Problems",
+        "content": "Debt, unemployment, or struggling to make ends meet."
+      },
+      {
+        "heading": "Health Concerns",
+        "content": "Chronic illnesses, injuries, or major life changes."
+      }
     ],
     "solutions": [
-      "Therapy (counseling)",
-      "Medication (antidepressants)",
-      "Support groups",
-      "Exercise",
-      "Healthy lifestyle choices",
-      "Building a support network",
-      "Setting realistic goals",
-      "Stress management techniques"
+      {
+        "heading": "Mindfulness and Meditation",
+        "content": "Techniques to focus on the present moment and reduce anxiety."
+      },
+      {
+        "heading": "Regular Exercise",
+        "content": "Physical activity releases endorphins, boosting mood and reducing stress."
+      },
+      {
+        "heading": "Healthy Lifestyle",
+        "content": "Balanced diet, sufficient sleep, and avoiding harmful substances like alcohol and tobacco."
+      },
+      {
+        "heading": "Seeking Support",
+        "content": "Talking to loved ones or a therapist for emotional support and coping strategies."
+      }
     ]
   },
   {
-    "condition": "Stress",
+    "condition": "Depression",
     "causes": [
-      "Work pressure",
-      "Financial problems",
-      "Relationship issues",
-      "Major life changes",
-      "Health concerns",
-      "Poor time management",
-      "Overload of responsibilities",
-      "Lack of control"
+      {
+        "heading": "Genetic Factors",
+        "content": "Family history of depression can increase the likelihood of developing the condition, suggesting a genetic predisposition to the disorder."
+      },
+      {
+        "heading": "Traumatic Events",
+        "content": "Past trauma, such as physical or emotional abuse, neglect, or loss of a loved one, can trigger depressive episodes, especially if the trauma remains unresolved or unprocessed."
+      },
+      {
+        "heading": "Brain Chemistry Imbalance",
+        "content": "Alterations in neurotransmitter levels, particularly serotonin and norepinephrine, can disrupt mood regulation and contribute to the onset of depressive symptoms."
+      },
+      {
+        "heading": "Social Isolation",
+        "content": "Lack of social support, loneliness, or feeling disconnected from others can exacerbate feelings of sadness and isolation, contributing to the development of depression."
+      }
     ],
     "solutions": [
-      "Identifying stress triggers",
-      "Time management techniques",
-      "Setting boundaries",
-      "Learning to say no",
-      "Physical activity",
-      "Mindfulness and relaxation techniques",
-      "Healthy lifestyle habits",
-      "Seeking support from friends or professionals"
+      {
+        "heading": "Therapy/Counseling",
+        "content": "Psychotherapy approaches like cognitive-behavioral therapy (CBT), interpersonal therapy (IPT), or psychodynamic therapy can help individuals explore underlying issues, develop coping skills, and challenge negative thought patterns associated with depression."
+      },
+      {
+        "heading": "Medication",
+        "content": "Antidepressant medications prescribed by a psychiatrist or healthcare professional can help rebalance neurotransmitter levels and alleviate depressive symptoms."
+      },
+      {
+        "heading": "Regular Exercise",
+        "content": "Engaging in physical activity releases endorphins, which act as natural antidepressants and can improve mood and reduce symptoms of depression."
+      },
+      {
+        "heading": "Supportive Relationships",
+        "content": "Connecting with supportive friends, family members, or support groups who understand and validate their experiences can provide emotional reassurance and encouragement during difficult times."
+      }
     ]
   },
   {
     "condition": "Anxiety",
     "causes": [
-      "Genetics",
-      "Brain chemistry",
-      "Personality",
-      "Trauma or stress",
-      "Medical conditions",
-      "Substance abuse",
-      "Phobias",
-      "Life experiences"
+      {
+        "heading": "Genetic Predisposition",
+        "content": "Some individuals may have a genetic predisposition to anxiety disorders, increasing their susceptibility to developing anxiety symptoms."
+      },
+      {
+        "heading": "Stressful Life Events",
+        "content": "Traumatic experiences, major life changes, or ongoing stressors can trigger anxiety symptoms, exacerbating pre-existing vulnerabilities."
+      },
+      {
+        "heading": "Brain Chemistry Imbalance",
+        "content": "Fluctuations in neurotransmitter levels, such as serotonin and dopamine, can disrupt mood regulation and contribute to the onset of anxiety."
+      },
+      {
+        "heading": "Environmental Factors",
+        "content": "Growing up in a chaotic or unsupportive environment, experiencing abuse or neglect, or lacking social support can contribute to the development of anxiety disorders."
+      }
     ],
     "solutions": [
-      "Therapy (cognitive-behavioral therapy)",
-      "Medication (anti-anxiety medications)",
-      "Exercise",
-      "Mindfulness and meditation",
-      "Relaxation techniques",
-      "Avoiding caffeine and alcohol",
-      "Setting realistic goals",
-      "Time management"
+      {
+        "heading": "Therapy/Counseling",
+        "content": "Cognitive-behavioral therapy (CBT) or exposure therapy can help individuals identify and challenge irrational thoughts and develop coping strategies to manage anxiety symptoms."
+      },
+      {
+        "heading": "Medication",
+        "content": "Antidepressants or anti-anxiety medications prescribed by a healthcare professional can help alleviate symptoms of anxiety by rebalancing neurotransmitter levels or reducing physiological arousal."
+      },
+      {
+        "heading": "Deep Breathing and Relaxation Techniques",
+        "content": "Practicing deep breathing exercises, progressive muscle relaxation, or mindfulness-based techniques can help individuals calm their minds and bodies during periods of heightened anxiety."
+      },
+      {
+        "heading": "Healthy Lifestyle",
+        "content": "Eating a balanced diet, getting adequate sleep, engaging in regular physical activity, and avoiding excessive alcohol, caffeine, and substance use can support overall well-being and reduce anxiety symptoms."
+      }
     ]
   }
 ]

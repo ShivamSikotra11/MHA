@@ -11,7 +11,7 @@ const ShowPost = () => {
       </div>
       <div className="post-content p-8 ">
         <div className="text-4xl font-bold font-inter ">{showPost.heading}</div>
-        <div className="font-inter m-2  text-3xl text-justify">
+        <div className="font-inter m-2 p-2 text-3xl text-justify overflow-x-scroll custom-scrollbar-horizontal">
           {showPost.content}
         </div>
       </div>
