@@ -32,6 +32,11 @@ const MainReducer = (state, action) => {
         ...state,
         isuserProfileUpdating: !state.isuserProfileUpdating,
       };
+    case "SET_GRAPH_DATA":
+      return {
+        ...state,
+        graphData: action.payload,
+      };
     default:
       return state;
   }

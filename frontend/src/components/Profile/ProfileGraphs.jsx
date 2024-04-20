@@ -3,11 +3,16 @@ import Highcharts from "highcharts";
 import HighchartsAccessibility from "highcharts/modules/accessibility"; // Import Highcharts Accessibility module
 import HighchartsReact from "highcharts-react-official";
 import styled from "styled-components";
+import { useMainContext } from "../../store/MainContext";
 
 // Initialize Highcharts Accessibility module
 HighchartsAccessibility(Highcharts);
 
 const ProfileGraphs = () => {
+  const {isuserProfileUpdating,graphData,getGraphs} = useMainContext();
+  useEffect(() => {
+    getGraphs();
+  },[])
   const data = [
     { Month: "April", sleepScore: 6, stressScore: 5, depressionScore: 3, anxietyScore: 6 },
     { Month: "May", sleepScore: 6.5, stressScore: 4, depressionScore: 3.2, anxietyScore: 5.5 },
@@ -15,13 +20,14 @@ const ProfileGraphs = () => {
     { Month: "July", sleepScore: 6.8, stressScore: 5.5, depressionScore: 3.8, anxietyScore: 5.8 },
     { Month: "August", sleepScore: 7.5, stressScore: 4.5, depressionScore: 4, anxietyScore: 6.5 }
   ];
+  // const data = graphData;
 
   const months = data.map(entry => entry.Month);
 
   const createChart = (containerId, title, yAxisTitle, seriesName, data) => {
     Highcharts.chart(containerId, {
       chart: {
-        type: 'line',
+        type: 'line', 
         backgroundColor: '#f7f7f7'
       },
       title: {

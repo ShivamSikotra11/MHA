@@ -6,13 +6,15 @@ import Testimonials from "../components/Home/Testimonials";
 import ConditionContent from "../components/Home/ConditionContent";
 import Header from "../components/Header";
 import Toast from "../components/Toast";
+import { usePostContext } from "../store/PostContext";
 
 const Home = () => {
+  const { loggedIn } = usePostContext();
   return (
   <div className=" bg-bg  ">
       <Toast />
       <HeroSection />
-      <Blogs />
+     {loggedIn && <Blogs />}
       <Photos />
       <ConditionContent />
       <Testimonials />

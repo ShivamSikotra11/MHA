@@ -64,7 +64,8 @@ const initialItems = {
   isuserProfileUpdating: false,
   userPosts: [],
   toastActive:false,
-  toastData:{type:"success", text:"op"},
+  toastData: { type: "success", text: "op" },
+  graphData:[],
 };
 
 const MainProvider = ({ children }) => {
@@ -176,6 +177,20 @@ const MainProvider = ({ children }) => {
   const setCity = (city) => {
     localStorage.setItem("userData", JSON.stringify({ ...JSON.parse(localStorage.getItem("userData")), city: city }));
   }
+  const getGraphs = async () => {
+    try {
+      dispatch({type:"ALTER_USER_PROFILE_UPDATING"});
+      const response = await axios.post(
+        `${state.url}get_graphs/`,
+        {email: JSON.parse(localStorage.getItem("userData")).email,password: JSON.parse(localStorage.getItem("userData")).password}
+      );
+      dispatch({type:"SET_GRAPH_DATA",payload:response.data.data.scores});
+      dispatch({type:"ALTER_USER_PROFILE_UPDATING"});
+
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
   
   
   return <MainContext.Provider value={{
@@ -186,7 +201,8 @@ const MainProvider = ({ children }) => {
     updateProfileData,
     formData,
     setFormData,
-    clearToast
+    clearToast,
+    getGraphs
   }}>
    {children}
  </MainContext.Provider>

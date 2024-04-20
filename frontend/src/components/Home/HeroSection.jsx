@@ -9,7 +9,7 @@ const HeroSection = () => {
   return (
     <Wrapper>
       <div className="hero-container grid grid-cols-12 grid-rows-5">
-        <div className="col-start-2 col-span-5 row-start-2 row-span-3">
+        <div className="col-start-2 col-span-5 row-start-2 row-span-3 border">
           <div className="tagline w-full text-[4rem] max-[870px]:text-[3rem] text-center">
             You are Not Alone, We are With You{" "}
             {curUser.hasOwnProperty("name") ? `, ${curUser.name}` : ""}
