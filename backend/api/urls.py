@@ -16,4 +16,5 @@ urlpatterns = [
   path('delete_post/',views.delete_user_post),
   path('update_profile/',views.update_profile),
   path('get_name/',views.get_name),
+  path('get_graphs/',views.get_graphs),
 ]

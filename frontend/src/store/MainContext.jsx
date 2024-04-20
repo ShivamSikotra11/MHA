@@ -184,7 +184,8 @@ const MainProvider = ({ children }) => {
         `${state.url}get_graphs/`,
         {email: JSON.parse(localStorage.getItem("userData")).email,password: JSON.parse(localStorage.getItem("userData")).password}
       );
-      dispatch({type:"SET_GRAPH_DATA",payload:response.data.data.scores});
+      // console.log("response", response.data);
+      dispatch({type:"SET_GRAPH_DATA",payload:response.data});
       dispatch({type:"ALTER_USER_PROFILE_UPDATING"});
 
     } catch (error) {

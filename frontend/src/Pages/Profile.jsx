@@ -8,7 +8,10 @@ import Toast2 from '../components/Toast2'
 import { useMainContext } from '../store/MainContext'
 import Loader from "../components/Loader"
 const Profile = () => {
-  const { isuserProfileUpdating } = useMainContext();
+  const { isuserProfileUpdating, getGraphs } = useMainContext();
+  useEffect(() => {
+    getGraphs();
+  },[]);
   return (
     isuserProfileUpdating ? (
       <div className=' h-[90vh] flex justify-center items-center ' >

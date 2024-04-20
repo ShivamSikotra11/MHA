@@ -121,7 +121,7 @@ def get_name(request):
         user_email = data.get('email')
         password = data.get('password')
         user_check = user_model.find_one({'user_email': user_email})
-        print(user_email)
+        # print(user_email)
         if user_check:
             user = user_model.find_one(
                 {'user_email': user_email, 'user_password': password})
@@ -181,10 +181,10 @@ def update_profile(request):
                     {'user_email': emailid, 'user_password': password}, {'$set': records})
                 return JsonResponse({'message': 'updated', 'data': user}, safe=False, status=200)
             else:
-                print(1)
+                # print(1)
                 return JsonResponse({'error': 'Invalid credentials', 'message': 'Incorrect'}, status=400)
         else:
-            print(2)
+            # print(2)
             return JsonResponse({'error': 'Invalid credentials', 'message': 'No_user'}, status=400)
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
@@ -291,7 +291,7 @@ def add_post(request):
         cleaned_text = clean_text(post["content"])
         X_test = tfidf_vectorizer.transform([cleaned_text])
         y_probs = model.predict_proba(X_test)[:, 1]
-        print(y_probs)
+        # print(y_probs)
         if y_probs >= 0.80:
             # send_email_to_user(request,email,password)
             ngo_support(request,email,password)
@@ -339,7 +339,7 @@ def show_user_posts(request):
     data = json.loads(request.body)
     email = data.get('email')
     result = posts.find_one({"user_email": email})['user_posts']
-    print(result)
+    # print(result)
     return JsonResponse(result, safe=False)
 
 
@@ -469,3 +469,14 @@ def clean_text(text):
     # Additional preprocessing steps can be added here
     return cleaned_text
 
+@csrf_exempt
+def get_graphs(request):
+    data = json.loads(request.body)
+    email = data.get('email')
+    password = data.get('password')
+    user_scores = user_model.find_one({'user_email': email,'user_password':password})
+    if("scores" in user_scores):
+        scores = np.array(user_scores['scores']).tolist()
+    else:
+        scores = []
+    return JsonResponse(scores, safe=False)

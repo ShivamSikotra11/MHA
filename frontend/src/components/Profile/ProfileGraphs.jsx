@@ -9,19 +9,19 @@ import { useMainContext } from "../../store/MainContext";
 HighchartsAccessibility(Highcharts);
 
 const ProfileGraphs = () => {
+  // useEffect(() => {
+  //   getGraphs();
+  // },[])
   const {isuserProfileUpdating,graphData,getGraphs} = useMainContext();
-  useEffect(() => {
-    getGraphs();
-  },[])
-  const data = [
-    { Month: "April", sleepScore: 6, stressScore: 5, depressionScore: 3, anxietyScore: 6 },
-    { Month: "May", sleepScore: 6.5, stressScore: 4, depressionScore: 3.2, anxietyScore: 5.5 },
-    { Month: "June", sleepScore: 7.2, stressScore: 6, depressionScore: 3.5, anxietyScore: 6.2 },
-    { Month: "July", sleepScore: 6.8, stressScore: 5.5, depressionScore: 3.8, anxietyScore: 5.8 },
-    { Month: "August", sleepScore: 7.5, stressScore: 4.5, depressionScore: 4, anxietyScore: 6.5 }
-  ];
-  // const data = graphData;
-
+  // const data = [
+  //   { Month: "April", sleepScore: 6, stressScore: 5, depressionScore: 3, anxietyScore: 6 },
+  //   { Month: "May", sleepScore: 6.5, stressScore: 4, depressionScore: 3.2, anxietyScore: 5.5 },
+  //   { Month: "June", sleepScore: 7.2, stressScore: 6, depressionScore: 3.5, anxietyScore: 6.2 },
+  //   { Month: "July", sleepScore: 6.8, stressScore: 5.5, depressionScore: 3.8, anxietyScore: 5.8 },
+  //   { Month: "August", sleepScore: 7.5, stressScore: 4.5, depressionScore: 4, anxietyScore: 6.5 }
+  // ];
+  const data = graphData.slice(-7);
+  // console.log(data);
   const months = data.map(entry => entry.Month);
 
   const createChart = (containerId, title, yAxisTitle, seriesName, data) => {
