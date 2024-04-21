@@ -55,6 +55,7 @@ const PostProvider = ({ children }) => {
       const response = await axios.get(
         `${url}show_all_posts/`
       );
+      // console.log(response);
       dispatch({ type: "SET_ALL_POSTS", payload: response.data });
       dispatch({ type: "ALTER_ALL_POSTS_FETCHING" });
     } catch (error) {

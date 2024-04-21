@@ -200,7 +200,7 @@ const Header = () => {
                 Contact
               </NavLink>
             )}
-            {/* {loggedIn && (
+            {loggedIn && (
               <>
                 {location.pathname !== "/quiz" && (
                   <NavLink to={"/quiz"} className="ni">
@@ -213,8 +213,8 @@ const Header = () => {
                   </NavLink>
                 )}
               </>
-            )} */}
-            {location.pathname !== "/quiz" && (
+            )}
+            {/* {location.pathname !== "/quiz" && (
                   <NavLink to={"/quiz"} className="ni">
                     Get Quiz
                   </NavLink>
@@ -223,7 +223,7 @@ const Header = () => {
                   <NavLink to={"/interaction"} className="ni">
                     Get Interact
                   </NavLink>
-                )}
+                )} */}
           </div>
         </div>
       </nav>

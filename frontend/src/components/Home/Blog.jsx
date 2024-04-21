@@ -19,9 +19,9 @@ const Blog = ({ data, index }) => {
       <div className="px-10 flex flex-col justify-evenly max-[700px]:items-centerblo ">
         <p className="text-4xl font-semibold">{data.name}</p>
         <p className="text-3xl text-justify">{data.description}</p>
-        <div>
+        <div className="mt-[0.5rem] flex justify-center" >
           <NavLink
-            className={`font-inter text-white text-[2.5rem] bg-primary_dark px-16  rounded-full cursor-pointer inline-block`}
+            className={`font-inter text-white text-[2.5rem] bg-primary_dark px-16  rounded-full cursor-pointer inline-block max-[354px]:text-[1.5rem]`}
             to={data.url}
  
             target="_blank"

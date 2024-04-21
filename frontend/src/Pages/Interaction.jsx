@@ -79,7 +79,7 @@
 
 // export default Interaction;
 
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ShowPost from "../components/Interaction/ShowPost";
 import UserStats from "../components/Interaction/UserStats";
@@ -90,8 +90,10 @@ import Header from "../components/Header";
 import Toast from "../components/Toast";
 
 const Interaction = () => {
-  const { createPost } = usePostContext();
-
+  const { createPost,getAllPost } = usePostContext();
+  // useEffect(() => {
+  //   getAllPost();
+  // }, []);
   return (
     <Wrapper className={createPost ? "overflow-hidden h-[100vh]" : ""}>
       <Header />

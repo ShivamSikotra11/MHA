@@ -3,14 +3,15 @@ import StatBox from "./StatBox";
 import { usePostContext } from "../../store/PostContext";
 
 const UserStats = () => {
-  const {allPosts} = usePostContext();
   // console.log(allPosts);
+  const {allPosts} = usePostContext();
   const uniqueEmails = new Set();
 
   allPosts.forEach(item => {
     uniqueEmails.add(item.user_email);
   });
-
+  
+  // const allPosts = [], uniqueEmails = [];
   // console.log(allPosts);
 
 // console.log("Number of unique emails:", uniqueEmails.size);
