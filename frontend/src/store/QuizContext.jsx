@@ -39,7 +39,7 @@ const QuizProvider = ({ children }) => {
       const res = await axios.post(`${url}cal_score/`, data);
       dispatch({ type: "ALTER_QUIZ_SUBMISSION" });
       
-      console.log(res);
+      // console.log(res);
     } catch (e) {
       console.log(`Error occured ${e}`);
     }

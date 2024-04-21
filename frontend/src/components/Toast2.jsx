@@ -42,6 +42,7 @@ function Toast2() {
         draggable
         pauseOnHover
         theme="light"
+        style={{ zIndex: 1000000 }}
       />
     </div>
   );

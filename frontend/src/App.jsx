@@ -20,8 +20,7 @@
 // import { usePostContext } from "./store/PostContext";
 // import PageNotFound from "./Pages/PageNotFound";
 // import AOS from 'aos';
-// import 'aos/dist/aos.css'; 
-
+// import 'aos/dist/aos.css';
 
 // const AppWithHeader = () => {
 //   useEffect(() => {
@@ -50,7 +49,7 @@
 //       getLogIn(JSON.parse(storedUserData), false);
 //     }
 //     setLoading(false);
-//   }, []); 
+//   }, []);
 
 //   useEffect(() => {
 //     if (!loading) {
@@ -92,12 +91,16 @@
 
 // export default App;
 
-
-
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // Custom Components
 import Home from "./Pages/Home";
@@ -123,41 +126,52 @@ import { useMainContext } from "./store/MainContext";
 import { useQuizContext } from "./store/QuizContext";
 
 const AppWithHeader = () => {
-  // Initialize AOS and refresh
-  useEffect(() => {
-    AOS.init({
-      offset: 100,
-      duration: 500,
-      easing: "ease-in-sine",
-      delay: 100,
-    });
-    AOS.refresh();
-  }, []);
-
   const location = useLocation();
   const redirect = useNavigate();
-  const { loggedIn, getLogIn , getUserName,curUser } = usePostContext();
+  const { loggedIn, getLogIn, getUserName, curUser, isLoginFetching,getSuggestedPoses } =
+    usePostContext();
   const { isuserProfileUpdating } = useMainContext();
   const { isQuizSubmitted } = useQuizContext();
   // Define excluded routes and routes based on authentication status
   const ExcludeHeaderPages = ["/otp", "/login", "/register", "/interaction"];
   const AbortedRoutesLoggedIn = ["/login", "/register"];
-  const AbortedRoutesLoggedOut = ["/quiz", "/interaction","/profile"];
-  const shouldRenderHeader = !ExcludeHeaderPages.some((page) => location.pathname.includes(page));
+  const AbortedRoutesLoggedOut = ["/quiz", "/interaction", "/profile"];
+  const shouldRenderHeader = !ExcludeHeaderPages.some((page) =>
+    location.pathname.includes(page)
+  );
 
   const [loading, setLoading] = useState(true);
-
+  // console.log("App rendered");
   useEffect(() => {
-    // Check if user data exists in local storage and log in the user
     const storedUserData = localStorage.getItem("userData");
-    if (storedUserData) {
-      getLogIn(JSON.parse(storedUserData), false);
-      getUserName(JSON.parse(storedUserData));
-    }
-    setLoading(false);
-  }, [isuserProfileUpdating,isQuizSubmitted]); 
 
-  
+    if (storedUserData) {
+      const userData = JSON.parse(storedUserData);
+      getLogIn(userData, false);
+      
+      if (isuserProfileUpdating) { 
+        getUserName(userData)
+        .then(() => {
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setLoading(false);
+        });
+      }
+      else{
+        getSuggestedPoses(userData)
+        .then(() => setLoading(false))
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setLoading(false);
+        });
+      }
+    } else {
+      setLoading(false);
+    }
+  }, [isuserProfileUpdating, isQuizSubmitted, isLoginFetching]);
+
   useEffect(() => {
     // Redirect based on authentication status
     if (!loading) {
@@ -168,12 +182,16 @@ const AppWithHeader = () => {
         redirect("/");
       }
     }
-  }, [loggedIn, location.pathname, loading]);
+  }, [loggedIn, loading]);
 
   if (loading) {
-    return <div className="h-[100vh] w-[100vw] flex justify-center items-center " ><Loader width={"50px"} /></div>
+    return (
+      <div className="h-[100vh] w-[100vw] flex justify-center items-center ">
+        <Loader width={"50px"} />
+      </div>
+    );
   }
- 
+
   return (
     <>
       {shouldRenderHeader && <Header />}

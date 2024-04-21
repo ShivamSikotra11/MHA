@@ -23,7 +23,7 @@ const CreatePost = () => {
     handleCreatePost(postObject);
   }
   return (
-    <div className="w-[45rem] border-2 shadow-2xl shadow-black-900/50 border-primary_dark bg-primary_light2 p-8 rounded-[2rem] ">
+    <div className="w-[45rem] border-2 shadow-2xl shadow-black-900/50 border-primary_dark bg-primary_light2 p-8 rounded-[2rem] max-[455px]:w-[35rem] max-[400px]:w-[30rem]">
       <p className="font-inter text-4xl  mb-8">Create Post</p>
       <form onSubmit={handleCreatePostFunction} > 
         <input
@@ -34,12 +34,13 @@ const CreatePost = () => {
           required
         />
         <textarea
-          className="w-full font-habibi font-medium rounded-xl px-8 py-2 outline-none border-none resize-none custom-scrollbar text-primary_dark text-3xl bg-primary_elight text-justify"
+          className="w-full font-habibi font-medium rounded-xl px-8 py-2 outline-none border-none resize-none custom-scrollbar text-primary_dark text-3xl max-[455px]:text-2xl bg-primary_elight text-justify
+          h-[30rem] max-[455px]:h-[20rem] max-[400px]:h-[18rem]"
           placeholder={"Enter The Text Here"}
-          style={{ maxWidth: "100%", width: "100%", height: "30rem" }}
+          style={{ maxWidth: "100%", width: "100%" }}
           ref={contentRef} required
         />
-        <div className="post-btns  mt-8 flex justify-end gap-x-[3rem] ">
+        <div className="post-btns  mt-8 flex justify-end gap-x-[3rem] max-[455px]:justify-center ">
         
           <div
         className={`font-inter text-black text-[2rem] bg-[#A9E1FF] px-12  rounded-full cursor-pointer inline-block`} onClick={()=>AlterCreatePost()}

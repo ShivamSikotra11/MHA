@@ -11,24 +11,24 @@ const Options = ({ data, id }) => {
   }, [Answers, id]);
 
   const setOption = (optionWeightage) => {
-    if (selectedOption === optionWeightage) {
-      setSelectedOption(null);
-      const updatedAnswers = [...Answers];
-      updatedAnswers[id - 1] = null;
-      setAnswers(updatedAnswers);
-    } else {
+    // if (selectedOption === optionWeightage) {
+    //   setSelectedOption(null);
+    //   const updatedAnswers = [...Answers];
+    //   updatedAnswers[id - 1] = null;
+    //   setAnswers(updatedAnswers);
+    // } else {
       setSelectedOption(optionWeightage);
       const updatedAnswers = [...Answers];
       updatedAnswers[id - 1] = optionWeightage;
       setAnswers(updatedAnswers);
-    }
+    // }
   };
  
   return (
     <div className="grid  gap-9 mx-[3rem] ">
       {data.map((option, index) => (
         <Option
-          key={option.key}
+          key={index}
           option={option}
           isSelected={selectedOption === option.weightage}
           checkOption={setOption}

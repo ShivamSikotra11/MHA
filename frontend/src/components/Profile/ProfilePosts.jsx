@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import ProfilePost from "./ProfilePost";
 import Loader from "../Loader";
 import { useMainContext } from "../../store/MainContext";
@@ -7,8 +7,8 @@ import { usePostContext } from "../../store/PostContext";
 const ProfilePosts = () => {
   const { isuserPostsFetching, userPosts, getUserAllPosts, isuserPostDeleted } =
     useMainContext();
-  const [expandedPostId, setExpandedPostId] = useState(null);
-  const { clearShowPost } = usePostContext();
+    const { clearShowPost } = usePostContext();
+    const [expandedPostId, setExpandedPostId] = useState(null);
 
   useEffect(() => {
     getUserAllPosts();
@@ -41,7 +41,7 @@ const ProfilePosts = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-[2.4rem] text-center" >No post posted.</div>
+              <div className="text-[2.4rem] text-center">No post posted.</div>
             )}
           </div>
         )}

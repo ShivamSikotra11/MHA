@@ -72,8 +72,6 @@ const PostReducer = (state, action) => {
         isuserPostDeleted: !state.isuserPostDeleted,
       };
     case "SET_POSES":
-      // const { scores } = action.payload;
-      // poses = [scores.stress_poses, scores.depression_poses, scores.anxiety_poses];
       return {
         ...state,
         poses:action.payload,

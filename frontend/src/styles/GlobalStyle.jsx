@@ -43,6 +43,8 @@ body::-webkit-scrollbar-thumb {
  
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px; 
+  height: 6px; 
+  margin-left:10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {

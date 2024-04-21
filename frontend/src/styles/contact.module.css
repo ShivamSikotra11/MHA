@@ -28,7 +28,7 @@ body,input,textarea{
     background-color: #DAF2FF;
     /* background-color: var(--secondary-color); */
     /* border: 2px solid black; */
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -413,7 +413,7 @@ textarea.input{
     border-radius: 2px;
     overflow: hidden;
     display: none;
-    z-index: 100000;
+    /* z-in/dex: 100000; */
     border: 2px solid #00668C;
     color: black;
 }

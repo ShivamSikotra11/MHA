@@ -12,10 +12,16 @@ const UserForum = () => {
       <div className="flex justify-between px-4  items-center">
         <span className="font-inter text-4xl">User Forum</span>
         <div
-          className={`font-inter text-white text-4xl bg-primary_dark px-14 py-2  rounded-lg cursor-pointer inline-block`}
+          className={`font-inter text-white text-4xl bg-primary_dark px-14 py-2  rounded-lg cursor-pointer inline-block max-[430px]:hidden `}
           onClick={() => AlterCreatePost()}
         >
           Start New Topic
+        </div>
+        <div
+          className={`font-inter text-white text-4xl bg-primary_dark px-7 py-2  rounded-lg cursor-pointer inline-block min-[431px]:hidden`}
+          onClick={() => AlterCreatePost()}
+        >
+          <i class="fa-solid fa-pencil"></i>
         </div>
       </div>
 

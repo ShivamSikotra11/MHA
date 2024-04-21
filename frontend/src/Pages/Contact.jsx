@@ -12,8 +12,8 @@ const Contact = () => {
     }
   };
   return (
-    <div className={styles.containerr}>
-      <div className={styles.form}>
+    <div className={`${styles.containerr}  `}>
+      <div className={`${styles.form} `}>
         <div className={styles["contact-info"]}>
           <h3 className={styles.ltitle}>Let's get in touch</h3>
           <p className={styles.ltext}>

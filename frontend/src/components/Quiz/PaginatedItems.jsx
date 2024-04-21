@@ -54,7 +54,7 @@ function PaginatedItems({ itemsPerPage = 1 }) {
   };
 
   return (
-    <div className="inline-block rounded-3xl bg-primary_elight border pb-8 w-[70%]">
+    <div className="inline-block rounded-3xl bg-primary_elight border pb-8 w-[70%] max-[763px]:w-[90%]">
       <Items currentItems={currentItems} />
       <ReactPaginate
         breakLabel="..."

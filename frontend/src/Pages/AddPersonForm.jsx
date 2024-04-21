@@ -22,7 +22,7 @@ const AddPerson = () => {
         `${url}add/`, // `http://localhost:8000/api/add
         newFormData
       );
-      console.log("New record added successfully:", response.data);
+      // console.log("New record added successfully:", response.data);
       setFormData(newFormData);
       firstNameRef.current.value = "";
       lastNameRef.current.value = "";

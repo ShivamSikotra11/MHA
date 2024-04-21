@@ -8,7 +8,7 @@ import PostProvider from "./store/PostContext.jsx";
 import MainProvider from "./store/MainContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+ 
     <MainProvider>
       <PostProvider>
         <ConditionProvider>
@@ -18,5 +18,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </ConditionProvider>
       </PostProvider>
     </MainProvider>
-  </React.StrictMode>
+
 );

@@ -10,8 +10,8 @@ const ShowPost = () => {
         Post
       </div>
       <div className="post-content p-8 ">
-        <div className="text-4xl font-bold font-inter ">{showPost.heading}</div>
-        <div className="font-inter m-2 p-2 text-3xl text-justify overflow-x-scroll custom-scrollbar-horizontal">
+        <div className="text-4xl font-bold font-inter overflow-clip">{showPost.heading}</div>
+        <div className="font-inter m-2 p-2 text-3xl text-justify overflow-scroll custom-scrollbar max-h-[35rem] ">
           {showPost.content}
         </div>
       </div>

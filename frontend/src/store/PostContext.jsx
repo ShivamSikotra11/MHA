@@ -5,11 +5,11 @@ import axios from "axios";
 import { useMainContext } from "./MainContext";
 
 const PostContext = createContext("");
-
+ 
 const initialState = {
   showPost: {},
   isLoginFetching: false,
-  isAllPostsFetching:false,
+  isAllPostsFetching: false,
   curUser: {},
   isNewPostPosted: false,
   //  JSON.parse(localStorage.getItem("userData")) ||
@@ -91,19 +91,33 @@ const PostProvider = ({ children }) => {
 
   const getUserName = async (userData) => {
     try {
+      
       const res = await axios.post(`${url}get_name/`, userData);
       const name = res.data.data.name;
       const city = res.data.data.city;
       userData.name = name;
       userData.city = city;
       getLogIn(userData);
-      dispatch({type:"SET_POSES",payload:res.data.data.poses[0]})
+      // dispatch({type:"SET_POSES",payload:res.data.data.poses[0]})
+
     }
     catch (e) {
-      console.log(e);
+      console.log(e);   
     }
     // console.log(res.data.data.user_name);
   }
+  const getSuggestedPoses= async (userData) => {
+    try {
+    
+      const res = await axios.post(`${url}get_poses/`, userData);
+      dispatch({type:"SET_POSES",payload:res.data.data.poses[0]})
+    }
+    catch (e) {
+      console.log(e);   
+    }
+    // console.log(res.data.data.user_name);
+  }
+
   
   const handleLoginSubmit = async (redirect, userData) => {
     dispatch({ type: "ALTER_LOGIN_FETCHING" });
@@ -116,7 +130,7 @@ const PostProvider = ({ children }) => {
       userData.name = response.data.data.user_name;
       dispatch({ type: "SET_CURRENT_USER", payload: userData });
       localStorage.setItem("userData", JSON.stringify(userData));
-      getUserName(userData);
+      // getUserName(userData);
       redirect("/");
     } catch (error) {
       dispatch({ type: "ALTER_LOGIN_FETCHING" });
@@ -143,7 +157,7 @@ const PostProvider = ({ children }) => {
 
   // Extra deletePost Function (All related to this in MainContext)
   const deleteUserPost = async (timestamp) => {
-    console.log("Func cc",timestamp,url);
+    // console.log("Func cc",timestamp,url);
     try {
       dispatch({ type: "ALTER_USER_POST_DELETED" });
       const response = await axios.post(
@@ -176,6 +190,7 @@ const PostProvider = ({ children }) => {
         clearToast,
         deleteUserPost,
         getUserName,
+        getSuggestedPoses
       }}
     >
       {children}

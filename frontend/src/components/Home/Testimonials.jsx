@@ -6,7 +6,7 @@ import Testimonial from "./Testimonial";
 const Testimonials = () => {
   return (
     <Wrapper>
-      <div className="   mb-10 h-[80rem] max-h-[100rem] placeholder:  relative my-10 mt-20 ">
+      <div className="   mb-10 h-[80rem] max-h-[100rem] placeholder:  relative my-10 mt-20 max-[873px]:hidden">
         <div className="testimonial-container"></div>
         <div className="absolute top-[45%]   w-full">
           <div className="flex justify-evenly ">
@@ -18,6 +18,11 @@ const Testimonials = () => {
           </div>
         </div>
       </div>
+    <div className="flex flex-col items-center justify-evenly min-[874px]:hidden h-[130rem]  ">
+            {TestimonialJSON.map((testimonial, index) => (
+              <Testimonial key={index} data={testimonial} />
+            ))}
+          </div>
     </Wrapper>
   );
 };

@@ -36,24 +36,24 @@ const Photos = () => {
           onClick={() => showCondition("Anxiety")}
         />
       </div>
-      <div className="min-[801px]:hidden flex flex-col items-center justify-center space-y-[1rem]">
+      <div className="min-[801px]:hidden flex flex-col items-center justify-center space-y-[1rem] my-4">
           <div className={` ${
             curCondition === "Stress"
-              ? "ConditionActiveSmall "
+              ? "ConditionActiveSmall text-white"
               : "ConditionInactiveSmall border border-primary_dark"
             } rounded-[1rem]  cursor-pointer   flex justify-center items-center w-[80%] text-4xl`}
             src="stress.jpg"
           onClick={() => showCondition("Stress")}>Stress</div>
           <div className={` ${
             curCondition === "Depression"
-              ? "ConditionActiveSmall "
+              ? "ConditionActiveSmall text-white"
               : "ConditionInactiveSmall border border-primary_dark"
             } rounded-[1rem]  cursor-pointer   flex justify-center items-center w-[80%] text-4xl`}
             src="stress.jpg"
           onClick={() => showCondition("Depression")}>Depression</div>
           <div className={` ${
             curCondition === "Anxiety"
-              ? "ConditionActiveSmall "
+              ? "ConditionActiveSmall text-white"
               : "ConditionInactiveSmall border border-primary_dark"
             } rounded-[1rem]  cursor-pointer   flex justify-center items-center w-[80%] text-4xl`}
             src="stress.jpg"

@@ -1,5 +1,3 @@
-
-
 .tabs {
   display: flex;
   position: relative;
@@ -13,7 +11,7 @@
   z-index: 2;
 }
 
-.container input[type="radio"] {
+.containerTab input[type="radio"] {
   display: none;
 }
 
@@ -31,6 +29,7 @@
   cursor: pointer;
   transition: color 0.15s ease-in;
 }
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   /* Chrome-specific styles */
   .tab {
@@ -55,26 +54,14 @@
   transition: 0.15s ease-in;
 }
 
-.container input[type="radio"]:checked + label {
+.containerTab input[type="radio"]:checked + label {
   color: #185ee0;
 }
 
-.container input[type="radio"]:checked + label > .notification {
+.containerTab input[type="radio"]:checked + label > .notification {
   background-color: #185ee0;
   color: #fff;
   margin: 0px;
-}
-
-.container input[id="radio-1"]:checked ~ .glider {
-  transform: translateX(0);
-}
-
-.container input[id="radio-2"]:checked ~ .glider {
-  transform: translateX(100%);
-}
-
-.container input[id="radio-3"]:checked ~ .glider {
-  transform: translateX(200%);
 }
 
 .glider {
@@ -82,14 +69,26 @@
   display: flex;
   height: 30px;
   width: 60px;
-  background-color: #e6eef9;
+  /* background-color: #e6eef9; */
   z-index: 1;
   border-radius: 99px;
   transition: 0.25s ease-out;
 }
 
+.containerr input[id="radio-1-1"]:checked ~ .glider{
+  transform: translateX(0);
+}
+
+.containerr input[id="radio-2-1"]:checked ~ .glider{
+  transform: translateX(100%);
+}
+
+.containerr input[id="radio-3-1"]:checked ~ .glider{
+  transform: translateX(200%);
+}
+
 @media (max-width: 700px) {
-  .tabs {
+  /* .tabs {
       transform: scale(0.6);
-  }
+  } */
 }

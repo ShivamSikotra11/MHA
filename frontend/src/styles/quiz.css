@@ -4,10 +4,12 @@
   padding-left: 0;
   margin-top: 2rem;
   justify-content: center;
+  /* justify-content: space-evenly; */
+  /* border:2px solid red; */
 }
 
 .page-item {
-  margin-right: 5px;
+  /* margin: 15px; */
   font-size: 1.875rem;
 }
 
@@ -44,4 +46,24 @@
 
 .blue-bg {
   background-color: #a9e1ff;
+}
+@media screen and (max-width:610px) {
+  .page-item {
+    font-size: 0.6rem;
+  }
+  
+  .page-link {
+    font-size: 0.6rem;
+  }
+  
+}
+@media screen and (max-width:1051px) {
+  .pagination{
+    justify-content: space-evenly;
+  }
+  
+  .page-link {
+    margin: 0;
+  }
+  
 }

@@ -31,33 +31,17 @@ const QuizBox = ({ qn}) => {
     }
   }
   return (
-    <div className="w-[100%] p-[2rem] grid grid-cols-4">
+    <div className="w-[100%]   p-[1rem]  grid grid-cols-4">
       {/* <Toast/>  */}
-      <div className="flex justify-between col-start-1 col-end-5" >
-        <div className="  flex   ">
-          <CiClock2 size={40} />
-          <StopWatch />
-        </div>
-        <div className="  flex justify-center items-center">
-          <ButtonDiv value={"End Quiz"} onClickFunction={handleSubmit} />
-        </div>
-      </div>
-
-      <div  className="flex justify-between col-start-1 col-end-5">
-        <div className="font-inter text-4xl my-8 flex items-center  ">Question {qn.id} of 10</div>
-  
-        <div className="font-inter flex justify-center   text-4xl my-8  ">
-          <Tabs/>
-        </div>
-      </div>
+      
+ 
       <div className="col-start-1  col-span-3 max-[937px]:col-span-4">
 
-        <div className="question font-inter text-4xl my-8">{qn.question}</div>
+        <div className="question font-inter text-4xl max-[400px]:text-3xl my-8">
+         {qn.id}.{qn.question}
+        </div>
 
         <Options data={qn.options} id={qn.id}></Options>
-      </div>
-      <div className="col-start-4 grid place-items-center mt-[30%] max-[937px]:hidden ">
-        <QuesCount count={submittedQns()}></QuesCount>
       </div>
     </div>
   );

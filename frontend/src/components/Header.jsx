@@ -9,35 +9,43 @@ const Header = () => {
   const location = useLocation();
   const { curUser, getNameAcronym, getLogOut, loggedIn } = usePostContext();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+  const toggleHamburger = () => {
+    setHamburgerOpen(!hamburgerOpen);
+  };
   useEffect(() => {
-    const menu_btn = document.querySelector(".hamburger");
-    const mobile_menu = document.querySelector(".mobile-nav");
+    // const menu_btn = document.querySelector(".hamburger");
+    // const mobile_menu = document.querySelector(".mobile-nav");
 
     const handleClick = (event) => {
       if (!event.target.classList.contains("profile-circle")) {
         setDropdownOpen(false);
       }
+      if (!event.target.classList.contains("hamburger")) {
+        setHamburgerOpen(false);
+      }
     };
 
     const handleVisibilityChange = () => {
       setDropdownOpen(false);
+      setHamburgerOpen(false);
     };
 
-    const handleMenuClick = () => {
-      menu_btn.classList.toggle("is-active");
-      mobile_menu.classList.toggle("is-active");
-    };
+    // const handleMenuClick = () => {
+    //   menu_btn.classList.toggle("is-active");
+    //   mobile_menu.classList.toggle("is-active");
+    // };
 
-    menu_btn.addEventListener("click", handleMenuClick);
+    // menu_btn.addEventListener("click", handleMenuClick);
     document.addEventListener("click", handleClick);
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      menu_btn.removeEventListener("click", handleMenuClick);
+      // menu_btn.removeEventListener("click", handleMenuClick);
       document.removeEventListener("click", handleClick);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
@@ -45,7 +53,7 @@ const Header = () => {
 
   return (
     <Wrapper>
-      <div className="bg-primary_light flex justify-between py-2 items-center max-[767px]:hidden">
+      <div className="bg-primary_light flex justify-between py-2 items-center max-[767px]:hidden z-[10000]">
         <NavLink to={"/"} className="left font-habibi text-[2.9rem]  pl-12">
           MindCare
         </NavLink>
@@ -76,7 +84,7 @@ const Header = () => {
           </NavLink>
 
           {curUser && curUser.hasOwnProperty("name") ? (
-            <div className="relative" onClick={toggleDropdown}>
+            <div className="relative z-[10000] " onClick={toggleDropdown}>
               <ProfileCircle value={getNameAcronym(curUser.name)} />
               {dropdownOpen && (
                 <div className="absolute top-18 right-0 bg-white  shadow-md rounded-md border-2 border-primary_dark w-[22rem] ">
@@ -101,16 +109,27 @@ const Header = () => {
         </div>
       </div>
 
-      <nav className="  bg-primary_light w-full flex text-black justify-between py-[7px] text-[20px] min-[768px]:hidden">
+      <nav className="  bg-primary_light w-full flex text-black justify-between py-[7px] text-[20px] min-[768px]:hidden z-[1009]">
         <div className="flex items-center  max-[884px]:text-[30px] ml-[24px] text-[2.9rem]  cursor-pointer">
           <NavLink to={"/"} className="font-habibi">
             MindCare
           </NavLink>
         </div>
-        <button className="hamburger mx-[28px]">
+        <button
+          className={`${
+            hamburgerOpen
+              ? "hamburger mx-[28px] is-active"
+              : "hamburger mx-[28px]"
+          }`}
+          onClick={toggleHamburger}
+        >
           <div className="bar"></div>
         </button>
-        <div className="mobile-nav flex flex-col items-center justify-center sapce-y-[8px]">
+        <div
+          className={`mobile-nav flex flex-col items-center justify-center space-y-[8px] ${
+            hamburgerOpen ? "is-active" : ""
+          }`}
+        >
           {loggedIn && (
             <div className="ni h-head-2 w-full grid grid-cols-2 gap-y-[8px]">
               <NavLink
@@ -163,25 +182,48 @@ const Header = () => {
               </div>
             </div> */}
           <div className="flex flex-col items-center">
-            { !loggedIn &&
-              (<NavLink to={"/login"} className="ni ">
-              Log In
-            </NavLink>)}
+            {!loggedIn && (
+              <NavLink to={"/login"} className="ni ">
+                Log In
+              </NavLink>
+            )}
             {/* {location.pathname!="/" &&  (<NavLink to={"/"} className="ni">
               Home
             </NavLink>)} */}
-            {location.pathname!="/about" &&  (<NavLink to={"/about"} className="ni">
-              About
-            </NavLink>)}
-            {location.pathname!="/contact" &&  (<NavLink to={"/contact"} className="ni">
-              Contact
-            </NavLink>)}
-            {location.pathname!="/quiz" &&  (<NavLink to={"/quiz"} className="ni">
-              Get Quiz
-            </NavLink>)}
-            {location.pathname!="/interaction" &&  (<NavLink to={"/interaction"} className="ni">
-              Get Interact
-            </NavLink>)}
+            {location.pathname != "/about" && (
+              <NavLink to={"/about"} className="ni">
+                About
+              </NavLink>
+            )}
+            {location.pathname != "/contact" && (
+              <NavLink to={"/contact"} className="ni">
+                Contact
+              </NavLink>
+            )}
+            {/* {loggedIn && (
+              <>
+                {location.pathname !== "/quiz" && (
+                  <NavLink to={"/quiz"} className="ni">
+                    Get Quiz
+                  </NavLink>
+                )}
+                {location.pathname !== "/interaction" && (
+                  <NavLink to={"/interaction"} className="ni">
+                    Get Interact
+                  </NavLink>
+                )}
+              </>
+            )} */}
+            {location.pathname !== "/quiz" && (
+                  <NavLink to={"/quiz"} className="ni">
+                    Get Quiz
+                  </NavLink>
+                )}
+                {location.pathname !== "/interaction" && (
+                  <NavLink to={"/interaction"} className="ni">
+                    Get Interact
+                  </NavLink>
+                )}
           </div>
         </div>
       </nav>
@@ -246,7 +288,7 @@ const Wrapper = styled.header`
     border: 2px solid #00668c;
     border-radius: 16px;
     display: block;
-    z-index: 98;
+    z-index: 1998;
     background-color: #a9e1ff;
     // background-color: #EBF8FF;
     /* padding-top: 120px; */
@@ -258,7 +300,7 @@ const Wrapper = styled.header`
   }
 
   .ni {
-    margin: 8px 0 ;
+    margin: 8px 0;
   }
 
   @media (max-width: 768px) {

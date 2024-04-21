@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import styled from "styled-components";
 import ButtonDiv from "../ButtonDiv";
 import { useMainContext } from "../../store/MainContext"; 
 
 const ProfileDetails = () => {
+  // console.log('ProfileDetails rendered');
   const { formData, setFormData, getProfileData, updateProfileData } = useMainContext();
 
-  useEffect(() => {
-    getProfileData();
-  }, []);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;

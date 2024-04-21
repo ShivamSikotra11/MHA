@@ -41,7 +41,7 @@ const AxiosAPI = () => {
       console.error("Error fetching products:", error);
     }
   };
-  console.log(isFetching);
+  // console.log(isFetching);
   useEffect(() => {
     getData(url);
   }, [isFetching]);

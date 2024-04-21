@@ -6,6 +6,7 @@ import { usePostContext } from "../store/PostContext";
 // Custom CSS for the toast message
 const customToastStyle = {
   fontSize: "1.5rem", // You can adjust the font size as per your requirement
+  
 };
 
 function Toast() {
@@ -15,7 +16,7 @@ function Toast() {
     if (toastActive) {
       notify(toastData.type, toastData.text);
     }
-  }, [toastActive, toastData]);
+  }, [toastActive, toastData]); 
 
   const notify = (type, text) => {
     toast[type](text, {
@@ -45,6 +46,7 @@ function Toast() {
         draggable
         pauseOnHover
         theme="light"
+        style={{ zIndex: 1000000 }}
       />
     </div>
   );

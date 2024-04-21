@@ -96,17 +96,18 @@ const Interaction = () => {
     <Wrapper className={createPost ? "overflow-hidden h-[100vh]" : ""}>
       <Header />
       <Toast/>
-      <div className="img-container flex items-center justify-center text-[6rem] text-primary_dark ">
-        <div className="content capitalize font-inter">
-          Interact with other users
+      <div className="img-container flex items-center justify-center  text-primary_dark ">
+        <div className="content capitalize font-inter text-center text-[5.4rem] max-[900px]:text-[4.7rem] max-[763px]:text-[4rem] max-[655px]:text-[3rem] ">
+        Interact With other
         </div>
       </div>
-      <div className="grid grid-cols-6 p-4 ">
+      
+      <div className="grid grid-cols-6 p-4  max-[700px]:grid-cols-1">
         <div className="p-8 col-span-4   ">
           <UserStats />
           <UserForum />
         </div>
-        <div className="col-span-2   p-8">
+        <div className="col-span-2  p-8 ">
           <ShowPost />
         </div>
       </div>
