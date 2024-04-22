@@ -5,7 +5,7 @@ const Photos = () => {
   const { showCondition, curCondition } = useConditionContext();
   
   return (
-    <div>
+    <div className="suggestions" >
       <div className="flex h-[40rem]  justify-evenly items-center my-4 max-[800px]:hidden">
         <img
           className={` ${

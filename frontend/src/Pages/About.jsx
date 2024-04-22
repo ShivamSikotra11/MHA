@@ -1,26 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AxiosAPI from "./AxiosAPI";
 import AddPersonForm from "./AddPersonForm";
 import { useConditionContext } from "../store/ConditionContext";
 
+ 
 const About = () => {
   const { AlterFetchStatus } = useConditionContext();
-  // console.log("About");
+
+  
   return (
     <div className="  flex flex-col space-y-10 bg-primary_light2  py-[7rem]  px-[10rem] max-[600px]:px-[5rem] max-[490px]:px-[3rem]  mx-auto">
       <div
-        className="aboutus border border-primary_dark bg-white space-y-3 p-4 rounded-xl"
+        className="  border border-primary_dark bg-white space-y-3 p-4 rounded-xl"
       >
         <div className="heading font-bold text-5xl max-sm:text-4xl max-[442px]:text-3xl  text-primary_dark tracking-[2px] max-[360px]:text-center">
           About Us
         </div>
-        <p className="text-3xl max-sm:text-2xl max-[442px]:text-xl tracking-[1px] text-justify">
+        <p className="aboutus text-3xl max-sm:text-2xl max-[442px]:text-xl tracking-[1px] text-justify">
         We are a passionate team committed to promoting mental health awareness and well-being. Our platform serves as a hub for education, self-assessment, and community support. Through informative quizzes, we help users gain insights into their mental health, followed by personalized yoga recommendations to foster relaxation and balance. By facilitating open discussions and sharing valuable resources, we aim to break the stigma associated with mental health and empower individuals to prioritize their well-being. Join us in our mission to create a healthier, more understanding world.
         </p>
       </div>
       
       <div
-        className="aboutus border border-primary_dark bg-white space-y-3 p-4 rounded-xl"
+        className="whatwedo border border-primary_dark bg-white space-y-3 p-4 rounded-xl"
       >
         <div className="heading font-bold text-5xl max-sm:text-4xl max-[442px]:text-3xl  text-primary_dark tracking-[2px] max-[360px]:text-center">
           What We do
@@ -31,7 +33,7 @@ const About = () => {
       </div>
       
       <div
-        className="aboutus border border-primary_dark bg-white space-y-3 p-4 rounded-xl"
+        className="commitement border border-primary_dark bg-white space-y-3 p-4 rounded-xl"
       >
         <div className="heading font-bold text-5xl max-sm:text-4xl max-[442px]:text-3xl  text-primary_dark tracking-[2px] max-[360px]:text-center">
           Our Commitment
@@ -42,7 +44,7 @@ const About = () => {
       </div>
       
       <div
-        className="aboutus border border-primary_dark bg-white space-y-3 p-4 rounded-xl"
+        className="connect border border-primary_dark bg-white space-y-3 p-4 rounded-xl"
       >
         <div className="heading font-bold text-5xl max-sm:text-4xl max-[442px]:text-3xl  text-primary_dark tracking-[2px] max-[360px]:text-center">
           Connect With Us

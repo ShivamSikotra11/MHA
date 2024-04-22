@@ -95,10 +95,10 @@ const Header = () => {
                     <p className="dd-item">Profile</p>
                   </NavLink>
                   <NavLink to={"/quiz"}>
-                    <p className="dd-item">Get Quiz Now</p>
+                    <p className="dd-item quiz">Get Quiz Now</p>
                   </NavLink>
                   <NavLink to={"/interaction"}>
-                    <p className="dd-item">Get Interact</p>
+                    <p className="dd-item interaction">Get Interact</p>
                   </NavLink>
                 </div>
               )}

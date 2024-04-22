@@ -17,8 +17,8 @@ const Blogs = () => {
 }
 // Data = ypJOSN.filter(item => ids.includes(item.image));
   return (
-    <div className="my-10">
-      <p className="text-center mb-4 text-[4.4rem] font-medium max-[763px]:text-[3.4rem] max-[458px]:text-[2.7rem] ">Our Blogs For You</p>
+    <div className="my-10  ">
+      <p className="text-center mb-4 text-[4.4rem] font-medium max-[763px]:text-[3.4rem] max-[458px]:text-[2.7rem] blogs">Our Blogs For You</p>
       <div className="flex flex-col space-y-[3rem] justify-center items-center">
         {Data.map((content, index) => (
           <Blog key={index} data={content} index={index} />
