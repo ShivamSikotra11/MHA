@@ -145,7 +145,7 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Black with opacity 50% */
-  z-index: 999;
+  z-index: 11111111111999;
   display: flex;
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */

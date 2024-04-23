@@ -122,7 +122,7 @@ const ProfileGraphs = () => {
       </p>
 
       {data.length === 0 ? (
-        <p>No Graphs Available</p>
+   <div className="text-[2.4rem] text-center">No Graphs</div>
       ) : (
         <div className="chart-container">
           <div className="chart-item" id="sleepChart"></div>

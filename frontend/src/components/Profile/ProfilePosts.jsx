@@ -18,7 +18,7 @@ const ProfilePosts = () => {
   const handlePostClick = (postId) => {
     setExpandedPostId((prevId) => (prevId === postId ? null : postId));
   };
-
+ 
   return (
     <div>
       <p className="text-black font-inter text-5xl font-semibold mb-5 max-[440px]:text-4xl">

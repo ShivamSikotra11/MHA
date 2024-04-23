@@ -43,24 +43,24 @@ const Home = () => {
   //           align: 'start',
   //         },
   //       },
-  //       {
-  //         element: '.quiz',
-  //         popover: {
-  //           title: 'Quiz Section',
-  //           description: 'Take a mental health quiz to assess your current mental well-being and receive recommendations.',
-  //           side: 'bottom',
-  //           align: 'start',
-  //         },
-  //       },
-  //       {
-  //         element: '.interaction',
-  //         popover: {
-  //           title: 'Interaction Section',
-  //           description: 'Engage with other users in our community to share experiences and support each other.',
-  //           side: 'bottom',
-  //           align: 'start',
-  //         },
-  //       },
+  //       // {
+  //       //   element: '.quiz',
+  //       //   popover: {
+  //       //     title: 'Quiz Section',
+  //       //     description: 'Take a mental health quiz to assess your current mental well-being and receive recommendations.',
+  //       //     side: 'bottom',
+  //       //     align: 'start',
+  //       //   },
+  //       // },
+  //       // {
+  //       //   element: '.interaction',
+  //       //   popover: {
+  //       //     title: 'Interaction Section',
+  //       //     description: 'Engage with other users in our community to share experiences and support each other.',
+  //       //     side: 'bottom',
+  //       //     align: 'start',
+  //       //   },
+  //       // },
   //     ],
   //   });
 

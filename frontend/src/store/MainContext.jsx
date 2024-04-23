@@ -156,6 +156,7 @@ const MainProvider = ({ children }) => {
       dispatch({ type: "SET_USER_POSTS", payload: response.data });
       dispatch({ type: "ALTER_USER_POSTS_FETCHING" });
     } catch (error) {
+      dispatch({ type: "ALTER_USER_POSTS_FETCHING" });
       console.error("Error fetching posts:", error);
     }
   };

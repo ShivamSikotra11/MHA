@@ -1,145 +1,170 @@
+
 [
   {
     "id": 1,
-    "question": "आपकी कुल नींद की गुणवत्ता को आप कैसे रेट करेंगे?",
+    "question": "आप किसी भी तरह की नींद की गुणवत्ता को कैसे दर्ज करेंगे?",
     "options": [
       {
+        "key": "A",
         "text": "उच्च",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
+        "key": "B",
         "text": "मध्यम",
-        "weightage": 2
+        "weightage": 0.25
       },
       {
+        "key": "C",
         "text": "कम",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },
   {
     "id": 2,
-    "question": "आप कितनी बार तनाव के भावनाओं को महसूस करते हैं?",
+    "question": "आप कितनी बार तनाव की भावना महसूस करते हैं?",
     "options": [
       {
-        "text": "उच्च",
-        "weightage": 3
+        "key": "A",
+        "text": "अधिक",
+        "weightage": 0.99
       },
       {
+        "key": "B",
         "text": "मध्यम",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
+        "key": "C",
         "text": "कम",
-        "weightage": 1
+        "weightage": 0.01
       }
     ]
   },
   {
     "id": 3,
-    "question": "औसतन, रात में आप कितने घंटे सोते हैं?",
+    "question": "औसतन, रात्रि में आप कितने घंटे नींद पा लेते हैं?",
     "options": [
       {
-        "text": "7 से अधिक घंटे",
-        "weightage": 3
+        "key": "A",
+        "text": "7 घंटे से अधिक",
+        "weightage": 0.01
       },
       {
+        "key": "B",
         "text": "5-7 घंटे",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
-        "text": "5 से कम घंटे",
-        "weightage": 1
+        "key": "C",
+        "text": "5 घंटे से कम",
+        "weightage": 0.99
       }
     ]
   },
   {
     "id": 4,
-    "question": "आप कितनी बार चिंतित या चिंतित महसूस करते हैं?",
+    "question": "आप कितनी बार चिंतित महसूस करते हैं?",
     "options": [
       {
+        "key": "A",
         "text": "अक्सर",
-        "weightage": 3
+        "weightage": 0.99
       },
       {
+        "key": "B",
         "text": "कभी-कभी",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
+        "key": "C",
         "text": "कभी नहीं",
-        "weightage": 1
+        "weightage": 0.10
       }
     ]
   },
   {
     "id": 5,
-    "question": "आपके समाजिक समर्थन का स्तर आप कैसे रेट करेंगे?",
+    "question": "आपके सामाजिक समर्थन के स्तर को आप किस स्तर पर दर्ज करेंगे?",
     "options": [
       {
+        "key": "A",
         "text": "मजबूत",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
+        "key": "B",
         "text": "मध्यम",
-        "weightage": 2
+        "weightage": 0.25
       },
       {
+        "key": "C",
         "text": "कमजोर",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },
   {
     "id": 6,
-    "question": "क्या आप भावनाओं या भावनाओं में अचानक बदलाव का अनुभव करते हैं?",
+    "question": "क्या आप मूड स्विंग या भावनाओं में अचानक बदलाव महसूस करते हैं?",
     "options": [
       {
+        "key": "A",
         "text": "अक्सर",
-        "weightage": 3
+        "weightage": 0.99
       },
       {
+        "key": "B",
         "text": "कभी-कभी",
-        "weightage": 2
+        "weightage": 0.35
       },
       {
+        "key": "C",
         "text": "कभी नहीं",
-        "weightage": 1
+        "weightage": 0.01
       }
     ]
   },
   {
     "id": 7,
-    "question": "आप कितनी बार शारीरिक गतिविधि या व्यायाम का हिस्सा बनते हैं?",
+    "question": "आप कितनी बार शारीरिक गतिविधि या व्यायाम में शामिल होते हैं?",
     "options": [
       {
+        "key": "A",
         "text": "नियमित रूप से",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
+        "key": "B",
         "text": "कभी-कभी",
-        "weightage": 2
+        "weightage": 0.25
       },
       {
+        "key": "C",
         "text": "कभी नहीं",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },
   {
     "id": 8,
-    "question": "आप कितनी बार अपने जिम्मेदारियों से घबराते हैं?",
+    "question": "आप कितनी बार अपनी जिम्मेदारियों से अधिक व्यवस्थित महसूस करते हैं?",
     "options": [
       {
+        "key": "A",
         "text": "अक्सर",
-        "weightage": 3
+        "weightage": 0.99
       },
       {
+        "key": "B",
         "text": "कभी-कभी",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
+        "key": "C",
         "text": "कभी नहीं",
-        "weightage": 1
+        "weightage": 0.01
       }
     ]
   },
@@ -148,34 +173,40 @@
     "question": "आप अपने वर्तमान काम या शैक्षिक वातावरण से कितने संतुष्ट हैं?",
     "options": [
       {
+        "key": "A",
         "text": "बहुत संतुष्ट",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
-        "text": "मध्यम रूप से संतुष्ट",
-        "weightage": 2
+        "key": "B",
+        "text": "मध्यम संतुष्ट",
+        "weightage": 0.50
       },
       {
+        "key": "C",
         "text": "संतुष्ट नहीं",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   },
   {
     "id": 10,
-    "question": "क्या आप दूसरों के साथ अपनी भावनाओं और भावनाओं के बारे में बात करने के लिए सहज महसूस करते हैं?",
+    "question": "क्या आप दूसरों के साथ अपनी भावनाओं और भावनाओं के बारे में बात करने के लिए आराम महसूस करते हैं?",
     "options": [
       {
+        "key": "A",
         "text": "हां, हमेशा",
-        "weightage": 3
+        "weightage": 0.01
       },
       {
+        "key": "B",
         "text": "कभी-कभी",
-        "weightage": 2
+        "weightage": 0.45
       },
       {
+        "key": "C",
         "text": "नहीं, कभी नहीं",
-        "weightage": 1
+        "weightage": 0.99
       }
     ]
   }

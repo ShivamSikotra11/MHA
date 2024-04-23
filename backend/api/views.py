@@ -317,18 +317,18 @@ def add_post(request):
         post = data.get('post')
         # Check if the email exists in the collection
         existing_user = posts.find_one({"user_email": email})
-        cleaned_text = clean_text(post["content"])
-        X_test = tfidf_vectorizer.transform([cleaned_text])
-        y_probs = model.predict_proba(X_test)[:, 1]
-        # print(y_probs)
-        if y_probs >= 0.80:
-            # send_email_to_user(request,email,password)
-            ngo_support(request,email,password)
 
         if existing_user:
             # If user exists, append the post to the user's posts array
             posts.update_one({"user_email": email}, {
                              "$push": {"user_posts": post}})
+            cleaned_text = clean_text(post["content"])
+            X_test = tfidf_vectorizer.transform([cleaned_text])
+            y_probs = model.predict_proba(X_test)[:, 1]
+            # print(y_probs)
+            if y_probs >= 0.80:
+                # send_email_to_user(request,email,password)
+                ngo_support(request,email,password)
             return JsonResponse({'success': True, 'message': "Post added successfully."})
         else:
             # If user doesn't exist, create a new document with the post
@@ -337,6 +337,13 @@ def add_post(request):
                 "user_posts": [post]
             }
             posts.insert_one(new_document)
+            cleaned_text = clean_text(post["content"])
+            X_test = tfidf_vectorizer.transform([cleaned_text])
+            y_probs = model.predict_proba(X_test)[:, 1]
+            # print(y_probs)
+            if y_probs >= 0.80:
+                # send_email_to_user(request,email,password)
+                ngo_support(request,email,password)
             return JsonResponse({'success': True, 'message': "New Post added successfully."})
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
@@ -367,7 +374,11 @@ async def show_all_posts(request):
 def show_user_posts(request):
     data = json.loads(request.body)
     email = data.get('email')
-    result = posts.find_one({"user_email": email})['user_posts']
+    user_details = posts.find_one({"user_email": email})
+    if user_details:
+        result = posts.find_one({"user_email": email})['user_posts']
+    else:
+        result = []
     # print(result)
     return JsonResponse(result, safe=False)
 
