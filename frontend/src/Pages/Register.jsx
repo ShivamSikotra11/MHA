@@ -4,6 +4,7 @@ import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { usePostContext } from "../store/PostContext";
 import { useMainContext } from "../store/MainContext";
+import Toast from "../components/Toast";
 
 const RegisterPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -58,12 +59,14 @@ const RegisterPage = () => {
       AlterFirstLogin();
       redirect("/");
     } catch (error) {
+      InvokeToast("error", "User already exists");
       console.error("Error adding new record:", error);
     }
   };
 
   return (
     <div className="container2">
+      <Toast></Toast>
       <div className="left">
       </div>
       <div className="right">

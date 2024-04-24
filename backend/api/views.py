@@ -285,6 +285,10 @@ def get_register(request):
         city = data.get('city')
         mobileno = data.get('mobileno')
         password = data.get('password')
+        
+        check_exist = user_model.find_one({'user_email': emailid})
+        if check_exist:
+            return JsonResponse({'error': 'User already exists'}, status=400)
 
         records = {
             'user_name': name,
