@@ -19,7 +19,8 @@ const initialState = {
   toastActive:false,
   toastData:{type:"success", text:"op"},
   isuserPostDeleted:false,
-  poses:[],
+  poses: [],
+  isFirstTimeLogin:false,
 };
 
 const PostProvider = ({ children }) => {
@@ -107,6 +108,7 @@ const PostProvider = ({ children }) => {
     }
     // console.log(res.data.data.user_name);
   }
+  
   const getSuggestedPoses= async (userData) => {
     try {
     
@@ -172,6 +174,9 @@ const PostProvider = ({ children }) => {
     }
   };
   
+  const AlterFirstLogin = () =>{
+    dispatch({ type: "ALTER_FIRST_TIME_LOGIN" });
+  }
 
 
   return (
@@ -191,7 +196,8 @@ const PostProvider = ({ children }) => {
         clearToast,
         deleteUserPost,
         getUserName,
-        getSuggestedPoses
+        getSuggestedPoses,
+        AlterFirstLogin
       }}
     >
       {children}

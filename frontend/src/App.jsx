@@ -128,8 +128,14 @@ import { useQuizContext } from "./store/QuizContext";
 const AppWithHeader = () => {
   const location = useLocation();
   const redirect = useNavigate();
-  const { loggedIn, getLogIn, getUserName, curUser, isLoginFetching,getSuggestedPoses } =
-    usePostContext();
+  const {
+    loggedIn,
+    getLogIn,
+    getUserName,
+    curUser,
+    isLoginFetching,
+    getSuggestedPoses,
+  } = usePostContext();
   const { isuserProfileUpdating } = useMainContext();
   const { isQuizSubmitted } = useQuizContext();
   // Define excluded routes and routes based on authentication status
@@ -148,30 +154,58 @@ const AppWithHeader = () => {
     if (storedUserData) {
       const userData = JSON.parse(storedUserData);
       getLogIn(userData, false);
-      
-      if (isuserProfileUpdating) { 
-        getUserName(userData)
-        .then(() => {
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setLoading(false);
-        });
-      }
-      else{
-        getSuggestedPoses(userData)
+
+      getSuggestedPoses(userData)
         .then(() => setLoading(false))
         .catch((error) => {
           console.error("Error fetching data:", error);
           setLoading(false);
         });
-      }
     } else {
       setLoading(false);
     }
-  }, [isuserProfileUpdating, isQuizSubmitted, isLoginFetching]);
+  }, [isQuizSubmitted, isLoginFetching]);
+  // useEffect(() => {
+  //   const storedUserData = localStorage.getItem("userData");
 
+  //   if (storedUserData) {
+  //     const userData = JSON.parse(storedUserData);
+  //     getLogIn(userData, false);
+
+  //     if (isuserProfileUpdating) {
+  //       getUserName(userData)
+  //       .then(() => {
+  //         setLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching data:", error);
+  //         setLoading(false);
+  //       });
+  //     }
+  //     else{
+  //       getSuggestedPoses(userData)
+  //       .then(() => setLoading(false))
+  //       .catch((error) => {
+  //         console.error("Error fetching data:", error);
+  //         setLoading(false);
+  //       });
+  //     }
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // }, [isuserProfileUpdating, isQuizSubmitted, isLoginFetching]);
+
+  // useEffect(() => {
+  //   // Redirect based on authentication status
+
+  //     if (loggedIn && AbortedRoutesLoggedIn.includes(location.pathname)) {
+  //       redirect("/");
+  //     }
+  //     if (!loggedIn && AbortedRoutesLoggedOut.includes(location.pathname)) {
+  //       redirect("/");
+  //     }
+
+  // }, [loggedIn]);
   useEffect(() => {
     // Redirect based on authentication status
     if (!loading) {

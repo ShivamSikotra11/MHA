@@ -8,7 +8,6 @@ const ProfileDetails = () => {
   const { formData, setFormData, getProfileData, updateProfileData } = useMainContext();
 
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({

@@ -76,6 +76,11 @@ const PostReducer = (state, action) => {
         ...state,
         poses:action.payload,
       };
+    case "ALTER_FIRST_TIME_LOGIN":
+      return {
+        ...state,
+        isFirstTimeLogin:!state.isFirstTimeLogin,
+      };
     default:
       return state;
   }

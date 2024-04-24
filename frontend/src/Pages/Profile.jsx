@@ -10,14 +10,10 @@ import Loader from "../components/Loader"
 import { useNavigate } from 'react-router-dom'
 import { usePostContext } from '../store/PostContext'
 const Profile = () => {
-  const { getGraphs, getProfileData,getUserAllPosts, isuserPostDeleted } = useMainContext();
-  const { clearShowPost } = usePostContext();
+  const { getGraphs, getProfileData,isuserPostDeleted,getUserAllPosts,isuserPostsFetching } = useMainContext();
+  const { clearShowPost ,getUserName } = usePostContext();
   const [loading, setLoading] = useState(true);
 
-// useEffect(() => {
-//   getUserAllPosts();
-//   clearShowPost();
-// }, [isuserPostDeleted]);
   useEffect(() => {
     Promise.all([getProfileData(), getGraphs()])
     .then(() => {
@@ -30,7 +26,7 @@ const Profile = () => {
   }, []);
   return (
     loading ? (
-      <div className=' h-[90vh] flex justify-center items-center ' >
+      <div className=' h-[90vh] flex justify-center items-center bg-bg ' >
         <Loader width='65px' />
       </div>
     ) : (

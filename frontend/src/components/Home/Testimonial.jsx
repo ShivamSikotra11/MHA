@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Testimonial = ({ data }) => {
   return (
     <Wrapper imageurl={data.image}>
-      <div className="w-[45rem] h-[43rem] bg-primary_light rounded-[3rem] relative testimonial pt-[14rem] px-[2rem] pb-[2rem] max-[457px]:w-[35rem] ">
+      <div className="w-[45rem] h-[43rem] bg-primary_light rounded-[3rem] relative testimonial-single pt-[14rem] px-[2rem] pb-[2rem] max-[457px]:w-[35rem] ">
         <div className="flex flex-col justify-between h-full p-4">
           <p className="text-4xl text-justify max-[457px]:text-3xl">{data.text}</p>
           <div className="">
@@ -20,7 +20,7 @@ const Testimonial = ({ data }) => {
 const Wrapper = styled.section.withConfig({
   shouldForwardProp: (prop) => prop !== "imageurl",  
 })`
-  .testimonial::before {
+  .testimonial-single::before {
     content: "";
     position: absolute;
     top: -22%;

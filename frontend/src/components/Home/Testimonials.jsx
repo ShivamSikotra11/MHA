@@ -5,8 +5,8 @@ import Testimonial from "./Testimonial";
 
 const Testimonials = () => {
   return (
-    <Wrapper className="testimonial" >
-      <p className="text-center text-[4.4rem] font-medium max-[763px]:text-[3.4rem] max-[458px]:text-[2.7rem] mt-8 ">Testimonials</p>
+    <Wrapper className="" >
+      <p className="text-center text-[4.4rem] font-medium max-[763px]:text-[3.4rem] max-[458px]:text-[2.7rem] mt-8 testimonial">Testimonials</p>
       <div className="   mb-10 h-[80rem] max-h-[100rem] placeholder:  relative max-[873px]:hidden">
         <div className="testimonial-container">
 

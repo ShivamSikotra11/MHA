@@ -70,6 +70,7 @@ const initialItems = {
 
 const MainProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialItems);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   
   const [formData, setFormData] = useState({
     fname: '',
@@ -204,7 +205,9 @@ const MainProvider = ({ children }) => {
     formData,
     setFormData,
     clearToast,
-    getGraphs
+    getGraphs,
+    dropdownOpen,
+    setDropdownOpen
   }}>
    {children}
  </MainContext.Provider>

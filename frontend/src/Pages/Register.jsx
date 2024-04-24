@@ -9,7 +9,7 @@ const RegisterPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [flashMessage, setFlashMessage] = useState("");
   const redirect = useNavigate();
-  const { getLogIn ,InvokeToast } = usePostContext();
+  const { getLogIn ,InvokeToast,AlterFirstLogin } = usePostContext();
   const { url } = useMainContext();
 
   useEffect(() => {
@@ -54,7 +54,8 @@ const RegisterPage = () => {
         password: password.current.value,
       });
       // console.log("user registered successfully:", response.data);
-      InvokeToast("success","Successfully Registered")
+      InvokeToast("success", "Successfully Registered");
+      AlterFirstLogin();
       redirect("/");
     } catch (error) {
       console.error("Error adding new record:", error);

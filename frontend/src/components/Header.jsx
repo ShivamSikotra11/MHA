@@ -4,12 +4,14 @@ import { NavLink, useLocation } from "react-router-dom";
 import { usePostContext } from "../store/PostContext";
 import ProfileCircle from "./ProfileCircle";
 import styled from "styled-components";
+import { useMainContext } from "../store/MainContext";
 
 const Header = () => {
   const location = useLocation();
   const { curUser, getNameAcronym, getLogOut, loggedIn } = usePostContext();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+// const [dropdownOpen, setDropdownOpen] = useState(false);
+const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const { dropdownOpen, setDropdownOpen } = useMainContext();
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
