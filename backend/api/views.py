@@ -329,8 +329,8 @@ def add_post(request):
             cleaned_text = clean_text(post["content"])
             X_test = tfidf_vectorizer.transform([cleaned_text])
             y_probs = model.predict_proba(X_test)[:, 1]
-            # print(y_probs)
-            if y_probs >= 0.80:
+            print(y_probs)
+            if y_probs >= 0.90:
                 # send_email_to_user(request,email,password)
                 ngo_support(request,email,password)
             return JsonResponse({'success': True, 'message': "Post added successfully."})

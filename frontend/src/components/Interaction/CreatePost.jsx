@@ -7,7 +7,6 @@ const CreatePost = () => {
   const { handleCreatePost, AlterCreatePost, curUser, isNewPostPosted } = usePostContext();
   const titleRef = useRef();
   const contentRef = useRef();
-  const buttonRef = useRef(null);
   // pip install -r requirements.txt,2.16.1
   const handleCreatePostFunction = (e) => {
     e.preventDefault();
@@ -23,10 +22,8 @@ const CreatePost = () => {
       }
     }
     // AlterCreatePost();
-    buttonRef.current.disabled = true;
-    handleCreatePost(postObject).then(
-      () => { buttonRef.current.disabled = false; }
-    );
+
+    handleCreatePost(postObject)
   }
   return (
     <div className="w-[45rem] border-2 shadow-2xl shadow-black-900/50 border-primary_dark bg-primary_light2 p-8 rounded-[2rem] max-[455px]:w-[35rem] max-[400px]:w-[30rem]">
@@ -56,7 +53,7 @@ const CreatePost = () => {
             <div
               className={`font-inter text-black text-[2rem] bg-[#A9E1FF] px-12  rounded-full cursor-pointer inline-block`} onClick={() => AlterCreatePost()}
             >Cancel</div>
-            <button ref={buttonRef}
+            <button 
               className={`font-inter text-white text-[2rem] bg-primary_dark px-12  rounded-full cursor-pointer inline-block`} type="submit"
             >Post</button>
           </div>

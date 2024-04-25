@@ -20,9 +20,8 @@ function Items({ currentItems }) {
 }
 
 function PaginatedItems({ itemsPerPage = 1 }) {
-  const { curLang } = useQuizContext();
+  const { curLang,Answers } = useQuizContext();
   const [items, setItems] = useState(QuestionsEnglish);
-  const { Answers } = usePostContext(); 
   
   useEffect(() => {
     // Update the items based on the current language
@@ -52,6 +51,21 @@ function PaginatedItems({ itemsPerPage = 1 }) {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
   };
+  const handleKeyPress = (event) => {
+    if (event.key === 'ArrowRight') {
+      setItemOffset(itemOffset + 1 < items.length ? itemOffset + 1 : itemOffset);  
+    }
+    if (event.key === 'ArrowLeft') {
+      setItemOffset(itemOffset - 1 >=0 ? itemOffset - 1 : itemOffset);  
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [itemOffset]);
 
   return (
     <div className="inline-block rounded-3xl bg-primary_elight border pb-8 w-[70%] max-[763px]:w-[90%]">
@@ -74,7 +88,7 @@ function PaginatedItems({ itemsPerPage = 1 }) {
         breakLinkClassName="page-link"
         previousLinkClassName="page-link"
         nextLinkClassName="page-link"
-        
+        forcePage={Math.floor(itemOffset / itemsPerPage)}
       />
     </div>
   );

@@ -21,6 +21,14 @@
   margin: 0 11px;
   font-size: 1.875rem;
 }
+.page-untick {
+  background-color: red;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid #00668c;
+  margin: 0 11px;
+  font-size: 1.875rem;
+}
 
 .page-link:hover {
   background-color: #00668c;
