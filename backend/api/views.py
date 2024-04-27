@@ -10,6 +10,7 @@ import pickle
 import numpy as np
 import neattext.functions as nfx
 from backend.settings import tfidf_vectorizer, model
+import re
 
 
 def index(request):
@@ -285,11 +286,19 @@ def get_register(request):
         city = data.get('city')
         mobileno = data.get('mobileno')
         password = data.get('password')
+
+        # Validate email
+        if not validate_email(emailid):
+              return JsonResponse({'error': 'Invalid email'}, status=400)
         
         check_exist = user_model.find_one({'user_email': emailid})
         if check_exist:
             return JsonResponse({'error': 'User already exists'}, status=400)
-
+        
+        if not validate_password(password):
+            return JsonResponse({'error': 'Password should have Uppercase, Lowercase, Special Character and Number '}, status=400)
+        
+        
         records = {
             'user_name': name,
             'user_password': password,
@@ -524,3 +533,37 @@ def get_graphs(request):
     else:
         scores = []
     return JsonResponse(scores, safe=False)
+
+def validate_password(password):
+            # Check if password has at least 8 characters
+            if len(password) < 8:
+                  return False
+
+            # Check if password has at least 1 uppercase letter
+            if not re.search(r'[A-Z]', password):
+                  return False
+
+            # Check if password has at least 1 lowercase letter
+            if not re.search(r'[a-z]', password):
+                  return False
+
+            # Check if password has at least 1 special character
+            if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
+                return False
+
+            # Check if password has at least 1 number
+            if not re.search(r'\d', password):
+                return False
+
+            return True
+
+# Function to validate email
+def validate_email(email):
+      # Regular expression pattern for email validation
+    pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    
+    # Check if email matches the pattern
+    if re.match(pattern, email):
+          return True
+    else:
+        return False

@@ -59,7 +59,7 @@ const RegisterPage = () => {
       AlterFirstLogin();
       redirect("/");
     } catch (error) {
-      InvokeToast("error", "User already exists");
+      InvokeToast("error",error.response.data.error);
       console.error("Error adding new record:", error);
     }
   };
