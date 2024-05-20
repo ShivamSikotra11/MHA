@@ -58,7 +58,7 @@ import axios from 'axios';
 const MainContext = createContext("");
 
 const initialItems = {
-  url: "http://localhost:8000/api/",
+  url: "mhabackend.vercel.app/",
   isuserPostsFetching: false,
   isuserPostDeleted: false,
   isuserProfileUpdating: false,
