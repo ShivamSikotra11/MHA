@@ -33,20 +33,17 @@ MindCare is a web application developed to promote mental well-being and provide
 
 ## Glimpse of Website
 
-### Home Page
-![Home Page](homepage.png)
-
 ### Blogs
-![Blogs](blogs.png)
+![Blogs](images/blog.jpg)
 
 ### Quiz
-![Quiz](quiz.png)
+![Quiz](images/quiz.jpg)
 
 ### Interaction Page
-![Interaction Page](interaction.png)
+![Interaction Page](images/interact.jpg)
 
 ### Graphs on Profile Page
-![Graphs on Profile Page](profile.png)
+![Graphs on Profile Page](images/profile.jpg)
 
 ## Usage
 Clone the repository using `git clone https://github.com/ShivamSikotra11/MHA.git`.
