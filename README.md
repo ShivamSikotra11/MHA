@@ -49,14 +49,14 @@ MindCare is a web application developed to promote mental well-being and provide
 ### Live Link : https://mindcare-sable.vercel.app/
 
 ### Steps :
-1. Registration and Login: Create a new account or log in to access your existing account.
-2. Home Page Tour: Follow the guided tour to familiarize yourself with the website's features.
-3. Taking the Quiz: Complete the mental health quiz to receive personalized recommendations.
-4. Viewing Suggestions: Explore general insights and solutions for stress, depression, and anxiety.
-5. Interacting with the Community: Post, read, like, and comment on user posts to engage with the community.
-6. Receiving Alerts: The system monitors posts for concerning content and alerts appropriate parties.
-7. Profile Management: View and update your profile information and track your quiz history.
-8. Logging Out: Securely log out of your account when finished using the website.
+1. **Registration and Login**: Create a new account or log in to access your existing account.
+2. **Home Page Tour**: Follow the guided tour to familiarize yourself with the website's features.
+3. **Taking the Quiz**: Complete the mental health quiz to receive personalized recommendations.
+4. **Viewing Suggestions**: Explore general insights and solutions for stress, depression, and anxiety.
+5. **Interacting with the Community**: Post, read, like, and comment on user posts to engage with the community.
+6. **Receiving Alerts**: The system monitors posts for concerning content and alerts appropriate parties.
+7. **Profile Management**: View and update your profile information and track your quiz history.
+8. **Logging Out**: Securely log out of your account when finished using the website.
 
 ## Installation
 Clone the repository using `git clone https://github.com/ShivamSikotra11/MHA.git`.
