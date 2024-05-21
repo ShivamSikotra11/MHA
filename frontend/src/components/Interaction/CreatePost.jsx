@@ -12,6 +12,7 @@ const CreatePost = () => {
     e.preventDefault();
     const currentDate = new Date();
     const currTimestamp = currentDate.getTime();
+    
     const postObject = {
       email: curUser.email,
       password: curUser.password,
