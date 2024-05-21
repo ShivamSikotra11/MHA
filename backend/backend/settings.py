@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import joblib
+import os
+from cryptography.fernet import Fernet
+
+# Generate a key using Fernet.generate_key() and keep it secret
+FERNET_KEY = os.environ.get('FERNET_KEY', Fernet.generate_key().decode())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,7 +139,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-model = joblib.load('naive_bayes_model.pkl')
+# model = joblib.load('naive_bayes_model.pkl')
 
-# Load the TF-IDF vectorizer
-tfidf_vectorizer = joblib.load('tfidf_vectorizer.pkl')
+# # Load the TF-IDF vectorizer
+# tfidf_vectorizer = joblib.load('tfidf_vectorizer.pkl')

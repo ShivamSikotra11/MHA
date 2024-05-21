@@ -58,8 +58,8 @@ import axios from 'axios';
 const MainContext = createContext("");
 
 const initialItems = {
-  url: "https://mhabackend.vercel.app/",
-  // url: "http://127.0.0.1:8000/api/",
+  // url: "https://mhabackend.vercel.app/",
+  url: "http://127.0.0.1:8000/api/",
   isuserPostsFetching: false,
   isuserPostDeleted: false,
   isuserProfileUpdating: false,

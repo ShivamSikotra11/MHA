@@ -132,6 +132,7 @@ const PostProvider = ({ children }) => {
       );
       InvokeToast("success", "Successfully Logged in");
       userData.name = response.data.data.user_name;
+      userData.password = response.data.data.user_password;
       dispatch({ type: "SET_CURRENT_USER", payload: userData });
       localStorage.setItem("userData", JSON.stringify(userData));
       redirect("/");

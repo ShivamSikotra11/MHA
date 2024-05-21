@@ -1,17 +1,25 @@
 from django.core.mail import send_mail
-from django.shortcuts import render
+# from django.shortcuts import render
 from .models import per_con, user_model, posts
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.conf import settings
+from cryptography.fernet import Fernet
 from django.views.decorators.http import require_POST
-import asyncio
-import pickle
+from security import EMAIL_HOST_USER
+# import asyncio
+# import pickle
 import numpy as np
-import neattext.functions as nfx
-from backend.settings import tfidf_vectorizer, model
+# import neattext.functions as nfx
+# from backend.settings import tfidf_vectorizer, model
 import re
+import requests
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import make_password
 
+fernet_key = settings.FERNET_KEY  # Make sure to set this key in your Django settings
+cipher_suite = Fernet(fernet_key)
 
 def index(request):
     return HttpResponse("<h1>Running</h1>")
@@ -55,12 +63,12 @@ def get_logged(request):
         password = data.get('password', '')
         user_check = user_model.find_one({'user_email': user_email})
         if user_check:
-            user = user_model.find_one(
-                {'user_email': user_email, 'user_password': password})
-            if user:
-                user['_id'] = str(user['_id'])
+            # user = user_model.find_one(
+            #     {'user_email': user_email, 'user_password': password})
+            if check_password(password, user_check['user_password']):
+                user_check['_id'] = str(user_check['_id'])
                 # send_email_to_user(request,user['user_email'])
-                return JsonResponse({'message': 'Successfully logged in', 'data': user}, safe=False, status=200)
+                return JsonResponse({'message': 'Successfully logged in', 'data': user_check}, safe=False, status=200)
             else:
                 return JsonResponse({'error': 'Invalid credentials', 'message': 'Incorrect'}, status=400)
         else:
@@ -219,59 +227,59 @@ def update_profile(request):
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
 
-def send_email_to_user(request, email, password):
-    user = user_model.find_one({'user_email': email,'user_password': password})
-    user_name = user['user_name']
-    ngo_name = 'Mental Health Support Foundation'
-    # relative_name = '[Relative\'s Name]'
+# def send_email_to_user(request, email, password):
+#     user = user_model.find_one({'user_email': email,'user_password': password})
+#     user_name = user['user_name']
+#     ngo_name = 'Mental Health Support Foundation'
+#     # relative_name = '[Relative\'s Name]'
 
-    subject = f'Concern for {user_name}\'s Well-being'
-    message = f'''Dear {ngo_name},
+#     subject = f'Concern for {user_name}\'s Well-being'
+#     message = f'''Dear {ngo_name},
     
-We have noticed a concerning post from {email} on our platform. We are reaching out to you as a caring individual in their life to make you aware of the situation. If you could please check on them and offer your support, it would be greatly appreciated.
+# We have noticed a concerning post from {email} on our platform. We are reaching out to you as a caring individual in their life to make you aware of the situation. If you could please check on them and offer your support, it would be greatly appreciated.
 
-We know that {email}'s well-being is important to you, and if our involvement can make any difference, then we are so grateful. Thank you for being there for {email} during this challenging time.
+# We know that {email}'s well-being is important to you, and if our involvement can make any difference, then we are so grateful. Thank you for being there for {email} during this challenging time.
 
-Sincerely,
-[Your Organization's Name]'''
+# Sincerely,
+# [Your Organization's Name]'''
 
-    email_from = 'lifesaver102023@gmail.com'
-    recipient_list = [email, ]
+#     email_from = 'lifesaver102023@gmail.com'
+#     recipient_list = [email, ]
 
-    send_mail(subject, message, email_from, recipient_list)
-    return HttpResponse("Mail Sent!!!")
+#     send_mail(subject, message, email_from, recipient_list)
+#     return HttpResponse("Mail Sent!!!")
 
 
-def ngo_support(request, email, password):
-    user = user_model.find_one({'user_email': email,'user_password': password})
-    user_details = {
-        'name': user['user_name'],
-        'mobile_number': user['mobile_no'],
-        'email': email
-    }
+# def ngo_support(request, email, password):
+#     user = user_model.find_one({'user_email': email,'user_password': password})
+#     user_details = {
+#         'name': user['user_name'],
+#         'mobile_number': user['mobile_no'],
+#         'email': email
+#     }
 
-    subject = f'''Urgent Concern for a {user_details['name']}\'s Well-being'''
-    message = f'''Dear Mental Health Support Foundation Team,
+#     subject = f'''Urgent Concern for a {user_details['name']}\'s Well-being'''
+#     message = f'''Dear Mental Health Support Foundation Team,
     
-We have identified a post on our platform that raises serious concerns about the user's mental health and safety. We are reaching out to seek your immediate intervention and support.
+# We have identified a post on our platform that raises serious concerns about the user's mental health and safety. We are reaching out to seek your immediate intervention and support.
 
-User Details:
-Name: {user_details['name']}
-Mobile No.: {user_details['mobile_number']}
-Email: {user_details['email']}
+# User Details:
+# Name: {user_details['name']}
+# Mobile No.: {user_details['mobile_number']}
+# Email: {user_details['email']}
 
-Given the gravity of the situation, we kindly request your assistance in connecting with the user to ensure their safety and well-being. Your expertise and resources could be invaluable in providing the necessary support and guidance during this critical time.
+# Given the gravity of the situation, we kindly request your assistance in connecting with the user to ensure their safety and well-being. Your expertise and resources could be invaluable in providing the necessary support and guidance during this critical time.
 
-Thank you for your prompt attention to this matter.
+# Thank you for your prompt attention to this matter.
 
-Sincerely,
-MindCare Support Team'''
+# Sincerely,
+# MindCare Support Team'''
 
-    email_from = 'lifesaver102023@gmail.com'
-    recipient_list = ['svspbs567@gmail.com', ]
+#     email_from = 'lifesaver102023@gmail.com'
+#     recipient_list = ['svspbs567@gmail.com', ]
 
-    send_mail(subject, message, email_from, recipient_list)
-    return HttpResponse("Mail Sent!!!")
+#     send_mail(subject, message, email_from, recipient_list)
+#     return HttpResponse("Mail Sent!!!")
 
 @csrf_exempt
 @require_POST
@@ -301,7 +309,7 @@ def get_register(request):
         
         records = {
             'user_name': name,
-            'user_password': password,
+            'user_password': make_password(password),
             'city': city,
             'user_email': emailid,
             'mobile_no': mobileno,
@@ -328,20 +336,30 @@ def add_post(request):
         password = data.get('password')
         email = data.get('email')
         post = data.get('post')
+        npost = str(post["content"])
         # Check if the email exists in the collection
         existing_user = posts.find_one({"user_email": email})
+        # Your Flask API endpoint URL
+        
+        api_url = "https://mhabackend.pythonanywhere.com/api/predict"
+        
+        user = user_model.find_one({'user_email': email,'user_password': password})
+        # Data to be sent to the Flask API
+        api_data = {
+            "texts": [npost],
+            "user_name":user['user_name'],
+            "mobile_number":user['mobile_no'],
+            "email":email
+        }
+
+        # Send POST request to the Flask API
+        response = requests.post(api_url, json=api_data)
+        
 
         if existing_user:
             # If user exists, append the post to the user's posts array
             posts.update_one({"user_email": email}, {
                              "$push": {"user_posts": post}})
-            cleaned_text = clean_text(post["content"])
-            X_test = tfidf_vectorizer.transform([cleaned_text])
-            y_probs = model.predict_proba(X_test)[:, 1]
-            print(y_probs)
-            if y_probs >= 0.90:
-                # send_email_to_user(request,email,password)
-                ngo_support(request,email,password)
             return JsonResponse({'success': True, 'message': "Post added successfully."})
         else:
             # If user doesn't exist, create a new document with the post
@@ -350,13 +368,6 @@ def add_post(request):
                 "user_posts": [post]
             }
             posts.insert_one(new_document)
-            cleaned_text = clean_text(post["content"])
-            X_test = tfidf_vectorizer.transform([cleaned_text])
-            y_probs = model.predict_proba(X_test)[:, 1]
-            # print(y_probs)
-            if y_probs >= 0.80:
-                # send_email_to_user(request,email,password)
-                ngo_support(request,email,password)
             return JsonResponse({'success': True, 'message': "New Post added successfully."})
     else:
         return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
@@ -516,11 +527,11 @@ def score(request):
 
 
 # Preprocessing function
-def clean_text(text):
-    cleaned_text = nfx.remove_special_characters(text)  # Remove special characters
-    cleaned_text = nfx.remove_stopwords(text)  # Remove stopwords
-    # Additional preprocessing steps can be added here
-    return cleaned_text
+# def clean_text(text):
+#     cleaned_text = nfx.remove_special_characters(text)  # Remove special characters
+#     cleaned_text = nfx.remove_stopwords(text)  # Remove stopwords
+#     # Additional preprocessing steps can be added here
+#     return cleaned_text
 
 @csrf_exempt
 def get_graphs(request):
@@ -528,8 +539,9 @@ def get_graphs(request):
     email = data.get('email')
     password = data.get('password')
     user_scores = user_model.find_one({'user_email': email,'user_password':password})
-    if("scores" in user_scores):
+    if user_scores is not None and "scores" in user_scores:
         scores = np.array(user_scores['scores']).tolist()
+        # scores = np.array(user_scores['scores']).tolist()
     else:
         scores = []
     return JsonResponse(scores, safe=False)

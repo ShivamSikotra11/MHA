@@ -49,15 +49,15 @@ const RegisterPage = () => {
         `${url}register/`,
         userRegisterData
       );
-      getLogIn({
-        name: name.current.value,
-        email: emailid.current.value,
-        password: password.current.value,
-      });
+      // getLogIn({
+      //   name: name.current.value,
+      //   email: emailid.current.value,
+      //   password: password.current.value,
+      // });
       // console.log("user registered successfully:", response.data);
-      InvokeToast("success", "Successfully Registered");
+      InvokeToast("success", "Login with your credentials to continue.");
       AlterFirstLogin();
-      redirect("/");
+      redirect("/login");
     } catch (error) {
       InvokeToast("error",error.response.data.error);
       console.error("Error adding new record:", error);
