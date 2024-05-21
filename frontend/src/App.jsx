@@ -206,6 +206,7 @@ const AppWithHeader = () => {
   //     }
 
   // }, [loggedIn]);
+  
   useEffect(() => {
     // Redirect based on authentication status
     if (!loading) {

@@ -58,7 +58,8 @@ import axios from 'axios';
 const MainContext = createContext("");
 
 const initialItems = {
-  url: "https://mhabackend.vercel.app/",
+  // url: "https://mhabackend.vercel.app/",
+  url: "http://127.0.0.1:8000/api/",
   isuserPostsFetching: false,
   isuserPostDeleted: false,
   isuserProfileUpdating: false,
@@ -77,7 +78,7 @@ const MainProvider = ({ children }) => {
     mname: '',
     lname: '',
     dob: '',
-    gender: '',
+    gender: 'Select gender',
     mobile: '',
     email: '',
     address: '',
@@ -122,8 +123,8 @@ const MainProvider = ({ children }) => {
     }
   };
 
-  const updateProfileData = async (e) => {
-    e.preventDefault();
+  const updateProfileData = async () => {
+    
     const userObj = {
       user_name: `${formData.fname} ${formData.mname} ${formData.lname}`,
       user_password: JSON.parse(localStorage.getItem("userData")).password,

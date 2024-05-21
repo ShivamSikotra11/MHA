@@ -97,7 +97,7 @@ const [hamburgerOpen, setHamburgerOpen] = useState(false);
                     <p className="dd-item">Profile</p>
                   </NavLink>
                   <NavLink to={"/quiz"}>
-                    <p className="dd-item quiz">Get Quiz Now</p>
+                    <p className="dd-item quiz">Take a Quiz</p>
                   </NavLink>
                   <NavLink to={"/interaction"}>
                     <p className="dd-item interaction">Get Interact</p>
@@ -138,8 +138,19 @@ const [hamburgerOpen, setHamburgerOpen] = useState(false);
                 to="/profile"
                 className="flex flex-col items-center cursor-pointer "
               >
-                <i className="fa-regular fa-user "></i>
-                My Profile
+                {
+                  location.pathname==='/profile' ? (
+                    <>
+                      <i className="fa-solid fa-house"></i>
+                      Home
+                    </>
+                  ) : (
+                    <>
+                      <i className="fa-regular fa-user "></i>
+                      My Profile
+                    </>
+                  )
+                }
               </NavLink>
               <div
                 to=""
@@ -183,7 +194,7 @@ const [hamburgerOpen, setHamburgerOpen] = useState(false);
                 Quiz
               </div>
             </div> */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col text-center">
             {!loggedIn && (
               <NavLink to={"/login"} className="ni ">
                 Log In
@@ -206,7 +217,7 @@ const [hamburgerOpen, setHamburgerOpen] = useState(false);
               <>
                 {location.pathname !== "/quiz" && (
                   <NavLink to={"/quiz"} className="ni">
-                    Get Quiz
+                    Take a Quiz
                   </NavLink>
                 )}
                 {location.pathname !== "/interaction" && (

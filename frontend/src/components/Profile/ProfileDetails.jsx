@@ -1,12 +1,56 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import ButtonDiv from "../ButtonDiv";
-import { useMainContext } from "../../store/MainContext"; 
+import { useMainContext } from "../../store/MainContext";
 
 const ProfileDetails = () => {
   // console.log('ProfileDetails rendered');
-  const { formData, setFormData, getProfileData, updateProfileData } = useMainContext();
+  const { formData, setFormData, getProfileData, updateProfileData } =
+    useMainContext();
+  
+  const [dropdownActive, setDropdownActive] = useState(false);
+  const [initialFormData, setInitialFormData] = useState({});
+  
 
+  useEffect(() => {
+    // Save the initial form data when the component mounts
+    setInitialFormData(formData);
+
+    const handleClick = (event) => {
+      if (!event.target.classList.contains("textBoxGender")) {
+        setDropdownActive(false);
+      }
+      
+    };
+    
+    const handleVisibilityChange = () => {
+      setDropdownActive(false);
+    };
+
+  
+    document.addEventListener("click", handleClick);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      // menu_btn.removeEventListener("click", handleMenuClick);
+      document.removeEventListener("click", handleClick);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  const isItModified = JSON.stringify(initialFormData) !== JSON.stringify(formData);
+   
+  const showGender = (word) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      ["gender"]: word,
+    }));
+    setDropdownActive(false); // Close the dropdown after selection
+  };
+
+  const toggleDropdown = () => {
+    setDropdownActive(!dropdownActive);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,35 +58,26 @@ const ProfileDetails = () => {
       ...prevData,
       [name]: value,
     }));
+    setIsModified(true);
   };
-  // useEffect(() => {
-  //   const ips = document.querySelectorAll(".input");
-  //   ips.forEach((ip) => {
-  //     ip.addEventListener("focus", (e) => {
-  //       e.target.parentNode.classList.add("focus");
-  //     });
 
-  //     if (ip.value !== "") {
-  //       ip.parentNode.classList.add("focus");
-  //     }
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    updateProfileData();
+    // Save the initial form data when the component mounts
+    setInitialFormData(formData);
+  }
 
-  //     ip.addEventListener("blur", (e) => {
-  //       if (e.target.value === "") {
-  //         e.target.parentNode.classList.remove("focus");
-  //       }
-  //     });
-
-  //     ip.addEventListener("input", (e) => {
-  //       e.target.parentNode.classList.add("focus");
-  //     });
-  //   });
-  // }, []);
-
+  
+  
+  
   return (
     <Wrapper className="   ">
-      <p className="text-black font-inter text-5xl font-semibold mb-4 max-[440px]:text-4xl">Details</p>
-      <form className="details-box px-[3rem]" onSubmit={updateProfileData}>
-      <div className="name flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
+      <p className="text-black font-inter text-5xl font-semibold mb-4 max-[440px]:text-4xl">
+        Details
+      </p>
+      <form className="details-box px-[3rem]" onSubmit={handleSubmit}>
+        <div className="name flex space-x-[2rem] max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/3 max-[615px]:w-full focus">
             <input
               type="text"
@@ -96,8 +131,8 @@ const ProfileDetails = () => {
             <label htmlFor="">Date of Birth</label>
             <span>Date of Birth</span>
           </div>
-          
-          <div className="input-container w-1/2 max-[615px]:w-full focus">
+
+          {/* <div className="input-container w-1/2 max-[615px]:w-full focus">
             <input
               type="text"
               name="gender"
@@ -106,6 +141,26 @@ const ProfileDetails = () => {
               onChange={handleChange}
               required
             />
+            <label htmlFor="">Gender</label>
+            <span>Gender</span>
+          </div> */}
+
+          <div className="input-container w-1/2 max-[615px]:w-full focus">
+            <div className={`dropdown input ${dropdownActive ? "active" : ""}`}>
+              <input
+                type="text"
+                className="textBox textBoxGender text-black"
+                value={formData.gender}
+                readOnly
+                name="gender"
+                required
+                onClick={toggleDropdown}
+              />
+              <div className="options">
+                <div onClick={() => showGender("Male")}>Male</div>
+                <div onClick={() => showGender("Female")}>Female</div>
+              </div>
+            </div>
             <label htmlFor="">Gender</label>
             <span>Gender</span>
           </div>
@@ -152,7 +207,6 @@ const ProfileDetails = () => {
           <span>Address</span>
         </div>
 
-
         <div className="space-x-[2rem] flex  max-[614px]:flex-col max-[614px]:space-x-0">
           <div className="input-container w-1/2 max-[615px]:w-full focus">
             <input
@@ -172,9 +226,8 @@ const ProfileDetails = () => {
             <span>City</span>
           </div>
         </div>
-        <button type="submit">
-          {/* Submit */}
-          <ButtonDiv value="Update" />
+        <button type="submit" className={`font-inter text-[2.5rem] px-14 rounded-full  inline-block  ${!isItModified ? "cursor-not-allowed bg-[#A9E1FF]":"bg-[#00668C] text-white cursor-pointer"} `}  disabled={!isItModified} >
+        Update
         </button>
       </form>
     </Wrapper>
@@ -263,10 +316,10 @@ const Wrapper = styled.section`
     opacity: 0;
     transition: 0.3s;
     height: 5px;
-    background-color: #EBF8FF;
+    background-color: #ebf8ff;
     top: 50%;
     transform: translateY(-50%);
-    border: 2px solid #EBF8FF;
+    border: 2px solid #ebf8ff;
   }
   .input-container span::before {
     left: 50%;
@@ -284,6 +337,83 @@ const Wrapper = styled.section`
   .input-container.focus span::after {
     width: 50%;
     opacity: 1;
+  }
+
+  .dropdown {
+    /* border:2px solid red; */
+    position: relative;
+    /* margin-top: 100px; */
+    width: 300px;
+    height: 40px;
+  }
+  .dropdown::before {
+    content: "";
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+    right: 20px;
+    top: 15px;
+    z-index: 10;
+
+    border: 2px solid #333;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+
+    transform: rotate(-45deg);
+    transition: 0.5s;
+    pointer-events: none;
+  }
+  .dropdown.active::before {
+    top: 22px;
+    transform: rotate(-225deg);
+  }
+  .dropdown input {
+    position: absolute;
+    outline: none;
+    border: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 12px 20px;
+    border-radius: 10px;
+    color:black;
+  }
+  .dropdown .options {
+    position: absolute;
+    top: 40px;
+    left: -2px;
+    width: 101%;
+    background: #fff;
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    z-index: 100000;
+    border: 2px solid #00668c;
+  }
+
+  .selected {
+    background-color: #ffe0e0;
+  }
+  .dropdown.active .options,
+  .p-dropdown.active .options {
+    display: block;
+  }
+
+  .dropdown .options div,
+  .p-dropdown .options div {
+    padding: 7px 20px;
+    cursor: pointer;
+  }
+  .dropdown .options div:hover,
+  .p-dropdown .options div:hover {
+    background: #a9e1ff;
+    color: #000;
   }
 `;
 
