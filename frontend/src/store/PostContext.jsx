@@ -134,7 +134,6 @@ const PostProvider = ({ children }) => {
       userData.name = response.data.data.user_name;
       dispatch({ type: "SET_CURRENT_USER", payload: userData });
       localStorage.setItem("userData", JSON.stringify(userData));
-      // getUserName(userData);
       redirect("/");
     } catch (error) {
       dispatch({ type: "ALTER_LOGIN_FETCHING" });
