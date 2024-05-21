@@ -72,6 +72,7 @@ const PostProvider = ({ children }) => {
         `${url}add_post/`,
         postObject
       );
+      console.log(postObject);
       dispatch({ type: "TOGGLE_CREATE_POST" });
       dispatch({ type: "TOGGLE_NEW_POST_POSTED" });
       InvokeToast("success", "Post Created Successfully");
